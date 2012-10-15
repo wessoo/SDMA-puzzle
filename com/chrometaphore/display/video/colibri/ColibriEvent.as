@@ -1,0 +1,1 @@
+﻿package com.chrometaphore.display.video.colibri{	import flash.events.Event;		public class ColibriEvent extends Event	{		public static const ON_FINISHED:String = "onFinished";				public function ColibriEvent( type:String, bubbles:Boolean=false, cancelable:Boolean=false ):void		{			super(type, bubbles, cancelable);		}	}}

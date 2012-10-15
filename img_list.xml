@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<thumbnails>
+        // 0 = mouse, 1 = touch
+	<inputmethod input="0" /> 
+
+	// 0 = false, 1 = true
+	// should show loading screen if computer is slow at loading img
+	<loadingscreen enable="1" />
+
+	//ratio: video size / program size
+	// 1 is full screen
+	<videoRatio ratio="0.9" />
+
+	<thumbnail filename="img1.jpg"
+		title="Photo No. 1 - Flash Gallery" 
+		description="blablabla." />
+
+	<thumbnail filename="img2.jpg"
+		title="Photo No. 2 - XML Gallery" 
+		description="blablabla." />
+
+	<thumbnail filename="img3.jpg"
+		title="Photo No. 3 - Feature Enhancements" 
+		description="blablabla." />
+
+	<thumbnail filename="img4.jpg"
+		title="Photo No. 4 - Fusce dignissim eros ac massa" 
+		description="blablabla" />
+
+	<thumbnail filename="img5.jpg"
+		title="Photo No. 5 - Aliquam tristique lacus in sapien" 
+		description="blablabla." />
+
+	<thumbnail filename="img6.jpg"
+		title="Photo No. 6 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+		
+	<thumbnail filename="img7.jpg"
+		title="Photo No. 7 - Lorem ipsum dolor sit amet" 
+		description="blablabla" />
+
+	<thumbnail filename="img8.jpg"
+		title="Photo No. 8 - Quisque in diam a justo" 
+		description="blablabla" />
+
+	<thumbnail filename="img9.jpg"
+		title="Photo No. 9 - Nullam vitae tellus" 
+		description="blablabla" />
+
+	<thumbnail filename="img10.jpg"
+		title="Photo No. 10 - Fusce dignissim eros ac" 
+		description="blablabla" />
+		
+	<thumbnail filename="img11.jpg"
+		title="Photo No. 13 - Lorem ipsum dolor sit amet" 
+		description="blablabla" />
+
+	<thumbnail filename="img12.jpg"
+		title="Photo No. 14 - Quisque in diam a justo condimentum" 
+		description="blablabla" />
+
+	<thumbnail filename="img13.jpg"
+		title="Photo No. 15 - Nullam vitae tellus" 
+		description="blablabla" />
+
+	<thumbnail filename="img14.jpg"
+		title="Photo No. 16 - Fusce dignissim eros ac massa" 
+		description="blablabla" />
+
+	<thumbnail filename="img15.jpg"
+		title="Photo No. 17 - Aliquam tristique lacus in sapien" 
+		description="blablabla" />
+
+	<thumbnail filename="img16.jpg"
+		title="Photo No. 18 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img17.jpg"
+		title="Photo No. 19 - Lorem ipsum dolor sit amet" 
+		description="blablabla" />
+
+	<thumbnail filename="img18.jpg"
+		title="Photo No. 20 - Nn diam a justo condimentum" 
+		description="blablabla" />
+
+	<thumbnail filename="img19.jpg"
+		title="Photo No. 21 - Aliquam tristique lacus" 
+		description="blablabla" />
+
+	<thumbnail filename="img20.jpg"
+		title="Photo No. 22 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+		
+	<thumbnail filename="img21.jpg"
+		title="Photo No. 23 - Lorem ipsum dolor sit amet" 
+		description="blablabla" />
+
+	<thumbnail filename="img22.jpg"
+		title="Photo No. 24 - Quisque in diam a justo condimentum" 
+		description="blablabla" />
+
+	<thumbnail filename="img23.jpg"
+		title="Photo No. 25 - Nullam vitae tellus" 
+		description="blablabla" />
+
+	<thumbnail filename="img24.jpg"
+		title="Photo No. 11 - Aliquam tristique lacus" 
+		description="blablabla." />
+
+	<thumbnail filename="img25.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img26.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img27.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img28.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img29.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img30.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img31.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img32.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img33.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img34.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img35.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+
+	<thumbnail filename="img36.jpg"
+		title="Photo No. 12 - Cras magna velit, pellentesque" 
+		description="blablabla" />
+</thumbnails>
