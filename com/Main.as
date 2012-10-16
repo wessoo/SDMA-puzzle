@@ -289,7 +289,7 @@ package com {
 		var fullImg:MovieClip = new MovieClip();
 		var fileRequest:URLRequest;
 
-		var infoShown:Boolean = false;//check if info is shown after puzzle completion
+		var infoShown:Boolean = false; //check if info is shown after puzzle completion
 
 		var imgArr:Array = new Array();
 
