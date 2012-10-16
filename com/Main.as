@@ -60,7 +60,7 @@ package com {
 			var idleTimer:Timer; 
 			var countDown:Timer;
 
-			var folder:String = "../photos/"; //change to FOLDER_PATH
+			var folder:String = "photos/"; //change to FOLDER_PATH
 
 			var logos:Boolean = false; //turn on & off welcome screen
 			var began:Boolean = false; //prevent tiles to get generated more than once
@@ -205,7 +205,7 @@ package com {
 
 		        if( s == filename_list[s_no] ) 
 				{
-					fileRequest = new URLRequest("../photos/img" +  k + ".jpg");
+					fileRequest = new URLRequest("photos/img" +  k + ".jpg");
 					
 					selectedPic = k;
 					
