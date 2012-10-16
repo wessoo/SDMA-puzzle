@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SDMApuzzle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Content>
+		<Source id="1">
+			<url></url>
+			<accession>1959:7</accession>
+			<artist>Robert Henri</artist>
+			<life>1865–1929</life>
+			<title>Portrait of Mrs. Robert Henri</title>
+			<date>August 1914</date>
+			<size>24 in. x 20 in. (60.9 cm x 50.8 cm)</size>
+			<credit>Gift of Mrs. George Heyneman</credit>
+		</Source>
+		<Source id="2">
+			<url></url>
+			<accession>1958.33.a.1</accession>
+			<artist></artist>
+			<life></life>
+			<title>Court Scene with Dancing and Feasting</title>
+			<date>ca. 1920</date>
+			<size>9 1/2 in. x 9 1/2 in. x 15/16 in. (24.13 cm x 24.13 cm x 2.38 cm)</size>
+			<credit>Museum purchase with funds provided by the Asian Arts Council and Mrs. Irving T. Snyder</credit>
+		</Source>
+		<Source id="3">
+			<url></url>
+			<accession>1925:1</accession>
+			<artist>Joaquín Sorolla y Bastida</artist>
+			<life></life>
+			<title>Maria at La Granja</title>
+			<date>1907</date>
+			<size>67 1/8 in. x 33 1/2 in. (170.5 cm x 85.1 cm)</size>
+			<credit>Gift of Mr. Archer M. Huntington in memory of his mother, Arabella D. Huntington</credit>
+		</Source>
+		<Source id="4">
+			<url></url>
+			<accession>1968:82</accession>
+			<artist>William-Adolphe Bouguereau</artist>
+			<life>1825–1905</life> 
+			<title>The Young Shepherdess</title>
+			<date>1885</date>
+			<size>62 in. x 28 1/2 in. (157.5 cm x 72.4 cm)</size>
+			<credit>Gift of Mr. and Mrs. Edwin S. Larsen</credit>
+		</Source>
+		<Source id="5">
+			<url></url>
+			<accession>1940:76</accession>
+			<artist>El Greco (Domenikos Theotokopoulos)</artist>
+			<life>1541–1614</life>
+			<title>The Penitent Saint Peter</title>
+			<date>ca. 1590-1595</date>
+			<size>49 1/4 in. x 42 3/8 in. (125.1 cm x 107.6 cm)</size>
+			<credit>Gift of Anne R. and Amy Putnam</credit>
+		</Source>
+		<Source id="6">
+			<url></url>
+			<accession>1941.83</accession>
+			<artist></artist>
+			<life></life>
+			<title>"All Victorious" Guanyin Bodhisattva</title>
+			<date>1147-1172, Dali Kingdom</date>
+			<size>19 1/4 in. x 4 11/16 in. x 2 5/8 in. (48.9 cm x 11.91 cm x 6.67 cm)</size>
+			<credit>Museum purchase with funds provided by the Helen M. Towle Bequest</credit>
+		</Source>
+		<Source id="7">
+			<url></url>
+			<accession>1964:130</accession>
+			<artist>Rufino Tamayo</artist>
+			<life>1899–1991</life>
+			<title>The Somnambulist</title>
+			<date>1954</date>
+			<size>39 1/2 in. x 31 1/2 in. (100.3 cm x 80 cm)</size>
+			<credit>Anonymous gift</credit>
+		</Source>
+		<Source id="8">
+			<url></url>
+			<accession></accession>
+			<artist></artist>
+			<life></life>
+			<title>East African Spoons</title>
+			<date></date>
+			<size></size>
+			<credit></credit>
+		</Source>
+		<Source id="9">
+			<url></url>
+			<accession>1941:100</accession>
+			<artist>Giorgione (Giorgio da Castelfranco)</artist>
+			<life>1477/78–1510</life>
+			<title>Portait of a Man</title>
+			<date>Probably 1506</date>
+			<size>11 7/8 in. x 10 1/8 in. (30.2 cm x 25.7 cm)</size>
+			<credit>Gift of Anne R. and Amy Putnam</credit>
+		</Source>
+		<Source id="10">
+			<url></url>
+			<accession>1979:20</accession>
+			<artist>Robert Delaunay</artist>
+			<life>1885–1941</life>
+			<title>Female Nude Reading</title>
+			<date>1915</date>
+			<size>54 in. x 42 3/8 in. (137.2 cm x 107.6 cm)</size>
+			<credit>Museum purchase through the Earle W. Grant Acquisition Fund</credit>
+		</Source>
+		<Source id="11">
+			<url></url>
+			<accession>1968:17</accession>
+			<artist>Unknown</artist>
+			<life></life>
+			<title>Hayagriva</title>
+			<date>15th century, Tibet</date>
+			<size>16 1/4 in. x 12 1/2 in. x 5 3/4 in. (41.28 cm x 31.75 cm x 14.61 cm)</size>
+			<credit>Museum purchase with funds provided by the Elsie S. Kimberly Bequest</credit>
+		</Source>
+		<Source id="12">
+			<url></url>
+			<accession>1990.144</accession>
+			<artist></artist>
+			<life></life>
+			<title>Shiva as Lord of Music (Vinadhara Dakshinamurti)</title>
+			<date>6th century, Court: Maitraka</date>
+			<size>16 3/4 in. x 13 3/4 in. x 4 13/16 in. (42.55 cm x 34.93 cm x 12.22 cm)</size>
+			<credit>Edwin Binney 3rd Collection</credit>
+		</Source>
+		<Source id="13">
+			<url></url>
+			<accession>1937:30</accession>
+			<artist>Thomas Eakins</artist>
+			<life>1844–1916</life>
+			<title>Portrait of James Carroll Beckwith</title>
+			<date>1904</date>
+			<size>83 3/8 in. x 48 1/8 in. (211.8 cm x 122.2 cm)</size>
+			<credit>Gift of Mrs. Thomas Eakins</credit>
+		</Source>
+		<Source id="14">
+			<url></url>
+			<accession>1970:2</accession>
+			<artist>Diego Rivera</artist>
+			<life>1886–1957</life>
+			<title>The Hands of Dr. Moore</title>
+			<date>1940</date>
+			<size>18 in. x 22 in. (45.7 cm x 55.9 cm)</size>
+			<credit>Bequest of Mrs. E. Clarence Moore</credit>
+		</Source>
+		<Source id="15">
+			<url></url>
+			<accession>2008:22</accession>
+			<artist>Arnold Newman</artist>
+			<life>1918–2006</life>
+			<title>Jean Arp</title>
+			<date>1949</date>
+			<size>9 7/8 in. x 11 3/4 in. (25.1 cm x 29.8 cm)</size>
+			<credit>Gift of Jordan Finn</credit>
+		</Source>
+		<Source id="16">
+			<url></url>
+			<accession>1976:137</accession>
+			<artist>Louise Nevelson</artist>
+			<life>1899–1988</life>
+			<title>Night Presence II</title>
+			<date>1976</date>
+			<size>155 5/8 in. x 95 3/4 in. x 55 1/4 in. (395.3 cm x 243.2 cm x 140.3 cm)</size>
+			<credit>Museum purchase through the Earle W. Grant Endowment Fund</credit>
+		</Source>
+		<Source id="17">
+			<url></url>
+			<accession>1979:19</accession>
+			<artist>Frank Stella</artist>
+			<life>b. 1936</life>
+			<title>Flin Flon VIII</title>
+			<date>1970</date>
+			<size>108 in. x 108 in. (274.3 cm x 274.3 cm)</size>
+			<credit>Museum purchase</credit>
+		</Source>
+		<Source id="18">
+			<url></url>
+			<accession>1969:2</accession>
+			<artist>Alexander Calder</artist>
+			<life>1898–1976</life>
+			<title>Spinal Column</title>
+			<date><1968/date>
+			<size>118 in. x 100 in. x 90 in. (299.7 cm x 254 cm x 228.6 cm)</size>
+			<credit>Museum purchase with funds provided by Mr. and Mrs. Norton S. Walbridge</credit>
+		</Source>
+		<Source id="19">
+			<url></url>
+			<accession>1965:26</accession>
+			<artist>Alfred R. Mitchell</artist>
+			<life>1888–1972</life>
+			<title>La Jolla Cove</title>
+			<date>ca. 1950</date>
+			<size>24 in. x 36 in. (60.9 cm x 91.4 cm)</size>
+			<credit>Gift of the artist</credit>
+		</Source>
+		<Source id="20">
+			<url></url>
+			<accession>1971:12</accession>
+			<artist>Georgia O'Keeffe</artist>
+			<life>1887–1986</life>
+			<title>The White Flower</title>
+			<date>1932</date>
+			<size>29 3/4 in. x 39 3/4 in. (75.6 cm x 100.9 cm)</size>
+			<credit>Gift of Mrs. Inez Grant Parker in memory of Earle W. Grant</credit>
+		</Source>
+		<Source id="21">
+			<url></url>
+			<accession>1977:9</accession>
+			<artist>Eastman Johnson</artist>
+			<life>1824–1906</life>
+			<title>Woman Reading</title>
+			<date>ca. 1874</date>
+			<size>25 1/8 in. x 18 5/8 in. (63.8 cm x 47.3 cm)</size>
+			<credit>Museum purchase with funds provided by the Gerald and Inez Grant Parker Foundation</credit>
+		</Source>
+		<Source id="22">
+			<url></url>
+			<accession>1974.72</accession>
+			<artist>Asher Brown Durand</artist>
+			<life>1796–1886</life>
+			<title>In the Catskills</title>
+			<date>1848</date>
+			<size>30 in. x 42 1/4 in. (76.2 cm x 107.3 cm)</size>
+			<credit>Museum purchase with funds provided by Gerald and Inez Grant Parker Foundation</credit>
+		</Source>
+		<Source id="23">
+			<url></url>
+			<accession>1938:244</accession>
+			<artist>Francisco José de Goya y Lucientes</artist>
+			<life>1746–1828</life>
+			<title>Vicente Maria de Vera de Aragón, Duque de la Roca (The Marques de Sofraga)</title>
+			<date>ca. 1795</date>
+			<size>42 5/8 in. x 32 1/2 in. (108.3 cm x 82.5 cm)</size>
+			<credit>Gift of Anne R. and Amy Putnam</credit>
+		</Source>
+		<Source id="24">
+			<url></url>
+			<accession>1990:786</accession>
+			<artist>Ruknuddin</artist>
+			<life>active in India in the late 17th century</life>
+			<title>Radha comes to Krishna with her vina, from the Rasikapriya by Keshavdas</title>
+			<date>1685</date>
+			<size>7 5/8 in. x 5 9/32 in. (19.4 cm x 13.4 cm)</size>
+			<credit>Edwin Binney 3rd Collection of South Asian paintings</credit>
+		</Source>
+		<Source id="25">
+			<url></url>
+			<accession>1945:43</accession>
+			<artist>Juan Sánchez Cotán</artist>
+			<life>1560–1627</life>
+			<title>Quince, Cabbage, Melon, and Cucumber</title>
+			<date>ca. 1602</date>
+			<size>27 1/8 in. x 33 1/4 in. (68.9 cm x 84.5 cm)</size>
+			<credit>Gift of Anne R. and Amy Putnam</credit>
+		</Source>
+	</Content>
+</SDMApuzzle>
