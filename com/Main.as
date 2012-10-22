@@ -42,6 +42,10 @@ package com {
 		    var scene:Scene3D;
 		    var cam:Camera3D;
 
+		    var container2:Sprite;
+		    var scene2:Scene3D;
+		    var cam2:Camera3D;
+
 		    var p_dict:Dictionary;		    
 		    var pa:Array;
 		    var filename_list:Array;
@@ -70,6 +74,9 @@ package com {
 			public var imgCard:DisplayObject3D;
 			private var cardFacingFront:Boolean = true;
 			private var vidPlaying:Boolean = false;
+			public var card:Card = new Card();
+			public var back_material:MovieMaterial;
+			public var back_plane:Plane;
 
 			public function Main() {
 				gotoAndStop(2);
@@ -78,12 +85,12 @@ package com {
 				stage.align = StageAlign.TOP_LEFT;
 				Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 
-				imgLoader = new Loader();
+				/*imgLoader = new Loader();
 				imgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoaded )
-				imgLoader.load(new URLRequest("images/1925-1.jpg"));
+				imgLoader.load(new URLRequest("images/1925-1.jpg"));*/
 				//addChild(imgLoader);
 
-				imgCard = new DisplayObject3D();
+				//imgCard = new DisplayObject3D();
 
 				if( logos )
 				{
@@ -93,7 +100,6 @@ package com {
 					timer.start();
 				}
 
-				tn_title.alpha = 0;
 				tn_title.alpha = 0;
 				txtBg.alpha = 0;
 
@@ -105,13 +111,26 @@ package com {
 				cam = new Camera3D();
 		    	cam.zoom = 10;
 
+			    addEventListener(Event.ENTER_FRAME, render);
+
+		    	/*container2 = new Sprite();
+				container2.x = container_x;
+		    	container2.y = container_y;
+		    	addChild(container2);
+				scene2 = new MovieScene3D(container2)
+				cam2 = new Camera3D();
+				cam2.zoom = 10;
+				back_material = new MovieMaterial(card);
+				back_plane = new Plane(back_material,1700,1030,10,20);
+				scene2.addChild(back_plane);
+				addEventListener(Event.ENTER_FRAME, render2);*/
+
 				p_dict = new Dictionary();
 				pa = new Array();
 				filename_list = new Array();
 				title_list = new Array();
 				description_list = new Array();
 
-			    addEventListener(Event.ENTER_FRAME, render);
 
 			    img_xml = new XML();
 			    pic_loader = new Loader();
@@ -264,6 +283,11 @@ package com {
 			}
 			cam.x = ( 800 - stage.mouseX ) * 0.1;
 			cam.y = ( 480 - stage.mouseY ) * 0.1;
+			scene.renderCamera(cam);
+		}
+
+		function render2(e:Event):void
+		{
 			scene.renderCamera(cam);
 		}
 
