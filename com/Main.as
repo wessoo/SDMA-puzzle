@@ -3,6 +3,8 @@ package com {
 	import flash.display.*;
 	import flash.net.*;
 	import flash.filters.*;
+	import flash.display.*;
+	import flash.net.URLRequest;
 	import flash.media.Sound;
 	import flash.utils.Timer;
 	import flash.utils.Dictionary;
@@ -16,6 +18,12 @@ package com {
 	import org.papervision3d.cameras.*;
 	import org.papervision3d.objects.*;
 	import org.papervision3d.materials.*;
+	import org.papervision3d.cameras.Camera3D;
+	import org.papervision3d.render.BasicRenderEngine;
+	import org.papervision3d.events.InteractiveScene3DEvent;
+	import org.papervision3d.scenes.Scene3D;
+	import org.papervision3d.view.Viewport3D;
+	import org.papervision3d.objects.Plane;
 
 	import com.chrometaphore.display.video.colibri.Colibri;
 	import com.chrometaphore.display.video.colibri.ColibriEvent;
@@ -65,10 +73,25 @@ package com {
 			var logos:Boolean = false; //turn on & off welcome screen
 			var began:Boolean = false; //prevent tiles to get generated more than once
 			var finishedPuzzle:Boolean = false;
+			private var cardFacingFront:Boolean = true;
+			private var vidPlaying:Boolean = false;
+
+			//private var viewport:Viewport3D = new Viewport3D(1920,1080,false,true);
+			//private var scene2:Scene3D = new Scene3D();
+			//private var camera:Camera3D = new Camera3D();
+			// var renderer:BasicRenderEngine = new BasicRenderEngine();
+			public var card:Card = new Card();
+			private var front_plane:Plane;
+			private var back_plane:Plane;
+			//private var front_material:BitmapMaterial
+			private var back_material:MovieMaterial;
+			private var imgLoader:Loader;
+			public var imgCard:DisplayObject3D;
+			var bmp:Bitmap;
 
 			public function Main() {
 				gotoAndStop(2);
-				stage.scaleMode = StageScaleMode.EXACT_FIT;
+				//stage.scaleMode = StageScaleMode.EXACT_FIT;
 				stage.displayState = StageDisplayState.FULL_SCREEN;
 				stage.align = StageAlign.TOP_LEFT;
 				Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
@@ -89,19 +112,28 @@ package com {
 				container.x = container_x;
 		    	container.y = container_y;
 		    	addChild(container);
-				trace("flag1");
-				scene = new MovieScene3D(container)
-				trace("flag2");
+				scene = new MovieScene3D(container);
 				cam = new Camera3D();
-				trace("flag3");
 		    	cam.zoom = 8;
-		    	trace("flag4");
 
 				p_dict = new Dictionary();
 				pa = new Array();
 				filename_list = new Array();
 				title_list = new Array();
 				description_list = new Array();
+
+				back_material = new MovieMaterial(card);
+				back_plane = new Plane(back_material, 1700, 1030, 10, 20);
+				back_plane.addEventListener(MouseEvent.CLICK, flip_card);
+				scene.addChild(back_plane);
+
+				/*imgLoader = new Loader();
+				imgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoaded )
+				imgLoader.load(new URLRequest("images/1925-1.jpg"));
+				imgCard = new DisplayObject3D();*/
+				//addChild(viewport);
+				//camera.focus=100;
+				//camera.zoom=10;
 
 			    addEventListener(Event.ENTER_FRAME, render);
 
@@ -168,6 +200,10 @@ package com {
 			}//for
 		}//create thumbnail
 
+		public function flip_card(me:MouseEvent) {
+			trace("clicked card!");
+		}
+
 		function p_rollover(me:MouseEvent) 
 		{
 			var sp:Sprite = me.target as Sprite;
@@ -182,15 +218,16 @@ package com {
 
 		function p_click(me:MouseEvent) 
 		{
+			trace("flag1");
 			var sp:Sprite = me.target as Sprite;
 			var s_no:Number = parseInt(sp.name.slice(8,10));
-
+			trace("flag2");
 			tn_title.text = title_list[s_no];
 			tn_desc.text = description_list[s_no];
-
+			trace("flag3");
 			//move away tiles container
 			Tweener.addTween( container, { x: 1500, time: 0.6, transition:"easeInExpo" } );
-
+			trace("flag4");
 			/* see which picture is selected */
 			var k:int = 0;
 			var j:int;
@@ -227,6 +264,49 @@ package com {
 	    	gotoAndStop(2);
 	    }
 
+	    public function imageLoaded(e:Event):void {
+			trace("loaded!");
+			bmp = imgLoader.content as Bitmap;
+			//front_material = new BitmapMaterial(bmp.bitmapData);
+			var front_material:BitmapMaterial = new BitmapMaterial(bmp.bitmapData);
+			//front_material.interactive = true;
+			//bitmap = new Bitmap(bmp.bitmapData);
+
+			front_plane = new Plane(front_material,474,1030,4,5);
+			//scene.addChild(front_plane);
+			front_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS,on_plane_clicked);
+
+			imgCard.addChild(front_plane);
+			imgCard.addChild(back_plane);
+			scene.addChild(imgCard);
+			
+			//var bitmapHolder:Sprite = new Sprite();
+		}
+
+		public function on_plane_clicked(e:InteractiveScene3DEvent) {
+			//trace("clicked");
+			/*if (steps==0) {
+				rotation_speed=10;
+			}*/
+			//rotate from front
+			if(cardFacingFront) {
+				trace("facing back");
+				cardFacingFront = false;
+				imgCard.rotationY = 0;
+				Tweener.addTween(imgCard, {rotationY: 180, time: 1, onComplete: function() {
+					addChildAt(mv_calder, getChildIndex(container) + 1);
+					mv_calder.y = 505;
+				}});
+			} else {
+				trace("facing front");
+				cardFacingFront = true;
+				imgCard.rotationY = 180;
+				Tweener.addTween(imgCard, {rotationY: 360, time: 1});
+				removeChild(mv_calder);
+			}
+			//Tweener.addTween(back_plane, {rotationZ: 180, time: 1});
+		}
+
 		function render(e:Event):void
 		{
 			for(var i:uint; i < pa.length; i++)
@@ -239,6 +319,8 @@ package com {
 			cam.x = ( 800 - stage.mouseX ) * 0.1;
 			cam.y = ( 480 - stage.mouseY ) * 0.1;
 			scene.renderCamera(cam);
+
+			//renderer.renderScene(scene2, camera, viewport);
 		}
 
 		/**
