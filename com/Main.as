@@ -90,7 +90,7 @@ package com {
 			var bmp:Bitmap;
 
 			public function Main() {
-				gotoAndStop(2);
+				//gotoAndStop(2);
 				//stage.scaleMode = StageScaleMode.EXACT_FIT;
 				stage.displayState = StageDisplayState.FULL_SCREEN;
 				stage.align = StageAlign.TOP_LEFT;
@@ -125,7 +125,7 @@ package com {
 				back_material = new MovieMaterial(card);
 				back_plane = new Plane(back_material, 1700, 1030, 10, 20);
 				back_plane.addEventListener(MouseEvent.CLICK, flip_card);
-				scene.addChild(back_plane);
+				//scene.addChild(back_plane); //FIX CAMERA
 
 				/*imgLoader = new Loader();
 				imgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoaded )
@@ -218,16 +218,12 @@ package com {
 
 		function p_click(me:MouseEvent) 
 		{
-			trace("flag1");
 			var sp:Sprite = me.target as Sprite;
 			var s_no:Number = parseInt(sp.name.slice(8,10));
-			trace("flag2");
 			tn_title.text = title_list[s_no];
 			tn_desc.text = description_list[s_no];
-			trace("flag3");
 			//move away tiles container
 			Tweener.addTween( container, { x: 1500, time: 0.6, transition:"easeInExpo" } );
-			trace("flag4");
 			/* see which picture is selected */
 			var k:int = 0;
 			var j:int;
@@ -251,7 +247,7 @@ package com {
 										   
 		   	            timer.removeEventListener(TimerEvent.TIMER_COMPLETE,timerHandler);
 
-				        gotoAndStop( 3 );
+				        gotoAndStop( 2 );
 			        });
 					timer.start();
 				}
@@ -409,9 +405,11 @@ package com {
 		 */
 		function loadFullImage(): void
 		{
+			trace("flag1");
 			fullImgLoader.load( fileRequest );
+			trace("flag2");
 			fullImgLoader.contentLoaderInfo.addEventListener( Event.COMPLETE, loaderReady );
-
+			trace("flag3");
 		    function loaderReady(e:Event) 
 			{
 				fullImg.addChild( fullImgLoader );
