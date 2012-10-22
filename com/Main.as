@@ -35,8 +35,8 @@ package com {
 
 		    var awayStageR: int = stage.stageWidth*2;
 			var awayStageL: int = -stage.stageWidth*2;
-		    var container_x:int = 175;
-		    var container_y:int = stage.stageHeight * 0.5 + 250;
+		    var container_x:int = 350;
+		    var container_y:int = stage.stageHeight * 0.5 + 350;
 		    
 		    var container:Sprite;
 		    var scene:Scene3D;
@@ -46,7 +46,7 @@ package com {
 		    var pa:Array;
 		    var filename_list:Array;
 			var title_list:Array;
-		    var description_list:Array;		
+		    var description_list:Array;
 
 		    var selectedPic: int;
 
@@ -65,13 +65,25 @@ package com {
 			var logos:Boolean = false; //turn on & off welcome screen
 			var began:Boolean = false; //prevent tiles to get generated more than once
 			var finishedPuzzle:Boolean = false;
+			public var imgLoader:Loader;
+			public var bitmap:Bitmap;
+			public var imgCard:DisplayObject3D;
+			private var cardFacingFront:Boolean = true;
+			private var vidPlaying:Boolean = false;
 
 			public function Main() {
 				gotoAndStop(2);
-				stage.scaleMode = StageScaleMode.EXACT_FIT;
+				//stage.scaleMode = StageScaleMode.EXACT_FIT;
 				stage.displayState = StageDisplayState.FULL_SCREEN;
 				stage.align = StageAlign.TOP_LEFT;
 				Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
+
+				imgLoader = new Loader();
+				imgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoaded )
+				imgLoader.load(new URLRequest("images/1925-1.jpg"));
+				//addChild(imgLoader);
+
+				imgCard = new DisplayObject3D();
 
 				if( logos )
 				{
@@ -89,13 +101,9 @@ package com {
 				container.x = container_x;
 		    	container.y = container_y;
 		    	addChild(container);
-				trace("flag1");
 				scene = new MovieScene3D(container)
-				trace("flag2");
 				cam = new Camera3D();
-				trace("flag3");
-		    	cam.zoom = 8;
-		    	trace("flag4");
+		    	cam.zoom = 10;
 
 				p_dict = new Dictionary();
 				pa = new Array();
@@ -226,6 +234,24 @@ package com {
 	    	timer.removeEventListener(TimerEvent.TIMER_COMPLETE,timerHandler);
 	    	gotoAndStop(2);
 	    }
+
+	    public function imageLoaded(e:Event):void {
+			trace("loaded!");
+			/*var bmp:Bitmap = imgLoader.content as Bitmap;
+			var front_material:BitmapMaterial = new BitmapMaterial(bmp.bitmapData);
+			front_material.interactive = true;
+			//bitmap = new Bitmap(bmp.bitmapData);
+
+			front_plane = new Plane(front_material,474,1030,4,5);
+			//scene.addChild(front_plane);
+			front_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS,on_plane_clicked);
+
+			imgCard.addChild(front_plane);
+			imgCard.addChild(back_plane);
+			scene.addChild(imgCard);*/
+			
+			//var bitmapHolder:Sprite = new Sprite();
+		}
 
 		function render(e:Event):void
 		{
