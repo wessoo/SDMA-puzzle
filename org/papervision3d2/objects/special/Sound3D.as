@@ -1,11 +1,11 @@
-﻿package org.papervision3d.objects.special {
+﻿package org.papervision3d2.objects.special {
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
 	import flash.media.SoundTransform;
 	
-	import org.papervision3d.core.proto.CameraObject3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.objects.DisplayObject3D;		
+	import org.papervision3d2.core.proto.CameraObject3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.objects.DisplayObject3D;		
 
 	public class Sound3D extends DisplayObject3D
 	{

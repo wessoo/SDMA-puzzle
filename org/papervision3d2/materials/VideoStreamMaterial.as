@@ -5,7 +5,7 @@
  *  ER     NPAPER IS     PE     ON  PE  ISIO  AP     IO PA ER  SI NP PER
  *  RV     PA  RV SI     ERVISI NP  ER   IO   PE VISIO  AP  VISI  PA  RV3D
  *  ______________________________________________________________________
- *  papervision3d.org  blog.papervision3d.org  osflash.org/papervision3d
+ *  papervision3d2.org  blog.papervision3d2.org  osflash.org/papervision3d2
  */
 
 /*
@@ -43,7 +43,7 @@
 
 // __________________________________________________________________________ VIDEO MATERIAL
 
-package org.papervision3d.materials
+package org.papervision3d2.materials
 {
 	import flash.display.DisplayObject;
 	import flash.events.NetStatusEvent;
@@ -51,7 +51,7 @@ package org.papervision3d.materials
 	import flash.media.Video;
 	import flash.net.NetStream;
 	
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
 
 	/*
 	* The VideoMaterial class creates a texture from an existing Video instance and is for use with a Video and NetStream objects with an RTMP stream.

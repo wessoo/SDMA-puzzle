@@ -1,15 +1,15 @@
-package org.papervision3d.objects.parsers {
+package org.papervision3d2.objects.parsers {
 	import flash.events.*;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	
-	import org.papervision3d.core.geom.*;
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.proto.*;
-	import org.papervision3d.events.FileLoadEvent;	
+	import org.papervision3d2.core.geom.*;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.proto.*;
+	import org.papervision3d2.events.FileLoadEvent;	
 
 	/**
 	* The Ase class lets you load and parse ASE format objects exported from 3DS Max.

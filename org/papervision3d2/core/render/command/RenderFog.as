@@ -1,8 +1,8 @@
-package org.papervision3d.core.render.command {
-	import org.papervision3d.core.geom.renderables.AbstractRenderable;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.materials.special.FogMaterial;
-	import org.papervision3d.objects.DisplayObject3D;
+package org.papervision3d2.core.render.command {
+	import org.papervision3d2.core.geom.renderables.AbstractRenderable;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.materials.special.FogMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	import flash.display.Graphics;	
 

@@ -1,4 +1,4 @@
-package org.papervision3d.core.render.command
+package org.papervision3d2.core.render.command
 {
 	
 	/**
@@ -6,10 +6,10 @@ package org.papervision3d.core.render.command
 	 */	
 	import flash.geom.Point;
 	
-	import org.papervision3d.core.geom.renderables.AbstractRenderable;
-	import org.papervision3d.core.render.data.QuadTreeNode;
-	import org.papervision3d.core.render.data.RenderHitData;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.renderables.AbstractRenderable;
+	import org.papervision3d2.core.render.data.QuadTreeNode;
+	import org.papervision3d2.core.render.data.RenderHitData;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	public class RenderableListItem extends AbstractRenderListItem
 	{

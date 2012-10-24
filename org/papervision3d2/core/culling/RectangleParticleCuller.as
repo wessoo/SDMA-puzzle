@@ -1,11 +1,11 @@
-package org.papervision3d.core.culling {
+package org.papervision3d2.core.culling {
 	
-	import org.papervision3d.core.geom.renderables.Particle;
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;
-	import org.papervision3d.core.geom.renderables.Vertex3D;	
+	import org.papervision3d2.core.geom.renderables.Particle;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;	
 	import flash.geom.Rectangle;
 	import flash.geom.Point;
-	import org.papervision3d.core.math.util.FastRectangleTools;	
+	import org.papervision3d2.core.math.util.FastRectangleTools;	
 
 	
 	public class RectangleParticleCuller implements IParticleCuller

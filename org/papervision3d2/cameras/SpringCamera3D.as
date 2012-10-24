@@ -1,7 +1,7 @@
-package org.papervision3d.cameras
+package org.papervision3d2.cameras
 {
-	import org.papervision3d.core.math.*;
-	import org.papervision3d.objects.DisplayObject3D;  
+	import org.papervision3d2.core.math.*;
+	import org.papervision3d2.objects.DisplayObject3D;  
 
 	/** b at turbulent dot ca - http://agit8.turbulent.ca 
 	 * v1 - 2009-01-21

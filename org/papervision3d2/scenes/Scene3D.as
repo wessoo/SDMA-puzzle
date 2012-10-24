@@ -1,6 +1,6 @@
-﻿package org.papervision3d.scenes
+﻿package org.papervision3d2.scenes
 {
-	import org.papervision3d.core.proto.*;
+	import org.papervision3d2.core.proto.*;
 
 	/**
 	* The Scene3D class lets you create a scene where all objects are rendered in the same container.

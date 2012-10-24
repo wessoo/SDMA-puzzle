@@ -1,4 +1,4 @@
-package org.papervision3d.materials
+package org.papervision3d2.materials
 	{
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -11,12 +11,12 @@ package org.papervision3d.materials
 	import flash.utils.Dictionary;
 	import flash.utils.Timer;
 	
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.core.render.command.RenderTriangle;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
-	import org.papervision3d.events.FileLoadEvent;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.render.command.RenderTriangle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.events.FileLoadEvent;
 
 	/**
 	* The BitmapFileMaterial class creates a texture by loading a bitmap from an external file.

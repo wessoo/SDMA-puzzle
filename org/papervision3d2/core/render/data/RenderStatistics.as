@@ -1,4 +1,4 @@
-package org.papervision3d.core.render.data
+package org.papervision3d2.core.render.data
 {
 	
 	/**

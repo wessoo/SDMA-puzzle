@@ -1,9 +1,9 @@
-package org.papervision3d.materials.shaders
+package org.papervision3d2.materials.shaders
 {
 	import flash.display.BitmapData;
 	
-	import org.papervision3d.core.proto.LightObject3D;
-	import org.papervision3d.materials.utils.LightMaps;
+	import org.papervision3d2.core.proto.LightObject3D;
+	import org.papervision3d2.materials.utils.LightMaps;
 	
 	/**
 	 *	@Author Ralph Hauwert

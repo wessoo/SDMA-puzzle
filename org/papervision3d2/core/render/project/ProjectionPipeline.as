@@ -1,6 +1,6 @@
-package org.papervision3d.core.render.project
+package org.papervision3d2.core.render.project
 {
-	import org.papervision3d.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.data.RenderSessionData;
 	
 	
 	/**

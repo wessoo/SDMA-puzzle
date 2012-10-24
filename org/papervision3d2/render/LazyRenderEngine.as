@@ -1,9 +1,9 @@
-package org.papervision3d.render {
-	import org.papervision3d.core.proto.CameraObject3D;
-	import org.papervision3d.core.render.IRenderEngine;
-	import org.papervision3d.core.render.data.RenderStatistics;
-	import org.papervision3d.scenes.Scene3D;
-	import org.papervision3d.view.Viewport3D;	
+package org.papervision3d2.render {
+	import org.papervision3d2.core.proto.CameraObject3D;
+	import org.papervision3d2.core.render.IRenderEngine;
+	import org.papervision3d2.core.render.data.RenderStatistics;
+	import org.papervision3d2.scenes.Scene3D;
+	import org.papervision3d2.view.Viewport3D;	
 
 	/**
 	 * @Author Ralph Hauwert

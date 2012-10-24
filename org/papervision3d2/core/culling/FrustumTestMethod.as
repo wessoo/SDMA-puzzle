@@ -1,4 +1,4 @@
-package org.papervision3d.core.culling
+package org.papervision3d2.core.culling
 {
 	public class FrustumTestMethod
 	{

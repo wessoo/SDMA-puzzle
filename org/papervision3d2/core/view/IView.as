@@ -1,4 +1,4 @@
-package org.papervision3d.core.view
+package org.papervision3d2.core.view
 {
 	/**
 	 * @Author Ralph Hauwert

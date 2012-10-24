@@ -48,12 +48,12 @@ package com {
 		    var container_y:int = stage.stageHeight * 0.5 + 350;
 		    
 		    var container:Sprite;
-		    var scene:Scene3D;
-		    var cam:Camera3D;
+		    var scene:org.papervision3d.scenes.MovieScene3D;
+		    var cam:org.papervision3d.cameras.Camera3D;
 
 		    var container2:Sprite;
-		    var scene2:Scene3D;
-		    var cam2:Camera3D;
+		    var scene2:org.papervision3d.scenes.Scene3D;
+		    var cam2:org.papervision3d.cameras.Camera3D;
 
 		    var p_dict:Dictionary;		    
 		    var pa:Array;
@@ -70,7 +70,7 @@ package com {
 		    var xml_loader:URLLoader;
 			
 			var timer:Timer;
-			var idleTimer:Timer; 
+			var idleTimer:Timer;
 			var countDown:Timer;
 
 			var folder:String = "photos/"; //change to FOLDER_PATH
@@ -80,14 +80,20 @@ package com {
 			var finishedPuzzle:Boolean = false;
 			public var imgLoader:Loader;
 			public var bitmap:Bitmap;
-			public var imgCard:DisplayObject3D;
+			public var imgCard:org.papervision3d2.objects.DisplayObject3D;
 			private var cardFacingFront:Boolean = true;
 			private var vidPlaying:Boolean = false;
 			public var card:Card = new Card();
-			public var back_material:MovieMaterial;
-			public var back_plane:Plane;
-			public var front_material:BitmapMaterial;
-			public var front_plane:Plane;
+			public var back_material:org.papervision3d2.materials.MovieMaterial;
+			public var back_plane:org.papervision3d2.objects.primitives.Plane;
+			public var front_material:org.papervision3d2.materials.BitmapMaterial;
+			public var front_plane:org.papervision3d2.objects.primitives.Plane;
+
+			public var myCard:Card = new Card();
+			public var viewport:org.papervision3d2.view.Viewport3D = new org.papervision3d2.view.Viewport3D(1920,1080,false,true);
+			public var scene3D:org.papervision3d2.scenes.Scene3D = new org.papervision3d2.scenes.Scene3D();
+			public var camera:org.papervision3d2.cameras.Camera3D = new org.papervision3d2.cameras.Camera3D();
+			public var renderer:org.papervision3d2.render.BasicRenderEngine = new org.papervision3d2.render.BasicRenderEngine();
 
 			public function Main() {
 				gotoAndStop(2);
@@ -102,7 +108,7 @@ package com {
 				imgLoader.load(new URLRequest("images/1925-1.jpg"));
 				//addChild(imgLoader);
 
-				imgCard = new DisplayObject3D();
+				imgCard = new org.papervision3d2.objects.DisplayObject3D();
 
 				if( logos )
 				{
@@ -119,8 +125,8 @@ package com {
 				container.x = container_x;
 		    	container.y = container_y;
 		    	addChild(container);
-				scene = new MovieScene3D(container)
-				cam = new Camera3D();
+				scene = new org.papervision3d.scenes.MovieScene3D(container);
+				cam = new org.papervision3d.cameras.Camera3D();
 		    	cam.zoom = 10;
 
 			    addEventListener(Event.ENTER_FRAME, render);
@@ -128,13 +134,13 @@ package com {
 		    	container2 = new Sprite();
 				container2.x = container_x;
 		    	container2.y = container_y;
-				addChild(container2);		    	
-				scene2 = new MovieScene3D(container2)
-				cam2 = new Camera3D();
+				//addChild(container2);		    	
+				scene2 = new org.papervision3d.scenes.MovieScene3D(container2)
+				cam2 = new org.papervision3d.cameras.Camera3D();
 				cam2.zoom = 10;
 
 				//card 
-				back_material = new MovieMaterial(card);
+				/*back_material = new MovieMaterial(card);
 				//var bmp:Bitmap = imgLoader.content as Bitmap;
 				//front_material = new BitmapMaterial(bmp.bitmapData);
 				back_plane = new Plane(back_material, 1700, 1030, 10, 20);
@@ -145,7 +151,13 @@ package com {
 				//addEventListener(Event.ENTER_FRAME, render2);
 				var ctnr_back_plane:Sprite = back_plane.container;
 				ctnr_back_plane.buttonMode = true;
-				ctnr_back_plane.addEventListener(MouseEvent.CLICK, flipCard);
+				ctnr_back_plane.addEventListener(MouseEvent.CLICK, flipCard);*/
+				back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
+				back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1700,1030,10,20);
+				addChild(viewport);
+				camera.focus=100;
+				camera.zoom=10;
+				addEventListener(Event.ENTER_FRAME, render3);
 
 				p_dict = new Dictionary();
 				pa = new Array();
@@ -163,6 +175,22 @@ package com {
 				idleTimer = new Timer(180*1000); //3minutes, 180 seconds
 				countDown = new Timer( 10 *1000 ); //10 seconds count down for pop up
 
+		}
+
+		public function render3(e:Event) {
+			//trace("render!");
+			/*if (rotation_speed) {
+				steps++;
+				front_plane.yaw(rotation_speed);
+				back_plane.yaw(rotation_speed);
+			}
+			if (steps==180/rotation_speed) {
+				steps=0;
+				rotation_speed=0;
+			}*/
+
+			//trace(back_plane.rotationY);
+			renderer.renderScene(scene3D, camera, viewport);
 		}
 
 		function create_thumbnail(e:Event):void
@@ -198,7 +226,7 @@ package com {
 				
 				bfm.oneSide = false;
 				bfm.smooth = true;
-				var p:Plane = new Plane(bfm, thumbSize, thumbSize, 2, 2);
+				var p:org.papervision3d.objects.Plane = new org.papervision3d.objects.Plane(bfm, thumbSize, thumbSize, 2, 2);
 				scene.addChild(p);
 				var p_container:Sprite = p.container;
 				p_container.name = "flashmo_" + i;
@@ -321,7 +349,7 @@ package com {
 		/**
 		 * check if the mouse is close to the image, if so, show the img
 		 */
-		function check_distance(p:Plane):Boolean
+		function check_distance(p:org.papervision3d.objects.Plane):Boolean
 		{
 			var p1:Point = new Point(p.x, p.y);
 			var p2:Point = new Point(container.mouseX + 150, -container.mouseY + 80);

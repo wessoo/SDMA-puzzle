@@ -1,4 +1,4 @@
-package org.papervision3d.core.ns
+package org.papervision3d2.core.ns
 {
 	public namespace pv3dview;
 }

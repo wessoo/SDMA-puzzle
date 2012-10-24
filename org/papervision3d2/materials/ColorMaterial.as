@@ -1,14 +1,14 @@
-﻿package org.papervision3d.materials
+﻿package org.papervision3d2.materials
 {
 import flash.display.BitmapData;
 import flash.display.Graphics;
 import flash.geom.Matrix;
 
-import org.papervision3d.core.material.TriangleMaterial;
-import org.papervision3d.core.proto.MaterialObject3D;
-import org.papervision3d.core.render.command.RenderTriangle;
-import org.papervision3d.core.render.data.RenderSessionData;
-import org.papervision3d.core.render.draw.ITriangleDrawer;
+import org.papervision3d2.core.material.TriangleMaterial;
+import org.papervision3d2.core.proto.MaterialObject3D;
+import org.papervision3d2.core.render.command.RenderTriangle;
+import org.papervision3d2.core.render.data.RenderSessionData;
+import org.papervision3d2.core.render.draw.ITriangleDrawer;
 
 /**
 * The ColorMaterial class creates a solid color material.

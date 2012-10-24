@@ -1,19 +1,19 @@
-package org.papervision3d.core.render.filter
+package org.papervision3d2.core.render.filter
 {
 	
 	import flash.utils.*;
 	
-	import org.papervision3d.cameras.Camera3D;
-	import org.papervision3d.core.clipping.draw.Clipping;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.render.command.RenderLine;
-	import org.papervision3d.core.render.command.RenderTriangle;
-	import org.papervision3d.core.render.command.RenderableListItem;
-	import org.papervision3d.core.render.data.QuadTree;
-	import org.papervision3d.scenes.Scene3D;
+	import org.papervision3d2.cameras.Camera3D;
+	import org.papervision3d2.core.clipping.draw.Clipping;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.render.command.RenderLine;
+	import org.papervision3d2.core.render.command.RenderTriangle;
+	import org.papervision3d2.core.render.command.RenderableListItem;
+	import org.papervision3d2.core.render.data.QuadTree;
+	import org.papervision3d2.scenes.Scene3D;
 
     /**
     * Splits all intersecting triangles

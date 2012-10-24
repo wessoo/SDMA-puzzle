@@ -1,9 +1,9 @@
-package org.papervision3d.core.render.filter {
-	import org.papervision3d.core.render.command.RenderFog;
-	import org.papervision3d.core.render.command.RenderableListItem;
-	import org.papervision3d.materials.special.FogMaterial;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.view.layer.ViewportLayer;	
+package org.papervision3d2.core.render.filter {
+	import org.papervision3d2.core.render.command.RenderFog;
+	import org.papervision3d2.core.render.command.RenderableListItem;
+	import org.papervision3d2.materials.special.FogMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.view.layer.ViewportLayer;	
 
 	public class FogFilter extends BasicRenderFilter
 	{

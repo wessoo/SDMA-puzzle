@@ -3,7 +3,7 @@
 * @link www.senocular.com
 */
 
-package org.papervision3d.core.utils.virtualmouse
+package org.papervision3d2.core.utils.virtualmouse
 {	
 
 	
@@ -20,7 +20,7 @@ package org.papervision3d.core.utils.virtualmouse
 	import flash.geom.Point;
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.log.PaperLogger;
+	import org.papervision3d2.core.log.PaperLogger;
 	
     /**
      * Dispatched when the virtual mouse state is updated.

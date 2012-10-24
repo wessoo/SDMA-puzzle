@@ -1,15 +1,15 @@
-package org.papervision3d.core.material
+package org.papervision3d2.core.material
 {
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.material.TriangleMaterial;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.core.proto.LightObject3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
-	import org.papervision3d.core.render.material.IUpdateBeforeMaterial;
-	import org.papervision3d.materials.utils.LightMatrix;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.material.TriangleMaterial;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.core.proto.LightObject3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.core.render.material.IUpdateBeforeMaterial;
+	import org.papervision3d2.materials.utils.LightMatrix;
+	import org.papervision3d2.objects.DisplayObject3D;
 
 	public class AbstractLightShadeMaterial extends TriangleMaterial implements ITriangleDrawer, IUpdateBeforeMaterial
 	{

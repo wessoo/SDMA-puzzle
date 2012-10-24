@@ -1,7 +1,7 @@
-package org.papervision3d.materials.shaders
+package org.papervision3d2.materials.shaders
 {
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.shader.ShaderObjectData;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.shader.ShaderObjectData;
 	
 	public interface ILightShader
 	{

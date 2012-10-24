@@ -1,7 +1,7 @@
-package org.papervision3d.core.animation.channel {
-	import org.papervision3d.core.animation.AnimationKeyFrame3D;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.objects.DisplayObject3D;	
+package org.papervision3d2.core.animation.channel {
+	import org.papervision3d2.core.animation.AnimationKeyFrame3D;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.objects.DisplayObject3D;	
 
 	/**
 	 * @author Tim Knip

@@ -1,10 +1,10 @@
-package org.papervision3d.core.culling {
+package org.papervision3d2.core.culling {
 	
 	import flash.geom.Rectangle;
 	
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;	
-	import org.papervision3d.core.math.util.FastRectangleTools;	
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;	
+	import org.papervision3d2.core.math.util.FastRectangleTools;	
 
 	public class RectangleTriangleCuller extends DefaultTriangleCuller implements ITriangleCuller
 	{

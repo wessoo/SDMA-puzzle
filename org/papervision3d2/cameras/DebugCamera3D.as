@@ -1,4 +1,4 @@
-package org.papervision3d.cameras
+package org.papervision3d2.cameras
 {
 	import flash.display.Sprite;
 	import flash.display.Stage;
@@ -10,7 +10,7 @@ package org.papervision3d.cameras
 	import flash.text.TextFormat;
 	import flash.ui.Keyboard;
 	
-	import org.papervision3d.view.Viewport3D;
+	import org.papervision3d2.view.Viewport3D;
 	
 	/**
 	 * <p>
@@ -96,7 +96,7 @@ package org.papervision3d.cameras
 		/**
 		 * DebugCamera3D
 		 *
-		 * @param viewport	Viewport to render to. @see org.papervision3d.view.Viewport3D 
+		 * @param viewport	Viewport to render to. @see org.papervision3d2.view.Viewport3D 
 		 * @param fovY		Field of view (vertical) in degrees.
 		 * @param near		Distance to near plane.
 		 * @param far		Distance to far plane.

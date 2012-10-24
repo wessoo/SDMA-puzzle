@@ -1,8 +1,8 @@
-﻿package org.papervision3d.materials.utils
+﻿package org.papervision3d2.materials.utils
 {
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.proto.*;
+	import org.papervision3d2.core.proto.*;
 
 	/**
 	* The MaterialsList class contains a list of materials.

@@ -1,4 +1,4 @@
-package org.papervision3d.materials.shaders
+package org.papervision3d2.materials.shaders
 {
 	
 	/**

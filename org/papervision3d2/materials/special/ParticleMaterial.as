@@ -1,13 +1,13 @@
-package org.papervision3d.materials.special
+package org.papervision3d2.materials.special
 {
 	import flash.display.Graphics;
 	import flash.geom.Rectangle;
 	
-	import org.papervision3d.core.geom.renderables.Particle;
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.IParticleDrawer;	
+	import org.papervision3d2.core.geom.renderables.Particle;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.IParticleDrawer;	
 
 	/**
 	 * @Author Ralph Hauwert
@@ -22,9 +22,10 @@ package org.papervision3d.materials.special
 		
 		public static var SHAPE_SQUARE:int = 0; 
 		public static var SHAPE_CIRCLE:int = 1;
-				public var shape : int; 
+		
+		public var shape : int; 
 		public var scale : Number ;
-		public function ParticleMaterial(color:Number, alpha:Number, shape:int = 0, scale: Number = 1 )
+		public function ParticleMaterial(color:Number, alpha:Number, shape:int = 0, scale: Number = 1 )
 		{
 			super();
 			this.shape = shape; 

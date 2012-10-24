@@ -1,8 +1,8 @@
-package org.papervision3d.core.geom.renderables
+package org.papervision3d2.core.geom.renderables
 {
-	import org.papervision3d.core.data.UserData;
-	import org.papervision3d.core.render.command.IRenderListItem;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.data.UserData;
+	import org.papervision3d2.core.render.command.IRenderListItem;
+	import org.papervision3d2.objects.DisplayObject3D;
 
 	public class AbstractRenderable implements IRenderable
 	{

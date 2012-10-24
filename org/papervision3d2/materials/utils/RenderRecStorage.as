@@ -1,8 +1,8 @@
-package org.papervision3d.materials.utils
+package org.papervision3d2.materials.utils
 {
 	import flash.geom.Matrix;
 	
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;
 	
 	public class RenderRecStorage
 	{

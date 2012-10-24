@@ -1,4 +1,4 @@
-package org.papervision3d.core.render.command
+package org.papervision3d2.core.render.command
 {
 	
 	/**
@@ -7,7 +7,7 @@ package org.papervision3d.core.render.command
 	 
 	import flash.display.Graphics;
 	
-	import org.papervision3d.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.data.RenderSessionData;
 	
 	public interface IRenderListItem
 	{

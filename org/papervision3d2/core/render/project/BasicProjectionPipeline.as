@@ -1,6 +1,6 @@
-package org.papervision3d.core.render.project {
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.objects.DisplayObject3D;	
+package org.papervision3d2.core.render.project {
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.objects.DisplayObject3D;	
 
 	public class BasicProjectionPipeline extends ProjectionPipeline
 	{

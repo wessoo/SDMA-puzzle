@@ -1,4 +1,4 @@
-package org.papervision3d.materials.special
+package org.papervision3d2.materials.special
 {
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -6,7 +6,7 @@ package org.papervision3d.materials.special
 	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
 	
-	import org.papervision3d.core.log.PaperLogger;
+	import org.papervision3d2.core.log.PaperLogger;
 	
 	/**
 	 * Used to store the bitmap for a particle material. It also stores scale and offsets for moving the registration point of the bitmap. 

@@ -1,11 +1,11 @@
-﻿package org.papervision3d.core.proto
+﻿package org.papervision3d2.core.proto
 {
-	import org.papervision3d.core.render.command.RenderTriangle;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
-	import org.papervision3d.core.render.material.MaterialManager;
-	import org.papervision3d.materials.WireframeMaterial;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.render.command.RenderTriangle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.core.render.material.MaterialManager;
+	import org.papervision3d2.materials.WireframeMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	import flash.display.BitmapData;
 	import flash.display.Graphics;

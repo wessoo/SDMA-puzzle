@@ -1,7 +1,7 @@
-package org.papervision3d.core.animation.channel
+package org.papervision3d2.core.animation.channel
 {
-	import org.papervision3d.core.animation.AnimationKeyFrame3D;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.animation.AnimationKeyFrame3D;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	/**
 	 * @author Tim Knip

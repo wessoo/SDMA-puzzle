@@ -1,11 +1,11 @@
-﻿package org.papervision3d.core.effects.objects
+﻿package org.papervision3d2.core.effects.objects
 {
 	import flash.display.BlendMode;
 	import flash.display.DisplayObject;
 	
-	import org.papervision3d.core.proto.LightObject3D;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.view.layer.ViewportLayer;
+	import org.papervision3d2.core.proto.LightObject3D;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.view.layer.ViewportLayer;
 	
 	public class LensFlare extends ViewportLayer
 	{

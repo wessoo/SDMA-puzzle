@@ -1,4 +1,4 @@
-package org.papervision3d.core.effects.utils
+package org.papervision3d2.core.effects.utils
 {
 	public class ConvolutionMatrices
 	{

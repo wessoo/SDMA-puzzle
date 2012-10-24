@@ -1,4 +1,4 @@
-﻿package org.papervision3d.core.utils
+﻿package org.papervision3d2.core.utils
 {
 
 	
@@ -8,15 +8,15 @@
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
 	
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.core.render.data.RenderHitData;
-	import org.papervision3d.core.utils.virtualmouse.IVirtualMouseEvent;
-	import org.papervision3d.core.utils.virtualmouse.VirtualMouse;
-	import org.papervision3d.events.InteractiveScene3DEvent;
-	import org.papervision3d.materials.MovieMaterial;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.view.Viewport3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.render.data.RenderHitData;
+	import org.papervision3d2.core.utils.virtualmouse.IVirtualMouseEvent;
+	import org.papervision3d2.core.utils.virtualmouse.VirtualMouse;
+	import org.papervision3d2.events.InteractiveScene3DEvent;
+	import org.papervision3d2.materials.MovieMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.view.Viewport3D;
 	
 	/**
 	* @author John Grden

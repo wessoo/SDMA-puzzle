@@ -1,5 +1,5 @@
-﻿package org.papervision3d.objects.primitives {
-	import org.papervision3d.core.proto.*;	
+﻿package org.papervision3d2.objects.primitives {
+	import org.papervision3d2.core.proto.*;	
 
 	/**
 	* The Cone class lets you create and display Cones.

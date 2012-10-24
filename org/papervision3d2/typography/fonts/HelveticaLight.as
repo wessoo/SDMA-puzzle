@@ -6,9 +6,10 @@
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package org.papervision3d.typography.fonts {
-	import org.papervision3d.typography.Font3D;		
-	public class HelveticaLight extends Font3D{
+package org.papervision3d2.typography.fonts {
+	import org.papervision3d2.typography.Font3D;		
+
+	public class HelveticaLight extends Font3D{
 
 		static public var __motifs:Object = {};
 		static public var __widths:Object = {};

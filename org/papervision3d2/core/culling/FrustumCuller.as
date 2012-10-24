@@ -1,11 +1,11 @@
-package org.papervision3d.core.culling
+package org.papervision3d2.core.culling
 {
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.math.AxisAlignedBoundingBox;
-	import org.papervision3d.core.math.BoundingSphere;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.math.AxisAlignedBoundingBox;
+	import org.papervision3d2.core.math.BoundingSphere;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	/**
 	 * @author Tim Knip

@@ -1,6 +1,6 @@
-﻿package org.papervision3d
+﻿package org.papervision3d2
 {
-	import org.papervision3d.core.log.PaperLogger;
+	import org.papervision3d2.core.log.PaperLogger;
 	
 
 	/**

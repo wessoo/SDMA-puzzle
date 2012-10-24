@@ -1,13 +1,13 @@
-package org.papervision3d.view
+package org.papervision3d2.view
 {
-	import org.papervision3d.cameras.SpringCamera3D;	
-	import org.papervision3d.cameras.Camera3D;
-	import org.papervision3d.cameras.CameraType;
-	import org.papervision3d.cameras.DebugCamera3D;
-	import org.papervision3d.core.view.IView;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.render.BasicRenderEngine;
-	import org.papervision3d.scenes.Scene3D;
+	import org.papervision3d2.cameras.SpringCamera3D;	
+	import org.papervision3d2.cameras.Camera3D;
+	import org.papervision3d2.cameras.CameraType;
+	import org.papervision3d2.cameras.DebugCamera3D;
+	import org.papervision3d2.core.view.IView;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.render.BasicRenderEngine;
+	import org.papervision3d2.scenes.Scene3D;
 
 	/**
 	 * <p>
@@ -42,7 +42,7 @@ package org.papervision3d.view
 		 * @param viewportHeight	Height of the viewport
 		 * @param scaleToStage		Whether you viewport should scale with the stage
 		 * @param interactive		Whether your scene should be interactive
-		 * @param cameraType		A String for the type of camera. @see org.papervision3d.cameras.CameraType
+		 * @param cameraType		A String for the type of camera. @see org.papervision3d2.cameras.CameraType
 		 * 
 		 */	
 		public function BasicView(viewportWidth:Number = 640, viewportHeight:Number = 480, scaleToStage:Boolean = true, interactive:Boolean = false, cameraType:String = "Target")

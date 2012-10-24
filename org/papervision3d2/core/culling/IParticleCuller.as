@@ -1,6 +1,6 @@
-package org.papervision3d.core.culling
+package org.papervision3d2.core.culling
 {
-	import org.papervision3d.core.geom.renderables.Particle;
+	import org.papervision3d2.core.geom.renderables.Particle;
 	
 	public interface IParticleCuller
 	{

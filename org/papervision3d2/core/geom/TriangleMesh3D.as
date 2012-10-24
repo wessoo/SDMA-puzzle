@@ -1,18 +1,18 @@
-package org.papervision3d.core.geom {
+package org.papervision3d2.core.geom {
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.culling.ITriangleCuller;
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Triangle3DInstance;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.math.util.ClassificationUtil;
-	import org.papervision3d.core.proto.*;
-	import org.papervision3d.core.render.command.RenderTriangle;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
-	import org.papervision3d.objects.DisplayObject3D;	
+	import org.papervision3d2.core.culling.ITriangleCuller;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3DInstance;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.math.util.ClassificationUtil;
+	import org.papervision3d2.core.proto.*;
+	import org.papervision3d2.core.render.command.RenderTriangle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.objects.DisplayObject3D;	
 
 	/**
 	* The Mesh3D class lets you create and display solid 3D objects made of vertices and triangular polygons.

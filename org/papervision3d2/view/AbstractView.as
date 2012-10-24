@@ -1,12 +1,12 @@
-package org.papervision3d.view
+package org.papervision3d2.view
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
-	import org.papervision3d.core.proto.CameraObject3D;
-	import org.papervision3d.core.view.IView;
-	import org.papervision3d.render.BasicRenderEngine;
-	import org.papervision3d.scenes.Scene3D;
+	import org.papervision3d2.core.proto.CameraObject3D;
+	import org.papervision3d2.core.view.IView;
+	import org.papervision3d2.render.BasicRenderEngine;
+	import org.papervision3d2.scenes.Scene3D;
 	
 	/**
 	 * @Author Ralph Hauwert

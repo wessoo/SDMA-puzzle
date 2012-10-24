@@ -1,7 +1,7 @@
-package org.papervision3d.objects.special {
-	import org.papervision3d.core.geom.Particles;
-	import org.papervision3d.core.geom.renderables.Particle;
-	import org.papervision3d.materials.special.ParticleMaterial;	
+package org.papervision3d2.objects.special {
+	import org.papervision3d2.core.geom.Particles;
+	import org.papervision3d2.core.geom.renderables.Particle;
+	import org.papervision3d2.materials.special.ParticleMaterial;	
 
 	/**
 	 * @Author Ralph Hauwert

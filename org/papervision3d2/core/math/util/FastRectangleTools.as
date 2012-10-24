@@ -1,8 +1,13 @@
-package org.papervision3d.core.math.util {
-	import flash.geom.Rectangle;			/**	 * @author Seb Lee-Delisle
+package org.papervision3d2.core.math.util {
+	import flash.geom.Rectangle;	
+	
+	/**
+	 * @author Seb Lee-Delisle
 	 * 
 	 * Some handy rectangle tools that are faster than the built in Rectangle methods. 
-	 * 	 */	public class FastRectangleTools 
+	 * 
+	 */
+	public class FastRectangleTools 
 	{
 		
 		
@@ -65,4 +70,6 @@ package org.papervision3d.core.math.util {
 			
 		}
 		
-			}}
+		
+	}
+}

@@ -1,7 +1,7 @@
-package org.papervision3d.materials
+package org.papervision3d2.materials
 {
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
-	import org.papervision3d.view.BitmapViewport3D;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.view.BitmapViewport3D;
 
 	public class BitmapViewportMaterial extends BitmapMaterial implements ITriangleDrawer
 	{

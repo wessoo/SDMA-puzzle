@@ -1,11 +1,11 @@
-package org.papervision3d.objects.parsers {
+package org.papervision3d2.objects.parsers {
 	import nochump.util.zip.*;
 	
 	import org.ascollada.namespaces.*;
-	import org.papervision3d.core.geom.*;
-	import org.papervision3d.events.FileLoadEvent;
-	import org.papervision3d.materials.*;
-	import org.papervision3d.materials.utils.*;
+	import org.papervision3d2.core.geom.*;
+	import org.papervision3d2.events.FileLoadEvent;
+	import org.papervision3d2.materials.*;
+	import org.papervision3d2.materials.utils.*;
 	
 	import flash.display.Bitmap;
 	import flash.display.Loader;

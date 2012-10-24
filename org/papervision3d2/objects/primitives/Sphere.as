@@ -1,10 +1,10 @@
-package org.papervision3d.objects.primitives {
-	import org.papervision3d.Papervision3D;
-	import org.papervision3d.core.geom.*;
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.proto.*;	
+package org.papervision3d2.objects.primitives {
+	import org.papervision3d2.Papervision3D;
+	import org.papervision3d2.core.geom.*;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.proto.*;	
 
 	/**
 	* The Sphere class lets you create and display spheres.

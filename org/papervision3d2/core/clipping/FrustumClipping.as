@@ -1,18 +1,18 @@
-package org.papervision3d.core.clipping
+package org.papervision3d2.core.clipping
 {
-	import org.papervision3d.core.dyn.DynamicTriangles;
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.math.Plane3D;
-	import org.papervision3d.core.math.util.ClassificationUtil;
-	import org.papervision3d.core.proto.CameraObject3D;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.dyn.DynamicTriangles;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.math.Plane3D;
+	import org.papervision3d2.core.math.util.ClassificationUtil;
+	import org.papervision3d2.core.proto.CameraObject3D;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	public class FrustumClipping extends DefaultClipping
 	{

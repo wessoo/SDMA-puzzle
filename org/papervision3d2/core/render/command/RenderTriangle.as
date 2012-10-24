@@ -1,4 +1,4 @@
-﻿package org.papervision3d.core.render.command
+﻿package org.papervision3d2.core.render.command
 {
 	
 	/**
@@ -10,17 +10,17 @@
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.core.render.data.RenderHitData;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
-	import org.papervision3d.materials.BitmapMaterial;
-	import org.papervision3d.materials.MovieMaterial;	
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.render.data.RenderHitData;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.materials.BitmapMaterial;
+	import org.papervision3d2.materials.MovieMaterial;	
 
 	public class RenderTriangle extends RenderableListItem implements IRenderListItem
 	{

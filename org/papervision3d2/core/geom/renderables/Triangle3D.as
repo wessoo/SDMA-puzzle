@@ -5,7 +5,7 @@
  *  ER     NPAPER IS     PE     ON  PE  ISIO  AP     IO PA ER  SI NP PER
  *  RV     PA  RV SI     ERVISI NP  ER   IO   PE VISIO  AP  VISI  PA  RV3D
  *  ______________________________________________________________________
- *  papervision3d.org • blog.papervision3d.org • osflash.org/papervision3d
+ *  papervision3d2.org • blog.papervision3d2.org • osflash.org/papervision3d2
  */
 
 /*
@@ -36,15 +36,15 @@
 // ______________________________________________________________________
 //                                                                 Face3D
 
-package org.papervision3d.core.geom.renderables {
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.proto.*;
-	import org.papervision3d.core.render.command.IRenderListItem;
-	import org.papervision3d.core.render.command.RenderTriangle;
-	import org.papervision3d.materials.BitmapMaterial;
-	import org.papervision3d.materials.special.CompositeMaterial;
-	import org.papervision3d.objects.DisplayObject3D;	
+package org.papervision3d2.core.geom.renderables {
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.proto.*;
+	import org.papervision3d2.core.render.command.IRenderListItem;
+	import org.papervision3d2.core.render.command.RenderTriangle;
+	import org.papervision3d2.materials.BitmapMaterial;
+	import org.papervision3d2.materials.special.CompositeMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;	
 
 	/**
 	* The Face3D class lets you render linear textured triangles. It also supports solid colour fill and hairline outlines.

@@ -1,6 +1,6 @@
-package org.papervision3d.core.culling 
+package org.papervision3d2.core.culling 
 {
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	/**
 	 * @author Tim Knip 

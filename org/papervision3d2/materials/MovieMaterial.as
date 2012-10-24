@@ -1,4 +1,4 @@
-package org.papervision3d.materials
+package org.papervision3d2.materials
 {
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -7,12 +7,12 @@ package org.papervision3d.materials
 	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
 	
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.render.command.RenderTriangle;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
-	import org.papervision3d.core.render.material.IUpdateAfterMaterial;
-	import org.papervision3d.core.render.material.IUpdateBeforeMaterial;	
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.render.command.RenderTriangle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.core.render.material.IUpdateAfterMaterial;
+	import org.papervision3d2.core.render.material.IUpdateBeforeMaterial;	
 
 	/**
 	 * The MovieMaterial class creates a texture from an existing MovieClip instance.

@@ -1,9 +1,9 @@
-package org.papervision3d.core.material
+package org.papervision3d2.core.material
 {
 	import flash.geom.Matrix;
 	
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
-	import org.papervision3d.core.render.material.IUpdateBeforeMaterial;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.core.render.material.IUpdateBeforeMaterial;
 	
 	/**
 	 * @Author Ralph Hauwert

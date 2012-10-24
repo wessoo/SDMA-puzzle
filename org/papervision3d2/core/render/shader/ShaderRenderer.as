@@ -1,4 +1,4 @@
-package org.papervision3d.core.render.shader
+package org.papervision3d2.core.render.shader
 {
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -9,8 +9,8 @@ package org.papervision3d.core.render.shader
 	import flash.geom.Point;
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.materials.shaders.Shader;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.materials.shaders.Shader;
 	
 	/**
 	 * Author Ralph Hauwert

@@ -1,13 +1,13 @@
-package org.papervision3d.core.render.command
+package org.papervision3d2.core.render.command
 {
 	import flash.display.BitmapData;
 	import flash.display.Graphics;
 	
-	import org.papervision3d.core.geom.Pixels;
-	import org.papervision3d.core.geom.renderables.Pixel3D;
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.view.layer.BitmapEffectLayer;
+	import org.papervision3d2.core.geom.Pixels;
+	import org.papervision3d2.core.geom.renderables.Pixel3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.view.layer.BitmapEffectLayer;
 	
 	public class RenderPixels extends RenderableListItem implements IRenderListItem
 	{

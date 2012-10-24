@@ -1,11 +1,11 @@
-package org.papervision3d.core.render.data
+package org.papervision3d2.core.render.data
 {
 	import flash.display.Graphics;
 	
-	import org.papervision3d.core.clipping.draw.Clipping;
-	import org.papervision3d.core.clipping.draw.RectangleClipping;
-	import org.papervision3d.core.render.command.RenderableListItem;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.clipping.draw.Clipping;
+	import org.papervision3d2.core.clipping.draw.RectangleClipping;
+	import org.papervision3d2.core.render.command.RenderableListItem;
+	import org.papervision3d2.objects.DisplayObject3D;
 	   
 
     /**

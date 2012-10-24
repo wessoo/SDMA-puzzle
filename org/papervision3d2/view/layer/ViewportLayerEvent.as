@@ -1,8 +1,8 @@
-package org.papervision3d.view.layer
+package org.papervision3d2.view.layer
 {
 	import flash.events.Event;
 	
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.objects.DisplayObject3D;
 
 	public class ViewportLayerEvent extends Event
 	{

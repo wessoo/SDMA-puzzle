@@ -1,7 +1,7 @@
-package org.papervision3d.core.clipping.draw
+package org.papervision3d2.core.clipping.draw
 {
 
-    import org.papervision3d.core.render.command.RenderableListItem;
+    import org.papervision3d2.core.render.command.RenderableListItem;
 
     /** Rectangle clipping */
     public class RectangleClipping extends Clipping

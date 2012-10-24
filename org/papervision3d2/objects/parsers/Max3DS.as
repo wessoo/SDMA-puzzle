@@ -1,4 +1,4 @@
-package org.papervision3d.objects.parsers
+package org.papervision3d2.objects.parsers
 {
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
@@ -8,17 +8,17 @@ package org.papervision3d.objects.parsers
 	import flash.utils.ByteArray;
 	import flash.utils.Endian;
 	
-	import org.papervision3d.Papervision3D;
-	import org.papervision3d.core.geom.TriangleMesh3D;
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.events.FileLoadEvent;
-	import org.papervision3d.materials.BitmapFileMaterial;
-	import org.papervision3d.materials.ColorMaterial;
-	import org.papervision3d.materials.utils.MaterialsList;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.Papervision3D;
+	import org.papervision3d2.core.geom.TriangleMesh3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.events.FileLoadEvent;
+	import org.papervision3d2.materials.BitmapFileMaterial;
+	import org.papervision3d2.materials.ColorMaterial;
+	import org.papervision3d2.materials.utils.MaterialsList;
+	import org.papervision3d2.objects.DisplayObject3D;
 
 	/**
 	 * 3DS File parser.

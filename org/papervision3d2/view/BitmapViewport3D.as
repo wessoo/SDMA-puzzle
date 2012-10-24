@@ -1,12 +1,12 @@
-package org.papervision3d.view
+package org.papervision3d2.view
 {
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.events.Event;
 	import flash.geom.Matrix;
 	
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.view.IViewport3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.view.IViewport3D;
 	
 	/**
 	 * @Author Ralph Hauwert

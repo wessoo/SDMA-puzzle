@@ -1,4 +1,4 @@
-package org.papervision3d.core.render.draw
+package org.papervision3d2.core.render.draw
 {
 	
 	/**
@@ -7,8 +7,8 @@ package org.papervision3d.core.render.draw
 	 
 	import flash.display.Graphics;
 	
-	import org.papervision3d.core.geom.renderables.Particle;
-	import org.papervision3d.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.geom.renderables.Particle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
 	
 	public interface IParticleDrawer
 	{

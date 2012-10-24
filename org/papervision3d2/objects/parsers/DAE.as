@@ -1,4 +1,4 @@
-package org.papervision3d.objects.parsers
+package org.papervision3d2.objects.parsers
 {
  	import flash.events.Event;
  	import flash.events.ProgressEvent;
@@ -13,26 +13,26 @@ package org.papervision3d.objects.parsers
  	import org.ascollada.io.DaeReader;
  	import org.ascollada.namespaces.*;
  	import org.ascollada.types.*;
- 	import org.papervision3d.Papervision3D;
- 	import org.papervision3d.core.animation.*;
- 	import org.papervision3d.core.animation.channel.*;
- 	import org.papervision3d.core.controller.IObjectController;
- 	import org.papervision3d.core.controller.SkinController;
- 	import org.papervision3d.core.geom.*;
- 	import org.papervision3d.core.geom.renderables.*;
- 	import org.papervision3d.core.log.PaperLogger;
- 	import org.papervision3d.core.material.AbstractLightShadeMaterial;
- 	import org.papervision3d.core.math.*;
- 	import org.papervision3d.core.proto.*;
- 	import org.papervision3d.core.render.data.RenderSessionData;
- 	import org.papervision3d.events.AnimationEvent;
- 	import org.papervision3d.events.FileLoadEvent;
- 	import org.papervision3d.materials.*;
- 	import org.papervision3d.materials.shaders.ShadedMaterial;
- 	import org.papervision3d.materials.special.*;
- 	import org.papervision3d.materials.utils.*;
- 	import org.papervision3d.objects.DisplayObject3D;
- 	import org.papervision3d.objects.special.Skin3D;
+ 	import org.papervision3d2.Papervision3D;
+ 	import org.papervision3d2.core.animation.*;
+ 	import org.papervision3d2.core.animation.channel.*;
+ 	import org.papervision3d2.core.controller.IObjectController;
+ 	import org.papervision3d2.core.controller.SkinController;
+ 	import org.papervision3d2.core.geom.*;
+ 	import org.papervision3d2.core.geom.renderables.*;
+ 	import org.papervision3d2.core.log.PaperLogger;
+ 	import org.papervision3d2.core.material.AbstractLightShadeMaterial;
+ 	import org.papervision3d2.core.math.*;
+ 	import org.papervision3d2.core.proto.*;
+ 	import org.papervision3d2.core.render.data.RenderSessionData;
+ 	import org.papervision3d2.events.AnimationEvent;
+ 	import org.papervision3d2.events.FileLoadEvent;
+ 	import org.papervision3d2.materials.*;
+ 	import org.papervision3d2.materials.shaders.ShadedMaterial;
+ 	import org.papervision3d2.materials.special.*;
+ 	import org.papervision3d2.materials.utils.*;
+ 	import org.papervision3d2.objects.DisplayObject3D;
+ 	import org.papervision3d2.objects.special.Skin3D;
 	
 	/**
 	 * The DAE class represents a parsed COLLADA 1.4.1 file.
@@ -1244,7 +1244,7 @@ package org.papervision3d.objects.parsers
 		 * 
 		 * @param	node	
 		 * 
-		 * @return	The created DisplayObject3D. @see org.papervision3d.objects.DisplayObject3D
+		 * @return	The created DisplayObject3D. @see org.papervision3d2.objects.DisplayObject3D
 		 */ 
 		protected function buildNode(node:DaeNode, parent:DisplayObject3D):void
 		{

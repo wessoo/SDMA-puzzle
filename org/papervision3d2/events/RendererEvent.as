@@ -1,8 +1,8 @@
-package org.papervision3d.events
+package org.papervision3d2.events
 {
 	import flash.events.Event;
 	
-	import org.papervision3d.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.data.RenderSessionData;
 
 	public class RendererEvent extends Event
 	{

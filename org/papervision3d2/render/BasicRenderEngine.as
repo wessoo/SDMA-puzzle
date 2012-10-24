@@ -1,4 +1,4 @@
-package org.papervision3d.render
+package org.papervision3d2.render
 {
 	
 	/**
@@ -6,27 +6,27 @@ package org.papervision3d.render
 	 */
 	import flash.geom.Point;
 	
-	import org.papervision3d.core.clipping.DefaultClipping;
-	import org.papervision3d.core.proto.CameraObject3D;
-	import org.papervision3d.core.proto.SceneObject3D;
-	import org.papervision3d.core.render.AbstractRenderEngine;
-	import org.papervision3d.core.render.IRenderEngine;
-	import org.papervision3d.core.render.command.IRenderListItem;
-	import org.papervision3d.core.render.command.RenderableListItem;
-	import org.papervision3d.core.render.data.RenderHitData;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.data.RenderStatistics;
-	import org.papervision3d.core.render.filter.BasicRenderFilter;
-	import org.papervision3d.core.render.filter.IRenderFilter;
-	import org.papervision3d.core.render.material.MaterialManager;
-	import org.papervision3d.core.render.project.BasicProjectionPipeline;
-	import org.papervision3d.core.render.project.ProjectionPipeline;
-	import org.papervision3d.core.render.sort.BasicRenderSorter;
-	import org.papervision3d.core.render.sort.IRenderSorter;
-	import org.papervision3d.core.utils.StopWatch;
-	import org.papervision3d.events.RendererEvent;
-	import org.papervision3d.view.Viewport3D;
-	import org.papervision3d.view.layer.ViewportLayer;
+	import org.papervision3d2.core.clipping.DefaultClipping;
+	import org.papervision3d2.core.proto.CameraObject3D;
+	import org.papervision3d2.core.proto.SceneObject3D;
+	import org.papervision3d2.core.render.AbstractRenderEngine;
+	import org.papervision3d2.core.render.IRenderEngine;
+	import org.papervision3d2.core.render.command.IRenderListItem;
+	import org.papervision3d2.core.render.command.RenderableListItem;
+	import org.papervision3d2.core.render.data.RenderHitData;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.data.RenderStatistics;
+	import org.papervision3d2.core.render.filter.BasicRenderFilter;
+	import org.papervision3d2.core.render.filter.IRenderFilter;
+	import org.papervision3d2.core.render.material.MaterialManager;
+	import org.papervision3d2.core.render.project.BasicProjectionPipeline;
+	import org.papervision3d2.core.render.project.ProjectionPipeline;
+	import org.papervision3d2.core.render.sort.BasicRenderSorter;
+	import org.papervision3d2.core.render.sort.IRenderSorter;
+	import org.papervision3d2.core.utils.StopWatch;
+	import org.papervision3d2.events.RendererEvent;
+	import org.papervision3d2.view.Viewport3D;
+	import org.papervision3d2.view.layer.ViewportLayer;
 	
 	/**
 	 * <code>BasicRenderEngine</code> links <code>Viewport3D</code>s, 
@@ -40,14 +40,14 @@ package org.papervision3d.render
 		 * The type of projection pipeline used for projecting and culling. Defaults
 		 * to BasicProjectionPipeline
 		 * 
-		 * @see org.papervision3d.core.render.project.BasicProjectionPipeline
+		 * @see org.papervision3d2.core.render.project.BasicProjectionPipeline
 		 */
 		public var projectionPipeline:ProjectionPipeline;
 		/**
 		 * The type of z-sorting to be used with the rendered data based on 
 		 * their respective screen depth. Defaults to <code>BasicRenderSorter</code>.
 		 * 
-		 * @see org.papervision3d.core.render.sort.BasicRenderSorter
+		 * @see org.papervision3d2.core.render.sort.BasicRenderSorter
 		 */
 		public var sorter:IRenderSorter;
 		
@@ -57,8 +57,8 @@ package org.papervision3d.render
 		 * A filter (such as FogFilter) to be used in the renderList. Defaults to 
 		 * <code>BasicRenderFilter</code>
 		 * 
-		 * @see org.papervision3d.core.render.filter.BasicRenderFilter
-		 * @see org.papervision3d.core.render.filter.FogFilter
+		 * @see org.papervision3d2.core.render.filter.BasicRenderFilter
+		 * @see org.papervision3d2.core.render.filter.FogFilter
 		 */
 		public var filter:IRenderFilter;
 		/** @private */

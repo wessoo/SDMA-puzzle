@@ -1,4 +1,4 @@
-package org.papervision3d.core.render.draw
+package org.papervision3d2.core.render.draw
 {
 	/**
 	 * @Author Ralph Hauwert
@@ -8,8 +8,8 @@ package org.papervision3d.core.render.draw
 	import flash.display.Graphics;
 	import flash.geom.Matrix;
 	
-	import org.papervision3d.core.render.command.RenderTriangle;
-	import org.papervision3d.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.command.RenderTriangle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
 	
 	public interface ITriangleDrawer
 	{

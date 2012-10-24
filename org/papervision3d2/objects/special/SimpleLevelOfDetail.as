@@ -1,6 +1,6 @@
-package org.papervision3d.objects.special {
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.objects.DisplayObject3D;	
+package org.papervision3d2.objects.special {
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.objects.DisplayObject3D;	
 
 	public class SimpleLevelOfDetail extends DisplayObject3D
 	{

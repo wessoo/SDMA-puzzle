@@ -1,4 +1,4 @@
-package org.papervision3d.objects.parsers
+package org.papervision3d2.objects.parsers
 {
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
@@ -7,19 +7,19 @@ package org.papervision3d.objects.parsers
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	
-	import org.papervision3d.core.geom.TriangleMesh3D;
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.proto.DisplayObjectContainer3D;
-	import org.papervision3d.core.proto.GeometryObject3D;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.events.FileLoadEvent;
-	import org.papervision3d.materials.BitmapFileMaterial;
-	import org.papervision3d.materials.utils.MaterialsList;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.TriangleMesh3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.proto.DisplayObjectContainer3D;
+	import org.papervision3d2.core.proto.GeometryObject3D;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.events.FileLoadEvent;
+	import org.papervision3d2.materials.BitmapFileMaterial;
+	import org.papervision3d2.materials.utils.MaterialsList;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	/**
 	* The Collada class lets you load and parse Collada scenes.

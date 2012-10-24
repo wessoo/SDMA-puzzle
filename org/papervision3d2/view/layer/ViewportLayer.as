@@ -1,14 +1,16 @@
-package org.papervision3d.view.layer {
+package org.papervision3d2.view.layer 
+{
 	import flash.display.Graphics;
 	import flash.display.Sprite;
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.ns.pv3dview;
-	import org.papervision3d.core.render.command.RenderableListItem;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.view.Viewport3D;
-	import org.papervision3d.view.layer.util.ViewportLayerSortMode;	
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.ns.pv3dview;
+	import org.papervision3d2.core.render.command.RenderableListItem;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.view.Viewport3D;
+	import org.papervision3d2.view.layer.util.ViewportLayerSortMode;	
+
 	/**
 	 * @Author Ralph Hauwert
 	 */
@@ -29,7 +31,8 @@ package org.papervision3d.view.layer {
 		public var sortMode				:String = ViewportLayerSortMode.Z_SORT;
 		public var dynamicLayer			:Boolean = false;
 		public var graphicsChannel		:Graphics;
-		protected var viewport			:Viewport3D;		
+		protected var viewport			:Viewport3D;
+		
 		public function ViewportLayer(viewport:Viewport3D, do3d:DisplayObject3D, isDynamic:Boolean = false)
 		{
 			super();
@@ -137,7 +140,14 @@ package org.papervision3d.view.layer {
 		public function addLayer(vpl:ViewportLayer):void{
 			
 			var do3d:DisplayObject3D;
-						if(childLayers.indexOf(vpl)!=-1) 			{								PaperLogger.warning("Child layer already exists in ViewportLayer"); 				return; 						}
+			
+			if(childLayers.indexOf(vpl)!=-1) 
+			{
+				
+				PaperLogger.warning("Child layer already exists in ViewportLayer"); 
+				return; 
+			
+			}
 			childLayers.push(vpl);
 			addChild(vpl);
 			
@@ -259,7 +269,8 @@ package org.papervision3d.view.layer {
 			
 		}
 		
-		public function sortChildLayers():void		{
+		public function sortChildLayers():void
+		{
 			switch( sortMode )
 			{
 				case ViewportLayerSortMode.Z_SORT:
@@ -288,12 +299,22 @@ package org.papervision3d.view.layer {
 		}
 		
 		public function processRenderItem(rc:RenderableListItem):void{
-			if(!forceDepth)			{				if(!isNaN(rc.screenZ))				{				
-					this.screenDepth += rc.screenZ;					if( rc.instance )					{
+			if(!forceDepth)
+			{
+				if(!isNaN(rc.screenZ))
+				{
+				
+					this.screenDepth += rc.screenZ;
+					if( rc.instance )
+					{
 						this.originDepth += rc.instance.world.n34;
-						this.originDepth += rc.instance.screen.z;					}
+						this.originDepth += rc.instance.screen.z;
+					}
 					this.weight++;
-								}			}		}
+				
+				}
+			}
+		}
 		
 		public function updateInfo():void{
 			
@@ -301,9 +322,15 @@ package org.papervision3d.view.layer {
 			
 			for each(var vpl:ViewportLayer in childLayers){
 				vpl.updateInfo();
-				if(!forceDepth){					// screenDepth is sometimes NaN if the child objects are invisible or empty					if(!isNaN(vpl.screenDepth))					{						this.weight += vpl.weight;
+				if(!forceDepth){
+					// screenDepth is sometimes NaN if the child objects are invisible or empty
+					if(!isNaN(vpl.screenDepth))
+					{
+						this.weight += vpl.weight;
 						this.screenDepth += (vpl.screenDepth*vpl.weight);
-						this.originDepth += (vpl.originDepth*vpl.weight);					}				
+						this.originDepth += (vpl.originDepth*vpl.weight);
+					}
+				
 				}
 			}
 			

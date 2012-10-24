@@ -1,10 +1,10 @@
-package org.papervision3d.objects.primitives
+package org.papervision3d2.objects.primitives
 {
-	import org.papervision3d.core.geom.TriangleMesh3D;
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.geom.TriangleMesh3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.proto.MaterialObject3D;
 
 	public class Arrow extends TriangleMesh3D
 	{

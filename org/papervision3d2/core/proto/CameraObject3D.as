@@ -1,14 +1,14 @@
-package org.papervision3d.core.proto
+package org.papervision3d2.core.proto
 {
 	import flash.geom.Rectangle;
 	
-	import org.papervision3d.Papervision3D;
-	import org.papervision3d.core.culling.IObjectCuller;
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.Papervision3D;
+	import org.papervision3d2.core.culling.IObjectCuller;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	/**
 	* The CameraObject3D class is the base class for all the cameras that can be placed in a scene.

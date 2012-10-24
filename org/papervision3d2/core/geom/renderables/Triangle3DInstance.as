@@ -1,9 +1,9 @@
-package org.papervision3d.core.geom.renderables
+package org.papervision3d2.core.geom.renderables
 {
 	import flash.display.Sprite;
 	
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	public class Triangle3DInstance
 	{

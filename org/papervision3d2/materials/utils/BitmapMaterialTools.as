@@ -1,10 +1,10 @@
-package org.papervision3d.materials.utils
+package org.papervision3d2.materials.utils
 {
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.geom.Matrix;
 	
-	import org.papervision3d.materials.BitmapMaterial;
+	import org.papervision3d2.materials.BitmapMaterial;
 
 	
 	public class BitmapMaterialTools

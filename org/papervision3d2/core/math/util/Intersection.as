@@ -1,8 +1,8 @@
-package org.papervision3d.core.math.util
+package org.papervision3d2.core.math.util
 {
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.math.Plane3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.math.Plane3D;
 	
 	public class Intersection
 	{

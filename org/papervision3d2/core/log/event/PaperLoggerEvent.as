@@ -1,8 +1,8 @@
-package org.papervision3d.core.log.event
+package org.papervision3d2.core.log.event
 {
 	import flash.events.Event;
 	
-	import org.papervision3d.core.log.PaperLogVO;
+	import org.papervision3d2.core.log.PaperLogVO;
 	
 	/**
 	 * @author Ralph Hauwert

@@ -1,11 +1,11 @@
-package org.papervision3d.materials
+package org.papervision3d2.materials
 {
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.utils.getDefinitionByName;
 	
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
 
 
 	/**

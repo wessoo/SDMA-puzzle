@@ -1,4 +1,4 @@
-package org.papervision3d.view.layer
+package org.papervision3d2.view.layer
 {
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -8,11 +8,11 @@ package org.papervision3d.view.layer
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
-	import org.papervision3d.core.effects.AbstractEffect;
-	import org.papervision3d.core.effects.utils.BitmapClearMode;
-	import org.papervision3d.core.effects.utils.BitmapDrawCommand;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.view.Viewport3D;
+	import org.papervision3d2.core.effects.AbstractEffect;
+	import org.papervision3d2.core.effects.utils.BitmapClearMode;
+	import org.papervision3d2.core.effects.utils.BitmapDrawCommand;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.view.Viewport3D;
 
 	public class BitmapEffectLayer extends ViewportLayer
 	{

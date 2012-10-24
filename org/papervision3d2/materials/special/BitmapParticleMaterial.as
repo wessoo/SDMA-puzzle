@@ -1,17 +1,17 @@
- package org.papervision3d.materials.special
+ package org.papervision3d2.materials.special
 {
 	import flash.display.BitmapData;
 	import flash.display.Graphics;
 	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
 	
-	import org.papervision3d.core.geom.renderables.Particle;
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;
-	import org.papervision3d.core.math.Number2D;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.math.util.FastRectangleTools;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.IParticleDrawer;
+	import org.papervision3d2.core.geom.renderables.Particle;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;
+	import org.papervision3d2.core.math.Number2D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.math.util.FastRectangleTools;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.IParticleDrawer;
 	/**
 	 * A Particle material that is made from BitmapData object
 	 * 

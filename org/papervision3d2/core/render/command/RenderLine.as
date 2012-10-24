@@ -1,4 +1,4 @@
-package org.papervision3d.core.render.command
+package org.papervision3d2.core.render.command
 {
 	
 	/**
@@ -8,13 +8,13 @@ package org.papervision3d.core.render.command
 	import flash.display.Graphics;
 	import flash.geom.Point;
 	
-	import org.papervision3d.core.geom.renderables.Line3D;
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;
-	import org.papervision3d.core.math.Number2D;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.render.data.RenderHitData;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.materials.special.LineMaterial;	
+	import org.papervision3d2.core.geom.renderables.Line3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;
+	import org.papervision3d2.core.math.Number2D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.render.data.RenderHitData;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.materials.special.LineMaterial;	
 	
 	public class RenderLine extends RenderableListItem implements IRenderListItem
 	{
@@ -26,7 +26,8 @@ package org.papervision3d.core.render.command
 		private static var lineVector:Number3D = Number3D.ZERO; 
 		private static var mouseVector:Number3D = Number3D.ZERO;
 		
-		//premade Number2Ds for hittest function		private var p : Number2D;
+		//premade Number2Ds for hittest function
+		private var p : Number2D;
 		private var l1 : Number2D;
 		private var l2 : Number2D;
 		private var v : Number2D;

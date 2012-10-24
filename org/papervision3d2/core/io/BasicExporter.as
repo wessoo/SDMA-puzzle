@@ -1,17 +1,17 @@
-package org.papervision3d.core.io
+package org.papervision3d2.core.io
 {
 	import flash.utils.ByteArray;
 	
-	import org.papervision3d.core.io.exporters.*;
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.proto.DisplayObjectContainer3D;
-	import org.papervision3d.core.proto.SceneObject3D;
-	import org.papervision3d.materials.BitmapFileMaterial;
-	import org.papervision3d.materials.ColorMaterial;
-	import org.papervision3d.materials.WireframeMaterial;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.objects.primitives.Sphere;
-	import org.papervision3d.scenes.Scene3D;
+	import org.papervision3d2.core.io.exporters.*;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.proto.DisplayObjectContainer3D;
+	import org.papervision3d2.core.proto.SceneObject3D;
+	import org.papervision3d2.materials.BitmapFileMaterial;
+	import org.papervision3d2.materials.ColorMaterial;
+	import org.papervision3d2.materials.WireframeMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.objects.primitives.Sphere;
+	import org.papervision3d2.scenes.Scene3D;
 	
 	/**
 	 * @author Tim Knip
@@ -24,7 +24,7 @@ package org.papervision3d.core.io
 		 * rotation-matrices etc. will then be initialized).
 		 * 
 		 * @param object The object to export. Supported: DisplayObject3D, SceneObject3D.
-		 * @param exportFileFormat The file export format. @see org.papervision3d.core.io.exporters.ExportFileFormat
+		 * @param exportFileFormat The file export format. @see org.papervision3d2.core.io.exporters.ExportFileFormat
 		 * 
 		 * @return ByteArray
 		 */ 

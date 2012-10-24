@@ -1,9 +1,9 @@
-package org.papervision3d.core.render.filter
+package org.papervision3d2.core.render.filter
 {
-	import org.papervision3d.cameras.Camera3D;
-	import org.papervision3d.core.clipping.draw.Clipping;
-	import org.papervision3d.core.render.data.QuadTree;
-	import org.papervision3d.scenes.Scene3D;
+	import org.papervision3d2.cameras.Camera3D;
+	import org.papervision3d2.core.clipping.draw.Clipping;
+	import org.papervision3d2.core.render.data.QuadTree;
+	import org.papervision3d2.scenes.Scene3D;
 	
 	public class AbstractQuadrantFilter
 	{

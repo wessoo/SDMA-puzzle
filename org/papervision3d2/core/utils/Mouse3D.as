@@ -1,13 +1,13 @@
 ﻿/**
 * @author De'Angelo Richardson 
 */
-package org.papervision3d.core.utils
+package org.papervision3d2.core.utils
 {
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.render.data.RenderHitData;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.render.data.RenderHitData;
+	import org.papervision3d2.objects.DisplayObject3D;
 
 	/**
 	 * Mouse3D tracks the mouse's position in relation to 3d space

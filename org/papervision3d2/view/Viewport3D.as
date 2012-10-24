@@ -1,4 +1,4 @@
-package org.papervision3d.view 
+package org.papervision3d2.view 
 {
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
@@ -8,28 +8,28 @@ package org.papervision3d.view
 	import flash.geom.Rectangle;
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.culling.DefaultLineCuller;
-	import org.papervision3d.core.culling.DefaultParticleCuller;
-	import org.papervision3d.core.culling.DefaultTriangleCuller;
-	import org.papervision3d.core.culling.ILineCuller;
-	import org.papervision3d.core.culling.IParticleCuller;
-	import org.papervision3d.core.culling.ITriangleCuller;
-	import org.papervision3d.core.culling.RectangleLineCuller;
-	import org.papervision3d.core.culling.RectangleParticleCuller;
-	import org.papervision3d.core.culling.RectangleTriangleCuller;
-	import org.papervision3d.core.culling.ViewportObjectFilter;
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.render.IRenderEngine;
-	import org.papervision3d.core.render.command.IRenderListItem;
-	import org.papervision3d.core.render.command.RenderableListItem;
-	import org.papervision3d.core.render.data.RenderHitData;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.utils.InteractiveSceneManager;
-	import org.papervision3d.core.view.IViewport3D;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.view.layer.ViewportBaseLayer;
-	import org.papervision3d.view.layer.ViewportLayer;
+	import org.papervision3d2.core.culling.DefaultLineCuller;
+	import org.papervision3d2.core.culling.DefaultParticleCuller;
+	import org.papervision3d2.core.culling.DefaultTriangleCuller;
+	import org.papervision3d2.core.culling.ILineCuller;
+	import org.papervision3d2.core.culling.IParticleCuller;
+	import org.papervision3d2.core.culling.ITriangleCuller;
+	import org.papervision3d2.core.culling.RectangleLineCuller;
+	import org.papervision3d2.core.culling.RectangleParticleCuller;
+	import org.papervision3d2.core.culling.RectangleTriangleCuller;
+	import org.papervision3d2.core.culling.ViewportObjectFilter;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.render.IRenderEngine;
+	import org.papervision3d2.core.render.command.IRenderListItem;
+	import org.papervision3d2.core.render.command.RenderableListItem;
+	import org.papervision3d2.core.render.data.RenderHitData;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.utils.InteractiveSceneManager;
+	import org.papervision3d2.core.view.IViewport3D;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.view.layer.ViewportBaseLayer;
+	import org.papervision3d2.view.layer.ViewportLayer;
 
 	/**
 	 * @Author Ralph Hauwert
@@ -39,7 +39,7 @@ package org.papervision3d.view
 	/* Added LineCulling on 22 May 08 by Seb Lee-Delisle */
 	public class Viewport3D extends Sprite implements IViewport3D
 	{
-		//use namespace org.papervision3d.core.ns.pv3dview;
+		//use namespace org.papervision3d2.core.ns.pv3dview;
 		/** @private */
 		protected var _width:Number;
 		/** @private */
@@ -98,7 +98,7 @@ package org.papervision3d.view
 		/**
 		 * interactiveSceneManager manages the interaction between the user's mouse and the Papervision3D scene. This is done by checking the mouse against renderHitData. renderHitData is generated from hitTestPoint2D and passed into the interactiveSceneManager to check agains the various mouse actions.
 		 * @see #hitTestPoint2D()
-		 * @see org.papervision3d.core.utils.InteractiveSceneManager#renderHitData
+		 * @see org.papervision3d2.core.utils.InteractiveSceneManager#renderHitData
 		 */
 		public var interactiveSceneManager:InteractiveSceneManager;
 		/** @private */

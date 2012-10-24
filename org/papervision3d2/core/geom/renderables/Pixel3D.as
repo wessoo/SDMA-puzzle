@@ -1,11 +1,11 @@
-package org.papervision3d.core.geom.renderables
+package org.papervision3d2.core.geom.renderables
 {
 	
 	/**
 	 * @author Andy Zupko.
 	 */
 	 
-	import org.papervision3d.core.geom.Pixels;
+	import org.papervision3d2.core.geom.Pixels;
 
 	public class Pixel3D
 	{

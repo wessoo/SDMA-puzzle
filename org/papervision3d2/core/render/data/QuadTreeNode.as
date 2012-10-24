@@ -1,10 +1,10 @@
-package  org.papervision3d.core.render.data
+package  org.papervision3d2.core.render.data
 {
 	import flash.display.Graphics;
 	import flash.geom.Rectangle;
 	
-	import org.papervision3d.core.render.command.RenderableListItem;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.render.command.RenderableListItem;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 
     

@@ -1,4 +1,4 @@
-package org.papervision3d.core.geom
+package org.papervision3d2.core.geom
 {
 	/**
 	 * <p>
@@ -53,14 +53,14 @@ package org.papervision3d.core.geom
 	 
 	 
 	 
-	import org.papervision3d.core.geom.renderables.Line3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.render.command.RenderLine;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.ILineDrawer;
-	import org.papervision3d.materials.special.LineMaterial;
-	import org.papervision3d.objects.DisplayObject3D;	
+	import org.papervision3d2.core.geom.renderables.Line3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.render.command.RenderLine;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ILineDrawer;
+	import org.papervision3d2.materials.special.LineMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;	
 
 	public class Lines3D extends Vertices3D
 	{

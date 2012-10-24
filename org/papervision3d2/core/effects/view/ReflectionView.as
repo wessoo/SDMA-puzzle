@@ -1,9 +1,9 @@
-package org.papervision3d.core.effects.view {
-	import org.papervision3d.cameras.Camera3D;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.core.proto.CameraObject3D;
-	import org.papervision3d.view.BasicView;
-	import org.papervision3d.view.Viewport3D;
+package org.papervision3d2.core.effects.view {
+	import org.papervision3d2.cameras.Camera3D;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.core.proto.CameraObject3D;
+	import org.papervision3d2.view.BasicView;
+	import org.papervision3d2.view.Viewport3D;
 	
 	import flash.events.Event;
 	import flash.geom.ColorTransform;	

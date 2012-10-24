@@ -1,9 +1,9 @@
-package org.papervision3d.materials.special
+package org.papervision3d2.materials.special
 {
 	import flash.display.Graphics;
 	
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.view.Viewport3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.view.Viewport3D;
 	
 	public class FogMaterial
 	{

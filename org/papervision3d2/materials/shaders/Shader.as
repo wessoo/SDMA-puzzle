@@ -1,4 +1,4 @@
-package org.papervision3d.materials.shaders
+package org.papervision3d2.materials.shaders
 {
 	import flash.display.BitmapData;
 	import flash.display.BlendMode;
@@ -7,10 +7,10 @@ package org.papervision3d.materials.shaders
 	import flash.filters.BitmapFilter;
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.shader.ShaderObjectData;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.shader.ShaderObjectData;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	/**
 	 * @Author Ralph Hauwert

@@ -1,15 +1,15 @@
-package org.papervision3d.view.stats
+package org.papervision3d2.view.stats
 {
 	import flash.system.System;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
 	
-	import org.papervision3d.core.render.AbstractRenderEngine;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.data.RenderStatistics;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.scenes.Scene3D;
+	import org.papervision3d2.core.render.AbstractRenderEngine;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.data.RenderStatistics;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.scenes.Scene3D;
 
 	public class StatsView extends AbstractStatsView
 	{

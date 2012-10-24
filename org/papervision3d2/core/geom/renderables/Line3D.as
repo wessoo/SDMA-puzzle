@@ -1,12 +1,12 @@
-package org.papervision3d.core.geom.renderables
+package org.papervision3d2.core.geom.renderables
 {
 	
 	
 	 
-	import org.papervision3d.core.geom.Lines3D;
-	import org.papervision3d.core.render.command.IRenderListItem;
-	import org.papervision3d.core.render.command.RenderLine;
-	import org.papervision3d.materials.special.LineMaterial;
+	import org.papervision3d2.core.geom.Lines3D;
+	import org.papervision3d2.core.render.command.IRenderListItem;
+	import org.papervision3d2.core.render.command.RenderLine;
+	import org.papervision3d2.materials.special.LineMaterial;
 
 	/**
 	 * 

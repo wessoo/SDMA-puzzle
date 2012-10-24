@@ -1,4 +1,4 @@
-package org.papervision3d.events
+package org.papervision3d2.events
 {
 	import flash.events.Event;
 

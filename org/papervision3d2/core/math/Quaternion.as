@@ -1,4 +1,4 @@
-package org.papervision3d.core.math
+package org.papervision3d2.core.math
 {
 	/**
 	 * @author Tim Knip 
@@ -203,7 +203,7 @@ package org.papervision3d.core.math
 		/**
 		 * Creates a Quaternion from a matrix.
 		 * 
-		 * @param	matrix	a matrix. @see org.papervision3d.core.Matrix3D
+		 * @param	matrix	a matrix. @see org.papervision3d2.core.Matrix3D
 		 * 
 		 * @return	the created Quaternion
 		 */
@@ -267,7 +267,7 @@ package org.papervision3d.core.math
 		/**
 		 * Creates a Quaternion from a orthonormal matrix.
 		 * 
-		 * @param	m	a orthonormal matrix. @see org.papervision3d.core.Matrix3D
+		 * @param	m	a orthonormal matrix. @see org.papervision3d2.core.Matrix3D
 		 * 
 		 * @return  the created Quaternion
 		 */
@@ -509,7 +509,7 @@ package org.papervision3d.core.math
 		/**
 		 * Gets the matrix representation of this Quaternion.
 		 * 
-		 * @return matrix. @see org.papervision3d.core.Matrix3D
+		 * @return matrix. @see org.papervision3d2.core.Matrix3D
 		 */
 		public function get matrix():Matrix3D
 		{

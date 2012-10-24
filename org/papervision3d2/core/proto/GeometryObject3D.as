@@ -1,14 +1,14 @@
-﻿package org.papervision3d.core.proto
+﻿package org.papervision3d2.core.proto
 {
 	import flash.events.EventDispatcher;
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.math.AxisAlignedBoundingBox;
-	import org.papervision3d.core.math.BoundingSphere;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.math.AxisAlignedBoundingBox;
+	import org.papervision3d2.core.math.BoundingSphere;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.objects.DisplayObject3D;
 
 	/**
 	* The GeometryObject3D class contains the mesh definition of an object.
@@ -61,7 +61,7 @@
 
 			i        :int    = vertices.length,
 
-			vertex   :org.papervision3d.core.geom.renderables.Vertex3D;
+			vertex   :org.papervision3d2.core.geom.renderables.Vertex3D;
 
 
 			while( vertex = vertices[--i] )

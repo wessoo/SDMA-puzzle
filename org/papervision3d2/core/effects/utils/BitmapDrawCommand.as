@@ -4,7 +4,7 @@
 * @version 0.1
 */
 
-package org.papervision3d.core.effects.utils {
+package org.papervision3d2.core.effects.utils {
 	import flash.display.BitmapData;
 	import flash.display.BlendMode;
 	import flash.display.DisplayObject;

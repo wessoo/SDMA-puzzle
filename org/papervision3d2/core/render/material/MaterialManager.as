@@ -1,9 +1,9 @@
-package org.papervision3d.core.render.material
+package org.papervision3d2.core.render.material
 {
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
 	
 	/**
 	 * @Author Ralph Hauwert

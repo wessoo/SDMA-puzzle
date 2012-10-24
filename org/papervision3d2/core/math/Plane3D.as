@@ -1,7 +1,7 @@
-package org.papervision3d.core.math
+package org.papervision3d2.core.math
 {
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.math.util.ClassificationUtil;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.math.util.ClassificationUtil;
 	
 	/**
 	* The Plane3D class represents a plane in 3D space.

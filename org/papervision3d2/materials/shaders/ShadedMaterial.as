@@ -1,20 +1,20 @@
-package org.papervision3d.materials.shaders
+package org.papervision3d2.materials.shaders
 {
 	import flash.display.BitmapData;
 	import flash.display.Graphics;
 	import flash.geom.Matrix;
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.material.TriangleMaterial;
-	import org.papervision3d.core.render.command.RenderTriangle;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
-	import org.papervision3d.core.render.material.IUpdateAfterMaterial;
-	import org.papervision3d.core.render.material.IUpdateBeforeMaterial;
-	import org.papervision3d.core.render.shader.ShaderObjectData;
-	import org.papervision3d.materials.BitmapMaterial;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.material.TriangleMaterial;
+	import org.papervision3d2.core.render.command.RenderTriangle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.core.render.material.IUpdateAfterMaterial;
+	import org.papervision3d2.core.render.material.IUpdateBeforeMaterial;
+	import org.papervision3d2.core.render.shader.ShaderObjectData;
+	import org.papervision3d2.materials.BitmapMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;
 	/**
 	 * @Author Ralph Hauwert
 	 */

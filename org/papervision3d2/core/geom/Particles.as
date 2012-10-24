@@ -1,15 +1,15 @@
-﻿package org.papervision3d.core.geom
+﻿package org.papervision3d2.core.geom
 {
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;	
-	import org.papervision3d.core.geom.renderables.Vertex3D;	
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;	
+	import org.papervision3d2.core.geom.renderables.Vertex3D;	
 	
 	import flash.geom.Rectangle;	
 	
-	import org.papervision3d.core.math.Matrix3D;	
-	import org.papervision3d.core.geom.renderables.Particle;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.core.culling.IObjectCuller;	
+	import org.papervision3d2.core.math.Matrix3D;	
+	import org.papervision3d2.core.geom.renderables.Particle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.core.culling.IObjectCuller;	
 	
 	/**
 	 * <p>
@@ -57,7 +57,8 @@
 	 * @Author Ralph Hauwert
 	 * @Author Seb Lee-Delisle
 	 */
-	public class Particles extends Vertices3D
+
+	public class Particles extends Vertices3D
 	{
 		
 		private var vertices:Array;

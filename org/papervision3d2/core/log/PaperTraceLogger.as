@@ -1,4 +1,4 @@
-package org.papervision3d.core.log
+package org.papervision3d2.core.log
 {
 	public class PaperTraceLogger extends AbstractPaperLogger implements IPaperLogger
 	{

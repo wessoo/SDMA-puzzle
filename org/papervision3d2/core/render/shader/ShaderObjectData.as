@@ -1,4 +1,4 @@
-package org.papervision3d.core.render.shader
+package org.papervision3d2.core.render.shader
 {
 	import flash.display.BitmapData;
 	import flash.geom.Matrix;
@@ -6,10 +6,10 @@ package org.papervision3d.core.render.shader
 	import flash.geom.Rectangle;
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.materials.BitmapMaterial;
-	import org.papervision3d.materials.shaders.ShadedMaterial;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.materials.BitmapMaterial;
+	import org.papervision3d2.materials.shaders.ShadedMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	/**
 	 * Author Ralph Hauwert

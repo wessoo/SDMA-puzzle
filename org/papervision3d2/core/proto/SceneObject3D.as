@@ -1,9 +1,9 @@
-﻿package org.papervision3d.core.proto
+﻿package org.papervision3d2.core.proto
 {
-	import org.papervision3d.Papervision3D;
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.materials.utils.MaterialsList;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.Papervision3D;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.materials.utils.MaterialsList;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	/**
 	* The SceneObject3D class is the base class for all scenes.

@@ -1,6 +1,24 @@
-﻿package org.papervision3d.materials {
-	import org.papervision3d.Papervision3D;	import org.papervision3d.core.geom.renderables.Triangle3D;	import org.papervision3d.core.geom.renderables.Vertex3DInstance;	import org.papervision3d.core.log.PaperLogger;	import org.papervision3d.core.material.TriangleMaterial;	import org.papervision3d.core.proto.MaterialObject3D;	import org.papervision3d.core.render.command.RenderTriangle;	import org.papervision3d.core.render.data.RenderSessionData;	import org.papervision3d.core.render.draw.ITriangleDrawer;	import org.papervision3d.materials.utils.PrecisionMode;	import org.papervision3d.materials.utils.RenderRecStorage;		import flash.display.BitmapData;	import flash.display.Graphics;	import flash.geom.Matrix;	import flash.geom.Point;	import flash.geom.Rectangle;	import flash.utils.Dictionary;	
-	/**
+﻿package org.papervision3d2.materials 
+{
+	import org.papervision3d2.Papervision3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.material.TriangleMaterial;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.render.command.RenderTriangle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.materials.utils.PrecisionMode;
+	import org.papervision3d2.materials.utils.RenderRecStorage;
+	
+	import flash.display.BitmapData;
+	import flash.display.Graphics;
+	import flash.geom.Matrix;
+	import flash.geom.Point;
+	import flash.geom.Rectangle;
+	import flash.utils.Dictionary;	
+	/**
 	* The BitmapMaterial class creates a texture from a BitmapData object.
 	*
 	* Materials collect data about how objects appear when rendered.
@@ -31,7 +49,12 @@
 		 * Levels of mip mapping to force.
 		 */
 		public static var MIP_MAP_DEPTH :Number = 8;
-		/**		 * Precision mode indicates how triangles are created for precise texture render.		 */		public var precisionMode:int = PrecisionMode.ORIGINAL;		
+
+		/**
+		 * Precision mode indicates how triangles are created for precise texture render.
+		 */
+		public var precisionMode:int = PrecisionMode.ORIGINAL;
+		
 		public var uvMatrices:Dictionary = new Dictionary();
 		
 		/**
@@ -301,7 +324,8 @@
         
         protected var tempPreGrp:Graphics;
         protected var tempPreBmp:BitmapData;
-        protected var tempPreRSD:RenderSessionData;		protected var tempTriangleMatrix:Matrix = new Matrix();
+        protected var tempPreRSD:RenderSessionData;
+		protected var tempTriangleMatrix:Matrix = new Matrix();
 		private var a2:Number;
 		private var b2:Number;
 		private var c2:Number;

@@ -5,7 +5,7 @@
  *  ER     NPAPER IS     PE     ON  PE  ISIO  AP     IO PA ER  SI NP PER
  *  RV     PA  RV SI     ERVISI NP  ER   IO   PE VISIO  AP  VISI  PA  RV3D
  *  ______________________________________________________________________
- *  papervision3d.org + blog.papervision3d.org + osflash.org/papervision3d
+ *  papervision3d2.org + blog.papervision3d2.org + osflash.org/papervision3d2
  */
 
 /*
@@ -35,12 +35,12 @@
 
 // ______________________________________________________________________
 //                                                               Vertex3D
-package org.papervision3d.core.geom.renderables
+package org.papervision3d2.core.geom.renderables
 {
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.render.command.IRenderListItem;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.render.command.IRenderListItem;
 	
 
 	/**

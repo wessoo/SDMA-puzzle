@@ -1,12 +1,12 @@
-package org.papervision3d.view.stats
+package org.papervision3d2.view.stats
 {
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.utils.getTimer;
 	
-	import org.papervision3d.core.render.AbstractRenderEngine;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.events.RendererEvent;
+	import org.papervision3d2.core.render.AbstractRenderEngine;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.events.RendererEvent;
 
 	public class AbstractStatsView extends MovieClip
 	{

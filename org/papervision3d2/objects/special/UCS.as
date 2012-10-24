@@ -1,9 +1,9 @@
-package org.papervision3d.objects.special
+package org.papervision3d2.objects.special
 {
-	import org.papervision3d.core.geom.Lines3D;
-	import org.papervision3d.core.geom.renderables.Line3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.materials.special.LineMaterial;
+	import org.papervision3d2.core.geom.Lines3D;
+	import org.papervision3d2.core.geom.renderables.Line3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.materials.special.LineMaterial;
 
 	
 	/**

@@ -1,9 +1,9 @@
-package org.papervision3d.core.proto
+package org.papervision3d2.core.proto
 {
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.materials.WireframeMaterial;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.objects.primitives.Sphere;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.materials.WireframeMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.objects.primitives.Sphere;
 
 	public class LightObject3D extends DisplayObject3D
 	{

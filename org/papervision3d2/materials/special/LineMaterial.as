@@ -1,11 +1,11 @@
-package org.papervision3d.materials.special
+package org.papervision3d2.materials.special
 {
 	import flash.display.Graphics;
 	
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.core.render.command.RenderLine;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.ILineDrawer;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.render.command.RenderLine;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ILineDrawer;
 
 	public class LineMaterial extends MaterialObject3D implements ILineDrawer
 	{

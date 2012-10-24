@@ -1,17 +1,17 @@
-package org.papervision3d.materials.shadematerials
+package org.papervision3d2.materials.shadematerials
 {
 	import flash.display.BitmapData;
 	import flash.display.Graphics;
 	import flash.geom.Matrix;
 	
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;
-	import org.papervision3d.core.material.AbstractSmoothShadeMaterial;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.core.proto.LightObject3D;
-	import org.papervision3d.core.render.command.RenderTriangle;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.draw.ITriangleDrawer;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;
+	import org.papervision3d2.core.material.AbstractSmoothShadeMaterial;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.core.proto.LightObject3D;
+	import org.papervision3d2.core.render.command.RenderTriangle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.draw.ITriangleDrawer;
 	
 	/**
 	 * @Author Ralph Hauwert

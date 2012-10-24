@@ -4,9 +4,19 @@
 * @version 0.1
 */
 
-package org.papervision3d.core.effects {
-	import org.papervision3d.view.layer.BitmapEffectLayer;		import flash.display.BitmapData;	import flash.display.DisplayObject;	import flash.filters.BlurFilter;	import flash.filters.ColorMatrixFilter;	import flash.filters.DisplacementMapFilter;	import flash.geom.ColorTransform;	import flash.geom.Matrix;	import flash.geom.Point;	
-	public class BitmapFireEffect extends AbstractEffect{
+package org.papervision3d2.core.effects {
+	import org.papervision3d2.view.layer.BitmapEffectLayer;
+	
+	import flash.display.BitmapData;
+	import flash.display.DisplayObject;
+	import flash.filters.BlurFilter;
+	import flash.filters.ColorMatrixFilter;
+	import flash.filters.DisplacementMapFilter;
+	import flash.geom.ColorTransform;
+	import flash.geom.Matrix;
+	import flash.geom.Point;	
+
+	public class BitmapFireEffect extends AbstractEffect{
 		
 		private var layer:BitmapEffectLayer;
 		private var _fadeRate:Number=0.4;

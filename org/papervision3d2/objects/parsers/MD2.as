@@ -1,4 +1,4 @@
-package org.papervision3d.objects.parsers {
+package org.papervision3d2.objects.parsers {
 	import flash.events.Event;
 	import flash.events.ProgressEvent;
 	import flash.net.URLLoader;
@@ -8,16 +8,16 @@ package org.papervision3d.objects.parsers {
 	import flash.utils.Endian;
 	import flash.utils.getTimer;
 	
-	import org.papervision3d.core.animation.*;
-	import org.papervision3d.core.animation.channel.*;
-	import org.papervision3d.core.geom.TriangleMesh3D;
-	import org.papervision3d.core.geom.renderables.*;
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.events.FileLoadEvent;
-	import org.papervision3d.objects.DisplayObject3D;	
+	import org.papervision3d2.core.animation.*;
+	import org.papervision3d2.core.animation.channel.*;
+	import org.papervision3d2.core.geom.TriangleMesh3D;
+	import org.papervision3d2.core.geom.renderables.*;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.events.FileLoadEvent;
+	import org.papervision3d2.objects.DisplayObject3D;	
 
 	/**
 	 * Loads Quake 2 MD2 file with animation!

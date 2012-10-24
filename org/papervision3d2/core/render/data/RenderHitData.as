@@ -1,12 +1,12 @@
-package org.papervision3d.core.render.data
+package org.papervision3d2.core.render.data
 {
 	/**
 	 * @Author Ralph Hauwert
 	 */
 	 
-	import org.papervision3d.core.geom.renderables.IRenderable;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.renderables.IRenderable;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	public class RenderHitData
 	{

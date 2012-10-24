@@ -1,6 +1,6 @@
-package org.papervision3d.core.math
+package org.papervision3d2.core.math
 {
-	import org.papervision3d.core.math.Number3D;
+	import org.papervision3d2.core.math.Number3D;
 	
 	public class Sphere3D
 	{

@@ -1,4 +1,4 @@
-package org.papervision3d.core.controller
+package org.papervision3d2.core.controller
 {
 	public interface IObjectController
 	{

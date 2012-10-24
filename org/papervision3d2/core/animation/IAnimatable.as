@@ -1,4 +1,4 @@
-package org.papervision3d.core.animation
+package org.papervision3d2.core.animation
 {
 	public interface IAnimatable
 	{

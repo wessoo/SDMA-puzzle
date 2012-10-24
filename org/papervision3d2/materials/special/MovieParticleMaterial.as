@@ -1,11 +1,11 @@
-package org.papervision3d.materials.special
+package org.papervision3d2.materials.special
 {
 	import flash.display.DisplayObject;
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.geom.renderables.Particle;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.material.IUpdateBeforeMaterial;	
+	import org.papervision3d2.core.geom.renderables.Particle;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.material.IUpdateBeforeMaterial;	
 
 	/**
 	 * @author Seb Lee-Delisle

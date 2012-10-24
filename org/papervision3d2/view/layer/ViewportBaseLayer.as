@@ -1,7 +1,7 @@
-package org.papervision3d.view.layer
+package org.papervision3d2.view.layer
 {
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.view.Viewport3D;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.view.Viewport3D;
 
 	/**
 	 * @Author Ralph Hauwert

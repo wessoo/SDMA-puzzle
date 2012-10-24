@@ -1,4 +1,4 @@
-package org.papervision3d.core.render.data
+package org.papervision3d2.core.render.data
 {
 	
 	/**
@@ -7,13 +7,13 @@ package org.papervision3d.core.render.data
 	 
 	import flash.display.Sprite;
 	
-	import org.papervision3d.core.clipping.DefaultClipping;
-	import org.papervision3d.core.culling.IParticleCuller;
-	import org.papervision3d.core.culling.ITriangleCuller;
-	import org.papervision3d.core.proto.CameraObject3D;
-	import org.papervision3d.core.proto.SceneObject3D;
-	import org.papervision3d.core.render.IRenderEngine;
-	import org.papervision3d.view.Viewport3D;
+	import org.papervision3d2.core.clipping.DefaultClipping;
+	import org.papervision3d2.core.culling.IParticleCuller;
+	import org.papervision3d2.core.culling.ITriangleCuller;
+	import org.papervision3d2.core.proto.CameraObject3D;
+	import org.papervision3d2.core.proto.SceneObject3D;
+	import org.papervision3d2.core.render.IRenderEngine;
+	import org.papervision3d2.view.Viewport3D;
 	
 	
 	public class RenderSessionData

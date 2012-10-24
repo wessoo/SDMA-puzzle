@@ -1,10 +1,10 @@
-﻿package org.papervision3d.core.proto
+﻿package org.papervision3d2.core.proto
 {
 	import flash.events.EventDispatcher;
 	import flash.utils.Dictionary;
 	
-	import org.papervision3d.core.log.PaperLogger;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.log.PaperLogger;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	/**
 	* The DisplayObjectContainer3D class is the base class for all objects that can serve as DisplayObject3D containers.

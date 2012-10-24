@@ -1,10 +1,10 @@
-package org.papervision3d.materials.shaders
+package org.papervision3d2.materials.shaders
 {
 	import flash.display.BitmapData;
 	
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.core.render.shader.ShaderObjectData;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.core.render.shader.ShaderObjectData;
 	
 	/**
 	 * @Author Ralph Hauwert

@@ -1,9 +1,9 @@
-package org.papervision3d.core.math.util
+package org.papervision3d2.core.math.util
 {
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.math.Plane3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.math.Plane3D;
 	
 	public class TriangleUtil
 	{

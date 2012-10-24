@@ -1,10 +1,10 @@
-package org.papervision3d.core.clipping
+package org.papervision3d2.core.clipping
 {
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.math.util.ClassificationUtil;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.math.util.ClassificationUtil;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	public class DefaultClipping
 	{

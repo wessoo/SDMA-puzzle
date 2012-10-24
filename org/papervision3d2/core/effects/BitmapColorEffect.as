@@ -4,10 +4,10 @@
 * @version 0.1
 */
 
-package org.papervision3d.core.effects {
+package org.papervision3d2.core.effects {
 	import flash.filters.ColorMatrixFilter;
 	import flash.geom.Point;
-	import org.papervision3d.view.layer.BitmapEffectLayer;
+	import org.papervision3d2.view.layer.BitmapEffectLayer;
 	
 
 	public class BitmapColorEffect extends AbstractEffect{

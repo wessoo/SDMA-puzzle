@@ -1,4 +1,4 @@
-package org.papervision3d.core.math
+package org.papervision3d2.core.math
 {
 /**
 * The NumberUV class represents a value in a texture UV coordinate system.

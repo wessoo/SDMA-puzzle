@@ -1,13 +1,13 @@
-package org.papervision3d.core.geom.renderables
+package org.papervision3d2.core.geom.renderables
 {
 	
 	
 	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
 	
-	import org.papervision3d.core.render.command.IRenderListItem;
-	import org.papervision3d.core.render.command.RenderParticle;
-	import org.papervision3d.materials.special.ParticleMaterial;	 
+	import org.papervision3d2.core.render.command.IRenderListItem;
+	import org.papervision3d2.core.render.command.RenderParticle;
+	import org.papervision3d2.materials.special.ParticleMaterial;	 
 
 	/**
 	 * This is the single renderable Particle object, used by Particles.as

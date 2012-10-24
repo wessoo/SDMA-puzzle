@@ -2,7 +2,7 @@
 * @author Trevor McCauley
 * @link www.senocular.com
 */
-package org.papervision3d.core.utils.virtualmouse
+package org.papervision3d2.core.utils.virtualmouse
 {	
 	import flash.display.InteractiveObject;
 	import flash.events.MouseEvent;

@@ -1,4 +1,4 @@
-package org.papervision3d.events
+package org.papervision3d2.events
 {
 	/**
 	* ...
@@ -9,9 +9,9 @@ package org.papervision3d.events
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.render.data.RenderHitData;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.render.data.RenderHitData;
+	import org.papervision3d2.objects.DisplayObject3D;
 
 	public class InteractiveScene3DEvent extends Event
 	{

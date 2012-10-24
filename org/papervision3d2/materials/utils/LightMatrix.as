@@ -1,12 +1,12 @@
-package org.papervision3d.materials.utils
+package org.papervision3d2.materials.utils
 {
-	import org.papervision3d.Papervision3D;
-	import org.papervision3d.core.math.Matrix3D;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.proto.LightObject3D;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.lights.PointLight3D;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.Papervision3D;
+	import org.papervision3d2.core.math.Matrix3D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.proto.LightObject3D;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.lights.PointLight3D;
+	import org.papervision3d2.objects.DisplayObject3D;
 
 	/**
 	 * @Author Tim Knip / Ralph Hauwert

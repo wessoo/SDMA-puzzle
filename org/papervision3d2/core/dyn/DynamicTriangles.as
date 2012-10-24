@@ -1,12 +1,12 @@
-package org.papervision3d.core.dyn
+package org.papervision3d2.core.dyn
 {
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3D;
-	import org.papervision3d.core.math.NumberUV;
-	import org.papervision3d.core.proto.MaterialObject3D;
-	import org.papervision3d.materials.BitmapMaterial;
-	import org.papervision3d.materials.special.CompositeMaterial;
-	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3D;
+	import org.papervision3d2.core.math.NumberUV;
+	import org.papervision3d2.core.proto.MaterialObject3D;
+	import org.papervision3d2.materials.BitmapMaterial;
+	import org.papervision3d2.materials.special.CompositeMaterial;
+	import org.papervision3d2.objects.DisplayObject3D;
 	
 	public class DynamicTriangles
 	{

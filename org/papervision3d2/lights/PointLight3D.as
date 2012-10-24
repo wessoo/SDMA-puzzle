@@ -1,7 +1,7 @@
-package org.papervision3d.lights
+package org.papervision3d2.lights
 {
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.proto.LightObject3D;
+	import org.papervision3d2.core.math.Number3D;
+	import org.papervision3d2.core.proto.LightObject3D;
 	
 	public class PointLight3D extends LightObject3D
 	{

@@ -6,8 +6,8 @@
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-package org.papervision3d.typography.fonts {
-	import org.papervision3d.typography.Font3D;		
+package org.papervision3d2.typography.fonts {
+	import org.papervision3d2.typography.Font3D;		
 
 	public class HelveticaMedium extends Font3D{
 

@@ -1,14 +1,14 @@
-package org.papervision3d.core.geom
+package org.papervision3d2.core.geom
 {
 	/**
 	 * @Author Andy Zupko
 	 */
 	
-	import org.papervision3d.core.geom.renderables.Pixel3D;
-	import org.papervision3d.core.render.command.RenderPixels;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.view.layer.BitmapEffectLayer;
+	import org.papervision3d2.core.geom.renderables.Pixel3D;
+	import org.papervision3d2.core.render.command.RenderPixels;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.objects.DisplayObject3D;
+	import org.papervision3d2.view.layer.BitmapEffectLayer;
 	
 	public class Pixels extends Vertices3D
 	{

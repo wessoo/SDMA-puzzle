@@ -1,6 +1,6 @@
-package org.papervision3d.core.culling {
-	import org.papervision3d.core.geom.renderables.Triangle3D;
-	import org.papervision3d.core.geom.renderables.Vertex3DInstance;	
+package org.papervision3d2.core.culling {
+	import org.papervision3d2.core.geom.renderables.Triangle3D;
+	import org.papervision3d2.core.geom.renderables.Vertex3DInstance;	
 
 	public interface ITriangleCuller
 	{

@@ -1,4 +1,4 @@
-package org.papervision3d.core.render.command
+package org.papervision3d2.core.render.command
 {
 	
 	/**
@@ -11,10 +11,10 @@ package org.papervision3d.core.render.command
 	import flash.display.Graphics;
 	import flash.geom.Point;
 	
-	import org.papervision3d.core.geom.renderables.Particle;
-	import org.papervision3d.core.render.data.RenderHitData;
-	import org.papervision3d.core.render.data.RenderSessionData;
-	import org.papervision3d.materials.special.ParticleMaterial;	
+	import org.papervision3d2.core.geom.renderables.Particle;
+	import org.papervision3d2.core.render.data.RenderHitData;
+	import org.papervision3d2.core.render.data.RenderSessionData;
+	import org.papervision3d2.materials.special.ParticleMaterial;	
 	public class RenderParticle extends RenderableListItem implements IRenderListItem
 	{
 	

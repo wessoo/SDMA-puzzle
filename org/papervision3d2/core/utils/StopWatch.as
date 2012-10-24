@@ -1,4 +1,4 @@
-package org.papervision3d.core.utils
+package org.papervision3d2.core.utils
 {
 	import flash.events.EventDispatcher;
 	import flash.utils.getTimer;
