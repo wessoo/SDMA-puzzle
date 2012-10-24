@@ -17,6 +17,15 @@ package com {
 	import org.papervision3d.objects.*;
 	import org.papervision3d.materials.*;
 
+	import org.papervision3d2.cameras.Camera3D;
+	import org.papervision3d2.render.BasicRenderEngine;
+	import org.papervision3d2.scenes.Scene3D;
+	import org.papervision3d2.view.Viewport3D;
+	import org.papervision3d2.objects.primitives.Plane;
+	import org.papervision3d2.materials.*;
+	import org.papervision3d2.events.InteractiveScene3DEvent;
+	import org.papervision3d2.objects.DisplayObject3D;
+
 	import com.chrometaphore.display.video.colibri.Colibri;
 	import com.chrometaphore.display.video.colibri.ColibriEvent;
 
@@ -77,20 +86,23 @@ package com {
 			public var card:Card = new Card();
 			public var back_material:MovieMaterial;
 			public var back_plane:Plane;
+			public var front_material:BitmapMaterial;
+			public var front_plane:Plane;
 
 			public function Main() {
 				gotoAndStop(2);
 				//stage.scaleMode = StageScaleMode.EXACT_FIT;
 				stage.displayState = StageDisplayState.FULL_SCREEN;
+				stage.scaleMode = StageScaleMode.SHOW_ALL;
 				stage.align = StageAlign.TOP_LEFT;
 				Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 
-				/*imgLoader = new Loader();
+				imgLoader = new Loader();
 				imgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoaded )
-				imgLoader.load(new URLRequest("images/1925-1.jpg"));*/
+				imgLoader.load(new URLRequest("images/1925-1.jpg"));
 				//addChild(imgLoader);
 
-				//imgCard = new DisplayObject3D();
+				imgCard = new DisplayObject3D();
 
 				if( logos )
 				{
@@ -113,17 +125,27 @@ package com {
 
 			    addEventListener(Event.ENTER_FRAME, render);
 
-		    	/*container2 = new Sprite();
+		    	container2 = new Sprite();
 				container2.x = container_x;
 		    	container2.y = container_y;
-		    	addChild(container2);
+				addChild(container2);		    	
 				scene2 = new MovieScene3D(container2)
 				cam2 = new Camera3D();
 				cam2.zoom = 10;
+
+				//card 
 				back_material = new MovieMaterial(card);
-				back_plane = new Plane(back_material,1700,1030,10,20);
+				//var bmp:Bitmap = imgLoader.content as Bitmap;
+				//front_material = new BitmapMaterial(bmp.bitmapData);
+				back_plane = new Plane(back_material, 1700, 1030, 10, 20);
+				//front_plane = new Plane(front_material, 474, 1030, 4, 5);
+				//removeChild(container);
+				//scene.addChild(back_plane);
 				scene2.addChild(back_plane);
-				addEventListener(Event.ENTER_FRAME, render2);*/
+				//addEventListener(Event.ENTER_FRAME, render2);
+				var ctnr_back_plane:Sprite = back_plane.container;
+				ctnr_back_plane.buttonMode = true;
+				ctnr_back_plane.addEventListener(MouseEvent.CLICK, flipCard);
 
 				p_dict = new Dictionary();
 				pa = new Array();
@@ -281,14 +303,19 @@ package com {
 				else
 					Tweener.addTween(pa[i].pl, {rotationY:pa[i].rotY, rotationZ:pa[i].rotZ, z:pa[i].z, time:2});
 			}
-			cam.x = ( 800 - stage.mouseX ) * 0.1;
-			cam.y = ( 480 - stage.mouseY ) * 0.1;
+			//cam.x = ( 800 - stage.mouseX ) * 0.1;
+			//cam.y = ( 480 - stage.mouseY ) * 0.1;
+
 			scene.renderCamera(cam);
 		}
 
 		function render2(e:Event):void
 		{
-			scene.renderCamera(cam);
+			scene2.renderCamera(cam2);
+		}
+
+		private function flipCard(me:MouseEvent):void {
+			trace("clicked!");
 		}
 
 		/**
