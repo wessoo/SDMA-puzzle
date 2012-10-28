@@ -183,6 +183,10 @@ package com {
 			sceneCard.addChild(imgCard);
 		}
 
+		public function loadCard():void {
+			
+		}
+
 		public function flipCard(e:InteractiveScene3DEvent) {
 			//rotate from front
 			trace("flip");
@@ -343,19 +347,6 @@ package com {
 				return true;
 			}
 			else return false;
-		}
-
-		function showVidBtn():void
-		{
-		    addChild( vidBtn );
-			Tweener.addTween( vidBtn, { y: stage.stageHeight - vidBtn.height, time: 1 } );
-			vidBtn.addEventListener( MouseEvent.CLICK, initVid );
-		}
-
-		function hideVidBtn():void
-		{
-			Tweener.addTween( vidBtn, {y: stage.stageHeight, time: 1 } );
-			vidBtn.removeEventListener( MouseEvent.CLICK, initVid );
 		}
 
 		function showBackBtn(): void
@@ -751,9 +742,6 @@ package com {
 
 			Tweener.addTween( container, { x: container_x, time: 1.5, delay: 1, transition:"easeOutExpo"} );
 
-			hideVidBtn();
-			hideBackBtn();
-
 			numLoaded = 0;
 
 			var timer:Timer = new Timer(300,1);
@@ -837,7 +825,6 @@ package com {
 			{
 				Tweener.addTween( fullImg, { alpha: 0, time: 1.5 } );
 			    showBackBtn();
-			    showVidBtn();
 			    fadeInText();
 			    infoShown = true;
 			}
@@ -845,7 +832,6 @@ package com {
 			{
 				Tweener.addTween( fullImg, { alpha: 1, time: 1.5 } );
 			    hideBackBtn();
-			    hideVidBtn();
 			    fadeOutText();
 			    infoShown = false;
 			}
@@ -1014,7 +1000,6 @@ package com {
 			imgX = fullImg.x;
 			fullImg.x = awayStageL;
 			hideBackBtn();
-			hideVidBtn();
 			fadeOutText();
 
 			/* set player opacity to 0 for fade in effect */
@@ -1052,7 +1037,6 @@ package com {
 				/* BRING BACK frame, img, backBtn, vidBtn, text */
 				fullImg.x = imgX;
 				showBackBtn();
-				showVidBtn();
 				fadeInText();
 					
 				idleHandler();

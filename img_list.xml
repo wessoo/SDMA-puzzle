@@ -111,7 +111,7 @@
 		title="Photo No. 12 - Cras magna velit, pellentesque" 
 		description="blablabla" />
 
-	<thumbnail filename="img26.jpg"
+	<!--<thumbnail filename="img26.jpg"
 		title="Photo No. 12 - Cras magna velit, pellentesque" 
 		description="blablabla" />
 
@@ -153,5 +153,5 @@
 
 	<thumbnail filename="img36.jpg"
 		title="Photo No. 12 - Cras magna velit, pellentesque" 
-		description="blablabla" />
+		description="blablabla" />-->
 </thumbnails>
