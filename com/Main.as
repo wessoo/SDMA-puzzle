@@ -50,18 +50,18 @@ package com {
 		    private var filename_list:Array;
 			private var title_list:Array;
 		    private var description_list:Array;
-		    private var selectedPic: int;
+		    private var selectedPic:int;
 		    private var i:int; 
 		    private var numTiles:int;
-		    private var img_xml:XML;
+		    private var metadata_xml:XML;
 		    private var pic_loader:Loader;
 		    private var xml_loader:URLLoader;
 
 		    private var numImg: int = 25;
 		    private var awayStageR: int = stage.stageWidth*2;
 			private var awayStageL: int = -stage.stageWidth*2;
-		    private var container_x:int = 350;
-		    private var container_y:int = stage.stageHeight * 0.5 + 350;
+		    private var container_x:int = 400;
+		    private var container_y:int = stage.stageHeight * 0.5 + 400;
 			private var folder:String = "photos/"; //change to FOLDER_PATH
 
 			private var logos:Boolean = false; //turn on & off welcome screen
@@ -104,6 +104,7 @@ package com {
 
 				tn_title.alpha = 0;
 				txtBg.alpha = 0;
+				bg_woodtexture.visible = false;
 
 				//Set up thumbnail environment
 				container = new Sprite();
@@ -117,14 +118,14 @@ package com {
 
 				//Image loader
 				imgLoader = new Loader();
-				imgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoaded )
+				imgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoaded );
 				imgLoader.load(new URLRequest("images/1925-1.jpg"));
 
 				//Set up card environment
 				back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
 				back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1700,1030,10,20);
 				back_plane.rotationY = 180;
-				addChildAt(viewport, getChildIndex(container) + 1);
+				//addChildAt(viewport, getChildIndex(container) + 1); //DON'T SHOW CARD
 				camera.focus = 100;
 				camera.zoom = 10;
 				addEventListener(Event.ENTER_FRAME, renderCard);
@@ -136,12 +137,13 @@ package com {
 				title_list = new Array();
 				description_list = new Array();
 
-
-			    img_xml = new XML();
+			    metadata_xml = new XML();
 			    pic_loader = new Loader();
 			    xml_loader = new URLLoader();
-			    xml_loader.load( new URLRequest("img_list.xml") );
+			    xml_loader.load( new URLRequest("25works_metadata.xml") );
 		    	xml_loader.addEventListener(Event.COMPLETE, create_thumbnail);
+
+		    	mv_calder.video.fullScreenTakeOver = false;
 
 				idleTimer = new Timer(180*1000); //3minutes, 180 seconds
 				countDown = new Timer( 10 *1000 ); //10 seconds count down for pop up
@@ -184,7 +186,7 @@ package com {
 		}
 
 		public function loadCard():void {
-			
+
 		}
 
 		public function flipCard(e:InteractiveScene3DEvent) {
@@ -225,34 +227,36 @@ package com {
 
 		function create_thumbnail(e:Event):void
 		{
-			var thumbSize: int = 160;
-			var thumbGap: int = 8;
+			var thumbSize: int = 200;
+			var thumbGap: int = 20;
 
-			img_xml = XML(e.target.data);
+			metadata_xml = XML(e.target.data);
 
 		    //read settings from xml
-		    mouseOrTouch = img_xml.inputmethod[0].@input.toString();
-		    loadingScreen = img_xml.loadingscreen[0].@enable.toString();
-			videoRatio = img_xml.videoRatio[0].@ratio.toString();
+		    mouseOrTouch = metadata_xml.input;
+		    //loadingScreen = metadata_xml.loadingscreen[0].@enable.toString();
+			//videoRatio = metadata_xml.videoRatio[0].@ratio.toString();
 			
-			numTiles = 45;//img_xml.thumbnail.length();
+			numTiles = metadata_xml.Content.Work.length();
 			for( i = 0; i < numTiles; i++ )
 			{
 		        var index;
 
-		        if( i+1 > numImg ) {
+		        if( i+1 > numImg )
 		            index = i - numImg;
-		        } else {
+		        else
 		            index = i;
-		        }
 
-				filename_list.push( img_xml.thumbnail[index].@filename.toString() );
+		        trace("flag1")
+				filename_list.push( metadata_xml.Content.Work[index].url );
+				trace("flag2")
+				title_list.push( metadata_xml.Content.Work[index].title );
+				trace("flag3")
+				description_list.push( metadata_xml.Content.Work[index].description );
+				trace("flag4")
 
-				title_list.push( img_xml.thumbnail[index].@title.toString() );
-				description_list.push( img_xml.thumbnail[index].@description.toString() );
-
-				var bfm:BitmapFileMaterial = new BitmapFileMaterial(
-					folder + "s_" + img_xml.thumbnail[index].@filename.toString());
+				var bfm:BitmapFileMaterial = new BitmapFileMaterial(metadata_xml.Content.Work[index].thumburl);
+				trace("flag5")
 				
 				bfm.oneSide = false;
 				bfm.smooth = true;
@@ -262,6 +266,7 @@ package com {
 				p_container.name = "flashmo_" + i;
 				p_dict[p_container] = p;
 				p_container.buttonMode = true;
+				p_container.alpha = 0.5
 				p_container.addEventListener( MouseEvent.ROLL_OVER, p_rollover );
 				p_container.addEventListener( MouseEvent.ROLL_OUT, p_rollout );
 				p_container.addEventListener( MouseEvent.CLICK, p_click );
@@ -269,8 +274,8 @@ package com {
 				pa.push({pl:p, rotY:Math.random() * 360, rotZ:Math.random() * 360, z:Math.random() * 4000 + 1500});
 				p.rotationY = pa[i].rotY;
 				p.rotationZ = pa[i].rotZ;
-				p.x = i % 9 * ( thumbSize + thumbGap );
-				p.y = Math.floor(i / 9) * ( thumbSize + thumbGap );
+				p.x = i % 5 * ( thumbSize + thumbGap + 60 );
+				p.y = Math.floor(i / 5) * ( thumbSize + thumbGap );
 				p.z = pa[i].z;
 			}//for
 		}//create thumbnail
@@ -278,28 +283,50 @@ package com {
 		function p_rollover(me:MouseEvent) 
 		{
 			var sp:Sprite = me.target as Sprite;
-			Tweener.addTween( sp, {alpha: 0.5, time: 0.6} );
+			Tweener.addTween( sp, {alpha: 1, time: 0.6} );
 		}
 
 		function p_rollout(me:MouseEvent) 
 		{
 			var sp:Sprite = me.target as Sprite;
-			Tweener.addTween( sp, {alpha: 1, time: 0.6} );
+			Tweener.addTween( sp, {alpha: 0.5, time: 0.6} );
 		}
 
 		function p_click(me:MouseEvent) 
 		{
 			var sp:Sprite = me.target as Sprite;
-			var s_no:Number = parseInt(sp.name.slice(8,10));
+			Tweener.addTween(container, {scaleX: 3, scaleY: 3, alpha: 0, time: 1, delay: 0.2, onComplete: function() {
+				container.scaleX = container.scaleY = container.alpha = 1;
+				removeChild(container);
+			}});
+
+			bg_woodtexture.visible = true;
+			bg_woodtexture.scaleX = bg_woodtexture.scaleY = 0.7;
+			bg_woodtexture.alpha = 0;
+			addChild(bg_woodtexture);
+			Tweener.addTween(bg_woodtexture, {scaleX: 1, scaleY: 1, alpha: 1, delay: 0.5, time: 3});
+
+			var s_no:Number = parseInt(sp.name.slice(8,10)); //this is the ID of the work (based on order of 1-25 on website)
 
 			tn_title.text = title_list[s_no];
 			tn_desc.text = description_list[s_no];
 
 			//move away tiles container
-			Tweener.addTween( container, { x: 1500, time: 0.6, transition:"easeInExpo" } );
+			//Tweener.addTween( container, { x: 1920, time: 0.6, transition:"easeInExpo" } );
+
+			fileRequest = new URLRequest(metadata_xml.Content.Work[s_no].url);
+			selectedPic = s_no;
+			var timer:Timer = new Timer(1000,1);
+	        timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(){
+								   
+   	            timer.removeEventListener(TimerEvent.TIMER_COMPLETE,timerHandler);
+
+		        gotoAndStop( 3 );
+	        });
+			timer.start();
 
 			/* see which picture is selected */
-			var k:int = 0;
+			/*var k:int = 0;
 			var j:int;
 			for(j=1; j<=numTiles; ++j)
 			{
@@ -325,7 +352,7 @@ package com {
 			        });
 					timer.start();
 				}
-			}//for
+			}//for*/
 		}
 
 		function timerHandler(e:TimerEvent):void
@@ -484,6 +511,7 @@ package com {
 		        loadPuzzlePieces( this[puzzleStr + pieceNum], imgArr );
 		    }
 
+		    addChildAt(this[frameStr], getChildIndex(bg_woodtexture) + 1);
 		    this[frameStr].width = fullImg.width;
 		    this[frameStr].height = fullImg.height;
 		    this[frameStr].x = awayStageL;
@@ -625,12 +653,14 @@ package com {
 			{
 				if( e.type == "touchBegin" )
 				{
+		            Tweener.addTween(e.target, {scaleX: 1.05, scaleY: 1.5, time: 0.5});
 			        e.target.startTouchDrag( e.touchPointID );
 				    e.target.parent.addChild( e.target ); //bring foward
 		            addChild( backBtn );
 				}
 				else //touchEnd
 				{
+					Tweener.addTween(e.target, {scaleX: 1, scaleY: 1, time: 0.5});
 					e.target.stopTouchDrag( e.touchPointID );
 		        	checkProgress( MovieClip( e.target ) );
 				}
@@ -646,12 +676,14 @@ package com {
 			{
 				if( e.type == "mouseDown" )
 				{
+					Tweener.addTween(e.target, {scaleX: 1.05, scaleY: 1.05, time: 0.5});
 					e.target.startDrag();
 					e.target.parent.addChild(e.target); //bring foward
 		        	addChild( backBtn );
 				}
 				else //mouseUp
 				{
+					Tweener.addTween(e.target, {scaleX: 1, scaleY: 1, time: 0.5});
 					e.target.stopDrag();
 		        	checkProgress( MovieClip( e.target ) );
 				}
