@@ -11,6 +11,7 @@ package com {
 	import flash.ui.Multitouch;
 	import flash.ui.MultitouchInputMode;
 	import flash.geom.Point;
+	import flash.geom.Matrix;
 
 	import org.papervision3d.scenes.*;
 	import org.papervision3d.cameras.*;
@@ -246,17 +247,12 @@ package com {
 		            index = i - numImg;
 		        else
 		            index = i;
-
-		        trace("flag1")
+		   
 				filename_list.push( metadata_xml.Content.Work[index].url );
-				trace("flag2")
 				title_list.push( metadata_xml.Content.Work[index].title );
-				trace("flag3")
 				description_list.push( metadata_xml.Content.Work[index].description );
-				trace("flag4")
 
 				var bfm:BitmapFileMaterial = new BitmapFileMaterial(metadata_xml.Content.Work[index].thumburl);
-				trace("flag5")
 				
 				bfm.oneSide = false;
 				bfm.smooth = true;
@@ -498,8 +494,7 @@ package com {
 		        frameStr = "frameB";
 		    }
 
-		    for( pieceNum = 1; pieceNum<=numPieces; pieceNum++ )
-		    {
+		    for( pieceNum = 1; pieceNum <= numPieces; pieceNum++ ) {
 		        this[puzzleStr + pieceNum].alpha = 0;
 		        this[puzzleStr + pieceNum].width = fullImg.width;
 		        this[puzzleStr + pieceNum].height = fullImg.height;
@@ -566,6 +561,14 @@ package com {
 				
 				imgArr.push( img ); //update img array
 				
+				var dropShdw:DropShadowFilter = new DropShadowFilter();
+				dropShdw.alpha = 0.5;
+				dropShdw.quality = 3;
+				dropShdw.distance = 10;
+				dropShdw.blurX = dropShdw.blurY = 30;
+				/*img.filters = [dropShdw];
+				imgLoader.filters = [dropShdw];
+				msk.filters = [dropShdw];*/
 				addChild( img );
 				addOutline( img, 0xbbbbbb, 3 ); //(target, color, thickness )
 
@@ -579,12 +582,26 @@ package com {
 					    hideLoading();
 					    showBackBtn();
 		                scramble();
-					    idleHandler();
+					    //idleHandler(); //TEMP? Maybe.
 					});
 					delayTimer.start();
 				}
 			}//loadPuzRdy
 		}
+
+		/*
+		 * Input the X puzzle coordinate.  Returns X pixel coordinate.
+		 */
+		/*function getPuzzleX(xVal:int):int {
+
+		}*/
+
+		/*
+		 * Input the Y puzzle coordinate. Returns Y pixel coordinate.
+		 */
+		/*function getPuzzleY(yVal:int):int {
+
+		}*/
 
 		function addOutline(obj:*, color:uint, thickness:Number):void 
 		{
@@ -651,9 +668,18 @@ package com {
 		{
 			if( e.target.alpha < 1 )
 			{
+				//var pt_pivot:Point = new Point(xpos + 900, ypos + 800);
+				var glowFilt:GlowFilter = new GlowFilter();
+				glowFilt.alpha = 0.5;
+				glowFilt.blurX = glowFilt.blurY = 50;
+				glowFilt.color = 0xffffff;
 				if( e.type == "touchBegin" )
-				{
-		            Tweener.addTween(e.target, {scaleX: 1.05, scaleY: 1.5, time: 0.5});
+				{	
+
+		            Tweener.addTween(e.target, {scaleX: 1.01, scaleY: 1.01, time: 0.5});
+		            //scaleFromCenter(e.target, 1.05, 1.05, pt_pivot);
+			        
+			        e.target.filters = [glowFilt];
 			        e.target.startTouchDrag( e.touchPointID );
 				    e.target.parent.addChild( e.target ); //bring foward
 		            addChild( backBtn );
@@ -661,6 +687,8 @@ package com {
 				else //touchEnd
 				{
 					Tweener.addTween(e.target, {scaleX: 1, scaleY: 1, time: 0.5});
+					//scaleFromCenter(e.target, 0.95, 0.95, pt_pivot);
+					e.target.filters = [];
 					e.target.stopTouchDrag( e.touchPointID );
 		        	checkProgress( MovieClip( e.target ) );
 				}
@@ -674,9 +702,16 @@ package com {
 		{
 			if( e.target.alpha < 1 )
 			{
+				//var pt_pivot:Point = new Point(ypos + 900, ypos + 800);
+				var glowFilt:GlowFilter = new GlowFilter();
+				glowFilt.alpha = 0.5;
+				glowFilt.blurX = glowFilt.blurY = 50;
+				glowFilt.color = 0xffffff;
 				if( e.type == "mouseDown" )
 				{
-					Tweener.addTween(e.target, {scaleX: 1.05, scaleY: 1.05, time: 0.5});
+					Tweener.addTween(e.target, {scaleX: 1.01, scaleY: 1.01, time: 0.5});
+					//scaleFromCenter(e.target, 1.05, 1.05, pt_pivot);
+					e.target.filters = [glowFilt];
 					e.target.startDrag();
 					e.target.parent.addChild(e.target); //bring foward
 		        	addChild( backBtn );
@@ -684,13 +719,23 @@ package com {
 				else //mouseUp
 				{
 					Tweener.addTween(e.target, {scaleX: 1, scaleY: 1, time: 0.5});
+					//scaleFromCenter(e.target, 0.95, 0.95, pt_pivot);
+					e.target.filters = [];
 					e.target.stopDrag();
 		        	checkProgress( MovieClip( e.target ) );
 				}
 			}
 		}
 
-
+		private function scaleFromCenter(ob:*, sx:Number, sy:Number, ptScalePoint:Point):void { 
+			var m:Matrix=ob.transform.matrix;
+			m.tx -= ptScalePoint.x;
+			m.ty -= ptScalePoint.y;
+			m.scale(sx, sy);
+			m.tx += ptScalePoint.x;
+			m.ty += ptScalePoint.y;
+			ob.transform.matrix = m;
+		}
 
 		function checkProgress( target:MovieClip ):void
 		{
@@ -708,7 +753,7 @@ package com {
 		    if( curX <= xpos + dif && curX >= xpos - dif && 
 		        curY <= ypos + dif && curY >= ypos - dif )
 		    {
-		        addChildAt(imgArr[piece], 0)
+		        addChildAt(imgArr[piece], getChildIndex(bg_woodtexture) + 1);
 		        imgArr[piece].x = xpos;
 		        imgArr[piece].y = ypos;
 		        imgArr[piece].alpha = 1;
@@ -772,12 +817,20 @@ package com {
 			fullImg.x = awayStageL;
 			fullImg.removeEventListener( MouseEvent.CLICK, showInfo );
 
-			Tweener.addTween( container, { x: container_x, time: 1.5, delay: 1, transition:"easeOutExpo"} );
+			//TEMP
+			bg_woodtexture.visible = false;
+			//addChild(container);
+			removeChild(bg_woodtexture);
+			//END TEMP
+			container.scaleX = container.scaleY = 3;
+			container.alpha = 0;
+			addChild(container);
+			Tweener.addTween(container, {scaleX: 1, scaleY: 1, alpha: 1, time: 1, delay: 0.2 });
 
 			numLoaded = 0;
 
 			var timer:Timer = new Timer(300,1);
-			timer.addEventListener( TimerEvent.TIMER_COMPLETE, function(){ gotoAndStop( 2 );} );
+			timer.addEventListener( TimerEvent.TIMER_COMPLETE, function(){ gotoAndStop( 2 ); removeChild(bg_woodtexture); } );
 			timer.start();
 		}
 
