@@ -296,12 +296,6 @@ package com {
 				removeChild(container);
 			}});
 
-			bg_woodtexture.visible = true;
-			bg_woodtexture.scaleX = bg_woodtexture.scaleY = 0.7;
-			bg_woodtexture.alpha = 0;
-			addChild(bg_woodtexture);
-			Tweener.addTween(bg_woodtexture, {scaleX: 1, scaleY: 1, alpha: 1, delay: 0.5, time: 3});
-
 			var s_no:Number = parseInt(sp.name.slice(8,10)); //this is the ID of the work (based on order of 1-25 on website)
 
 			tn_title.text = title_list[s_no];
@@ -444,7 +438,7 @@ package com {
 
 				if( fullImg.width > fullImg.height ) 
 				{
-					resizePercent = ( stage.stageWidth/2 - 50 ) / fullImg.width;
+					resizePercent = ( stage.stageWidth/1.4 - 50 ) / fullImg.width;
 					newH = fullImg.height * resizePercent;
 					if( newH + 50 > stage.stageHeight ) 
 						resizePercent = ( stage.stageHeight - 50 ) / fullImg.height;
@@ -453,8 +447,8 @@ package com {
 				{
 					resizePercent = ( stage.stageHeight - 50 ) / fullImg.height;
 					newW = fullImg.width * resizePercent;
-					if( newW + 50 > stage.stageWidth/2 )
-					    resizePercent = ( stage.stageWidth/2 - 50 ) / fullImg.width;
+					if( newW + 50 > stage.stageWidth/1.2 )
+					    resizePercent = ( stage.stageWidth/1.2 - 50 ) / fullImg.width;
 				}
 				
 				//resize img
@@ -487,11 +481,11 @@ package com {
 		    if( puzzlePicker < 0.5 ) {
 		        numPieces = 8;
 		        puzzleStr = "pa";
-		        frameStr = "frameA";
+		        frameStr = "frame";
 		    } else {
 		        numPieces = 9;
 		        puzzleStr = "pb";
-		        frameStr = "frameB";
+		        frameStr = "frame";
 		    }
 
 		    for( pieceNum = 1; pieceNum <= numPieces; pieceNum++ ) {
@@ -506,11 +500,22 @@ package com {
 		        loadPuzzlePieces( this[puzzleStr + pieceNum], imgArr );
 		    }
 
-		    addChildAt(this[frameStr], getChildIndex(bg_woodtexture) + 1);
+		    //wood texture
+		    bg_woodtexture.visible = true;
+			bg_woodtexture.scaleX = bg_woodtexture.scaleY = 0.7;
+			bg_woodtexture.alpha = 0;
+			addChild(bg_woodtexture);
+			Tweener.addTween(bg_woodtexture, {scaleX: 1, scaleY: 1, alpha: 1, delay: 0.5, time: 3});
+
+			//frame ADD THIS TO bg_woodtexture
+		    bg_woodtexture.addChild(this[frameStr]);
 		    this[frameStr].width = fullImg.width;
 		    this[frameStr].height = fullImg.height;
-		    this[frameStr].x = awayStageL;
-		    this[frameStr].y = ypos;
+		    //this[frameStr].scaleX = this[frameStr].scaleY = 0.7;
+		    //this[frameStr].alpha = 0;
+		    this[frameStr].x = xpos - stage.stageWidth/2;
+		    this[frameStr].y = ypos - stage.stageHeight/2;
+		    //Tweener.addTween(this[frameStr], {scaleX: 1, scaleY: 1, alpha: 1, delay: 0.5, time: 3});
 		}//setUpPuzzle
 
 		/**
@@ -633,31 +638,73 @@ package com {
 			for(j=0;j<numPieces;j++)
 			{
 				var pieceX: int = stage.stageWidth/2 + Math.random()*100;
+				var randoX:int = Math.floor(Math.random() * (1 + (stage.stageWidth - 1000) - 0)) + 0;
+				var randoY:int = Math.floor(Math.random() * (1 + (stage.stageHeight - 800) - 0)) + 0;
 				
 				imgArr[j].x = stage.stageWidth*2;
-		        imgArr[j].alpha = 0.9;
+		        imgArr[j].alpha = 0.99;
 				
 		        var pieceName:String = imgArr[j].getChildAt(1).name;
 				var c:String = pieceName.charAt( 2 );
 
 		        //each piece's center is the same, but the position is different; so need to cal y differently
-				if( c == "1" || c == "2" || pieceName == "pb3" )
+				/*if( c == "1" || c == "2" || pieceName == "pb3" )
 		            imgArr[j].y = 10;
 				else if( c == "3" || c == "4" )
 		            imgArr[j].y = -fullImg.height/4;
 				else                            
-		            imgArr[j].y = -fullImg.height/4*2;
+		            imgArr[j].y = -fullImg.height/4*2;*/
 
-				imgArr[j].y += Math.random()*(stage.stageHeight-300);
+				//imgArr[j].y += Math.random()*(stage.stageHeight-300);
+
+				imgArr[j].y = randoY;
+				Tweener.addTween( imgArr[j], { x: randoX, time: 1.5 } );
 				
-				//pieces moving in from the rihgt
-				Tweener.addTween( imgArr[j], { x: pieceX, time: 1.5 } );
+				//pieces moving in from the right
+				//Tweener.addTween( imgArr[j], { x: pieceX, time: 1.5 } );
 			}//for each piece
 
-		    addBlur( this[frameStr], 1.1 );
-			Tweener.addTween( this[frameStr], { x: xpos, time: 1 } );
+		    //addBlur( this[frameStr], 1.1 );
+			//Tweener.addTween( this[frameStr], { x: xpos, time: 1 } );
 
 			numDone=0;
+
+			/*for(j=0;j<numPieces;j++)
+			{
+				var pieceX: int = stage.stageWidth/2 + Math.random()*100;
+				//var randoX:int = Math.floor(Math.random() * 921) + 80; //random number between 80 - 1000. (1080 - 80 = 1000)
+				//var randoY:int = Math.floor(Math.random() * 1761) + 80; //random number between 80 - 1840. (1920 - 80 = 1840)
+				var randoX:int = Math.floor(Math.random() * (1 + (stage.stageWidth - 200) - 50)) + 50;
+				var randoY:int = Math.floor(Math.random() * (1 + (stage.stageHeight - 200) - 50)) + 50;
+
+				trace(randoX);
+				trace(randoY);
+
+				imgArr[j].x = stage.stageWidth*2;
+		        imgArr[j].alpha = 1;
+				
+		        var pieceName:String = imgArr[j].getChildAt(1).name;
+				var c:String = pieceName.charAt( 2 );
+
+		        //each piece's center is the same, but the position is different; so need to cal y differently
+				if( c == "1" || c == "2" || pieceName == "pb3" ) //y-coord is top row
+		            imgArr[j].y = 10;
+				else if( c == "3" || c == "4" ) //y-coord is middle row
+		            imgArr[j].y = -fullImg.height/4;
+				else                            
+		            imgArr[j].y = -fullImg.height/4*2; //y-coord is bottom row?
+
+				imgArr[j].y += Math.random()*(stage.stageHeight-300);
+				//imgArr[j].y = randoY;
+				//pieces moving in from the right
+				Tweener.addTween( imgArr[j], { x: pieceX, time: 1.5 } );
+				//Tweener.addTween( imgArr[j], { x: randoX, time: 1.5 } );
+			}//for each piece
+
+		    //addBlur( this[frameStr], 1.1 );
+			Tweener.addTween( this[frameStr], { x: xpos, time: 1 } );
+
+			numDone=0;*/
 		}
 
 
@@ -754,7 +801,7 @@ package com {
 		    if( curX <= xpos + dif && curX >= xpos - dif && 
 		        curY <= ypos + dif && curY >= ypos - dif )
 		    {
-		        addChildAt(imgArr[piece], getChildIndex(bg_woodtexture) + 1);
+		        addChild(imgArr[piece]);
 		        
 		        Tweener.addTween(imgArr[piece], {x: xpos, y: ypos, alpha: 1, delay: 0.3, time: 0.5});
 		        //imgArr[piece].x = xpos;
