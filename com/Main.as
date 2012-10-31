@@ -402,7 +402,7 @@ package com {
 		var numDone,j:int;
 		var numPieces:int;
 		var imgX:Number;
-		var dif:int = 10; //how close do they have to drag the piece
+		var dif:int = 40; //how close do they have to drag the piece
 
 		//createPuzzle() -> loadFullImage() -> setUpPuzzle()-> loadPuzzlePieces -> scramble()
 		function createPuzzle(): void
@@ -462,7 +462,7 @@ package com {
 				fullImg.height *= resizePercent;
 
 				//center the img to the left side
-				xpos = fullImg.x = ( stage.stageWidth/2 - fullImg.width ) / 2;
+				xpos = fullImg.x = ( stage.stageWidth/2 - fullImg.width/2 );
 				ypos = fullImg.y = ( stage.stageHeight - fullImg.height ) / 2;
 
 		        fullImg.alpha = 0;
@@ -562,15 +562,16 @@ package com {
 				imgArr.push( img ); //update img array
 				
 				var dropShdw:DropShadowFilter = new DropShadowFilter();
-				dropShdw.alpha = 0.5;
+				dropShdw.alpha = 0.7;
 				dropShdw.quality = 3;
-				dropShdw.distance = 10;
-				dropShdw.blurX = dropShdw.blurY = 30;
-				/*img.filters = [dropShdw];
+				dropShdw.distance = 20;
+				dropShdw.color = 0x000000;
+				dropShdw.blurX = dropShdw.blurY = 10;
+				//img.filters = [dropShdw];
 				imgLoader.filters = [dropShdw];
-				msk.filters = [dropShdw];*/
+				//msk.filters = [dropShdw];
 				addChild( img );
-				addOutline( img, 0xbbbbbb, 3 ); //(target, color, thickness )
+				//addOutline( img, 0xbbbbbb, 3 ); //(target, color, thickness )
 
 				numLoaded++;
 
@@ -754,10 +755,13 @@ package com {
 		        curY <= ypos + dif && curY >= ypos - dif )
 		    {
 		        addChildAt(imgArr[piece], getChildIndex(bg_woodtexture) + 1);
-		        imgArr[piece].x = xpos;
-		        imgArr[piece].y = ypos;
-		        imgArr[piece].alpha = 1;
-				imgArr[piece].filters = null;
+		        
+		        Tweener.addTween(imgArr[piece], {x: xpos, y: ypos, alpha: 1, delay: 0.3, time: 0.5});
+		        //imgArr[piece].x = xpos;
+		        //imgArr[piece].y = ypos;
+		        //imgArr[piece].alpha = 1;
+		        //imgArr[piece].imgLoader.filters = [];
+				imgArr[piece].filters = [];
 		        numDone++;
 
 		        if( numDone >= numPieces ) 
