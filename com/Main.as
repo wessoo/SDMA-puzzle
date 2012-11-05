@@ -120,7 +120,7 @@ package com {
 				//Image loader
 				imgLoader = new Loader();
 				imgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoaded );
-				imgLoader.load(new URLRequest("images/1925-1.jpg"));
+				//imgLoader.load(new URLRequest("images/1925-1.jpg"));
 
 				//Set up card environment
 				back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
@@ -130,6 +130,8 @@ package com {
 				camera.focus = 100;
 				camera.zoom = 10;
 				addEventListener(Event.ENTER_FRAME, renderCard);
+				
+				//videos
 				mv_calder.addEventListener(MouseEvent.MOUSE_UP, calder_up)
 
 				p_dict = new Dictionary();
@@ -174,10 +176,10 @@ package com {
 		public function imageLoaded(e:Event):void {
 			var bmp:Bitmap = imgLoader.content as Bitmap;
 			var front_material:org.papervision3d2.materials.BitmapMaterial = new org.papervision3d2.materials.BitmapMaterial(bmp.bitmapData);
-			back_material.interactive=true;
+			back_material.interactive = true;
 			front_material.interactive = true;
 
-			front_plane = new org.papervision3d2.objects.primitives.Plane(front_material,474,1030,4,5);
+			front_plane = new org.papervision3d2.objects.primitives.Plane(front_material,fullImg.width,fullImg.height,4,5);
 			front_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS, flipCard);
 			back_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS, flipCard);
 
@@ -412,6 +414,7 @@ package com {
 		    function loaderReady(e:Event) 
 			{
 				//trace("loaderReady() called");
+				imgLoader.load( fileRequest );
 				fullImg.addChild( fullImgLoader );
 
 		        var resizePercent: Number;
@@ -445,8 +448,6 @@ package com {
 		        fullImg.alpha = 0;
 
 		        addChild( fullImg );
-				
-				//trace("calling setUpPuzzle()");
 				setUpPuzzle();
 		    }
 		}
@@ -719,8 +720,8 @@ package com {
 				
 		    //close enough
 		    if( curX <= xpos + dif && curX >= xpos - dif && 
-		        curY <= ypos + dif && curY >= ypos - dif )
-		    {
+		        curY <= ypos + dif && curY >= ypos - dif ) {
+		        
 		        addChildAt(imgArr[piece], getChildIndex(bg_woodtexture) + 1);
 		        
 		        Tweener.addTween(imgArr[piece], {x: xpos, y: ypos, alpha: 1, delay: 0.3, time: 0.5});
@@ -768,8 +769,9 @@ package com {
 		{
 			if( finishedPuzzle )
 			{
-				//fadeOutText();
-		        //moveOutText();
+				Tweener.addTween(viewport, {alpha: 0, time: 1, onComplete: function() {
+					removeChild(viewport);
+				}});
 			}
 			else
 			{
@@ -802,23 +804,24 @@ package com {
 
 			imgArr.splice(0);
 
-			Tweener.addTween(bg_woodtexture, {scaleX: 0.7, scaleY: 0.7, alpha: 0, time: 2, delay: 1.5, onComplete: function(){
-				removeChild(bg_woodtexture);
-			}});
+			//remove bg and back
+			Tweener.addTween(bg_woodtexture, {scaleX: 0.7, scaleY: 0.7, alpha: 0, time: 2, delay: 1.5, onComplete: function(){ removeChild(bg_woodtexture); }});
+			Tweener.addTween(backBtn, {alpha: 0, time: 1, onComplete: function() { removeChild(backBtn); }})
 			
+			//scale back thumbs
 			container.scaleX = container.scaleY = 3;
 			container.alpha = 0;
 			addChild(container);
 			Tweener.addTween(container, {scaleX: 1, scaleY: 1, alpha: 1, time: 1, delay: 2 });
 
+			//reset
 			numLoaded = 0;
 			fileRequest = null;
+			fullImg = null;
+			front_plane = null;
+			fullImg = new MovieClip();
 			fullImgLoader = null;
 			fullImgLoader = new Loader();
-
-			/*var timer:Timer = new Timer(300,1);
-			timer.addEventListener( TimerEvent.TIMER_COMPLETE, function(){ gotoAndStop( 2 ); removeChild(bg_woodtexture); } );
-			timer.start();*/
 		}
 
 
@@ -830,20 +833,34 @@ package com {
 		    var k;
 		    for( k=0; k<numPieces; k++ )
 			{
-		        imgArr[k].alpha = 0;
-		        imgArr[k].x = awayStageL;
+		        
+		        removeChild(imgArr[k]);
+		        /*Tweener.addTween(imgArr[k], {alpha: 0, time: 1, delay: 1, onComplete: function() { 
+		        	imgArr[k].removeEventListener( MouseEvent.MOUSE_DOWN, onMouse );
+		        	imgArr[k].removeEventListener( MouseEvent.MOUSE_UP, onMouse );
+					imgArr[k].removeEventListener( TouchEvent.TOUCH_BEGIN, onTouch );
+					imgArr[k].removeEventListener( TouchEvent.TOUCH_END, onTouch );
+					removeChild(imgArr[k]);
+		        }});*/
+		        //imgArr[k].x = awayStageL;
 		    }
 
-			this[frameStr].alpha = 0;
-			this[frameStr].x = awayStageL;
-			this[frameStr].alpha = 1;
+		    viewport.alpha = 0;
+		    
+		    addChildAt(viewport, getChildIndex(bg_woodtexture) + 1);
+		    Tweener.addTween(viewport, {alpha: 1, delay: 1.5, time: 1});
+		    
 
-			hideBackBtn();
+			/*this[frameStr].alpha = 0;
+			this[frameStr].x = awayStageL;
+			this[frameStr].alpha = 1;*/
+
+			//hideBackBtn();
 
 			/** 
 			 * Calculate Img Size 
 			 */
-			var proportion: Number;
+			/*var proportion: Number;
 			var imgW:Number;
 			var imgH:Number;
 			
@@ -863,22 +880,22 @@ package com {
 			}
 			
 			imgW = fullImg.width * proportion;
-			imgH = fullImg.height * proportion;
+			imgH = fullImg.height * proportion;*/
 
 			/** 
 			 * Animate Img to enlarge and move to the center
 			 */
-			fullImg.alpha = 1;
+			//fullImg.alpha = 1;
 
-		    var imgX:Number = ( stage.stageWidth - imgW )/2;
-		    var imgY:Number = ( stage.stageHeight - imgH )/2;
+		    //var imgX:Number = ( stage.stageWidth - imgW )/2;
+		    //var imgY:Number = ( stage.stageHeight - imgH )/2;
 
-			Tweener.addTween( fullImg, { width: imgW, height: imgH, y: imgY ,x: imgX , time: 1.5 } );
+			//Tweener.addTween( fullImg, { width: imgW, height: imgH, y: imgY ,x: imgX , time: 1.5 } );
 			
-			fullImg.addEventListener( MouseEvent.CLICK, showInfo );
+			//fullImg.addEventListener( MouseEvent.CLICK, showInfo );
 
 			//resize txt
-		    tn_title.width = imgW;
+		    /*tn_title.width = imgW;
 		    tn_desc.width = imgW;
 		    tn_desc.height = imgH;
 		    txtBg.width = imgW;
@@ -888,7 +905,7 @@ package com {
 		    tn_title.alpha = 0;
 		    tn_desc.alpha = 0;
 		    txtBg.alpha = 0;
-		    moveInText();
+		    moveInText();*/
 		}
 
 		function showInfo( e: MouseEvent ):void
