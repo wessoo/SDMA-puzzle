@@ -145,6 +145,7 @@ package com {
 		    	xml_loader.addEventListener(Event.COMPLETE, create_thumbnail);
 
 		    	mv_calder.video.fullScreenTakeOver = false;
+		    	removeChild(backBtn);
 
 				idleTimer = new Timer(180*1000); //3minutes, 180 seconds
 				countDown = new Timer( 10 *1000 ); //10 seconds count down for pop up
@@ -171,7 +172,6 @@ package com {
 		}
 
 		public function imageLoaded(e:Event):void {
-			trace("loaded!");
 			var bmp:Bitmap = imgLoader.content as Bitmap;
 			var front_material:org.papervision3d2.materials.BitmapMaterial = new org.papervision3d2.materials.BitmapMaterial(bmp.bitmapData);
 			back_material.interactive=true;
@@ -290,6 +290,7 @@ package com {
 
 		function p_click(me:MouseEvent) 
 		{
+			//trace("p_click() called");
 			var sp:Sprite = me.target as Sprite;
 			Tweener.addTween(container, {scaleX: 3, scaleY: 3, alpha: 0, time: 1, delay: 0.2, onComplete: function() {
 				container.scaleX = container.scaleY = container.alpha = 1;
@@ -306,43 +307,21 @@ package com {
 
 			fileRequest = new URLRequest(metadata_xml.Content.Work[s_no].url);
 			selectedPic = s_no;
-			var timer:Timer = new Timer(1000,1);
+			/*var timer:Timer = new Timer(1000,1);
 	        timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(){
 								   
    	            timer.removeEventListener(TimerEvent.TIMER_COMPLETE,timerHandler);
 
-		        gotoAndStop( 3 );
+		        //gotoAndStop( 3 );
+		        createPuzzle();
 	        });
-			timer.start();
+			timer.start();*/
 
-			/* see which picture is selected */
-			/*var k:int = 0;
-			var j:int;
-			for(j=1; j<=numTiles; ++j)
-			{
-				if( j > numImg )
-					k = j - numImg;
-				else
-					k = j;
+			Tweener.addTween(this, {delay: 1, onComplete: function() {
+				trace("Calling createPuzzle()");
+				createPuzzle();
+			}});
 
-				var s:String = "img" + k + ".jpg";
-
-		        if( s == filename_list[s_no] ) 
-				{
-					fileRequest = new URLRequest("photos/img" +  k + ".jpg");
-					
-					selectedPic = k;
-					
-					var timer:Timer = new Timer(1000,1);
-			        timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(){
-										   
-		   	            timer.removeEventListener(TimerEvent.TIMER_COMPLETE,timerHandler);
-
-				        gotoAndStop( 3 );
-			        });
-					timer.start();
-				}
-			}//for*/
 		}
 
 		function timerHandler(e:TimerEvent):void
@@ -369,7 +348,8 @@ package com {
 		function showBackBtn(): void
 		{
 		    addChild( backBtn );
-			Tweener.addTween( backBtn, { y: stage.stageHeight - backBtn.height, time: 1 } );
+		    backBtn.alpha = 0;
+			Tweener.addTween( backBtn, { alpha: 1, delay: 1, time: 1 } );
 			backBtn.addEventListener(MouseEvent.CLICK, returnMainBtnHandler );
 		}
 
@@ -395,6 +375,7 @@ package com {
 
 		var numDone,j:int;
 		var numPieces:int;
+		var numLoaded:int = 0;
 		var imgX:Number;
 		var dif:int = 40; //how close do they have to drag the piece
 
@@ -402,7 +383,7 @@ package com {
 		function createPuzzle(): void
 		{
 			idlePopUp.alpha = 0;
-			showLoading();
+			//showLoading();
 			loadFullImage();
 		}
 
@@ -422,13 +403,15 @@ package com {
 		 * load and hide full image
 		 * start loading puzzle pieces after loading full image
 		 */
-		function loadFullImage(): void
+		function loadFullImage():void
 		{
+			//trace("loadFullImage() called. fileRequest: " + fileRequest);
 			fullImgLoader.load( fileRequest );
 			fullImgLoader.contentLoaderInfo.addEventListener( Event.COMPLETE, loaderReady );
 
 		    function loaderReady(e:Event) 
 			{
+				//trace("loaderReady() called");
 				fullImg.addChild( fullImgLoader );
 
 		        var resizePercent: Number;
@@ -463,6 +446,7 @@ package com {
 
 		        addChild( fullImg );
 				
+				//trace("calling setUpPuzzle()");
 				setUpPuzzle();
 		    }
 		}
@@ -473,6 +457,7 @@ package com {
 		 */
 		function setUpPuzzle(): void 
 		{
+			//trace("setUpPuzzle() called");
 			var pieceNum:int;
 		    puzzlePicker = Math.random();
 
@@ -494,43 +479,43 @@ package com {
 		        this[puzzleStr + pieceNum].height = fullImg.height;
 		        this[puzzleStr + pieceNum].x = 0;
 		        this[puzzleStr + pieceNum].y = 0;
-		        addChild( this[puzzleStr + pieceNum] ); 
+		        addChild( this[puzzleStr + pieceNum] );
 
 		        //mask each piece with new image loader
-		        loadPuzzlePieces( this[puzzleStr + pieceNum], imgArr );
+		        //trace("calling loadPuzzlePieces()");
+		        loadPuzzlePieces( this[puzzleStr + pieceNum] );
 		    }
+		    //trace("This is the image array: " + imgArr);
 
 		    //wood texture
 		    bg_woodtexture.visible = true;
 			bg_woodtexture.scaleX = bg_woodtexture.scaleY = 0.7;
 			bg_woodtexture.alpha = 0;
 			addChild(bg_woodtexture);
-			Tweener.addTween(bg_woodtexture, {scaleX: 1, scaleY: 1, alpha: 1, delay: 0.5, time: 3});
+			Tweener.addTween(bg_woodtexture, {scaleX: 1, scaleY: 1, alpha: 1, delay: 0.8, time: 3});
 
 			//frame ADD THIS TO bg_woodtexture
 		    bg_woodtexture.addChild(this[frameStr]);
-		    this[frameStr].width = fullImg.width;
-		    this[frameStr].height = fullImg.height;
-		    //this[frameStr].scaleX = this[frameStr].scaleY = 0.7;
-		    //this[frameStr].alpha = 0;
+		    this[frameStr].width = fullImg.width*1.02;
+		    this[frameStr].height = fullImg.height*1.02;
 		    this[frameStr].x = xpos - stage.stageWidth/2;
 		    this[frameStr].y = ypos - stage.stageHeight/2;
-		    //Tweener.addTween(this[frameStr], {scaleX: 1, scaleY: 1, alpha: 1, delay: 0.5, time: 3});
 		}//setUpPuzzle
 
 		/**
 		 * load individual piece
 		 * call scramble() when last piece is loaded
 		 */
-		var numLoaded:int = 0;
-		function loadPuzzlePieces( msk:MovieClip, imgArr:Array ):void
+		function loadPuzzlePieces( msk:MovieClip ):void
 		{
-			var imgLoader: Loader = new Loader();
+			//trace("loadPuzzlePieces() called. fileRequest: " + fileRequest);
+			var imgLoader:Loader = new Loader();
 			imgLoader.load( fileRequest );
 			imgLoader.contentLoaderInfo.addEventListener( Event.COMPLETE, loadPuzPieceRdy );
-			
+
 			function loadPuzPieceRdy(e:Event) 
 			{
+				//trace("loadPuzPieceRdy() called");
 				imgLoader.width = fullImg.width;
 				imgLoader.height = fullImg.height;
 				imgLoader.x = 0;
@@ -579,9 +564,11 @@ package com {
 				//addOutline( img, 0xbbbbbb, 3 ); //(target, color, thickness )
 
 				numLoaded++;
+				//trace("numLoaded: " + numLoaded);
 
 				if( numLoaded == numPieces )
 				{
+					//trace("imgArr after numLoaded complete:" + imgArr);
 					// loading images cause lags, so delay for smoother animation
 					var delayTimer:Timer = new Timer( 1000, 1 );
 					delayTimer.addEventListener( TimerEvent.TIMER_COMPLETE, function() {
@@ -594,20 +581,6 @@ package com {
 				}
 			}//loadPuzRdy
 		}
-
-		/*
-		 * Input the X puzzle coordinate.  Returns X pixel coordinate.
-		 */
-		/*function getPuzzleX(xVal:int):int {
-
-		}*/
-
-		/*
-		 * Input the Y puzzle coordinate. Returns Y pixel coordinate.
-		 */
-		/*function getPuzzleY(yVal:int):int {
-
-		}*/
 
 		function addOutline(obj:*, color:uint, thickness:Number):void 
 		{
@@ -635,76 +608,34 @@ package com {
 		/* SCRAMBLE PUZZLE */
 		function scramble(): void
 		{
-			for(j=0;j<numPieces;j++)
+			for(j = 0; j < numPieces; j++)
 			{
-				var pieceX: int = stage.stageWidth/2 + Math.random()*100;
-				var randoX:int = Math.floor(Math.random() * (1 + (stage.stageWidth - 1000) - 0)) + 0;
-				var randoY:int = Math.floor(Math.random() * (1 + (stage.stageHeight - 800) - 0)) + 0;
+				var randoX:int = Math.floor(Math.random() * (1 + (stage.stageWidth - 1200) - 0)) + 0;
+				var randoY:int = Math.floor(Math.random() * (1 + (stage.stageHeight - 1000) - 0)) + 0;
 				
-				imgArr[j].x = stage.stageWidth*2;
+				//drop it in a random place off screen
+				var randoBoolX:Boolean = (Math.random() > .5) ? true : false;
+				var randoBoolY:Boolean = (Math.random() > .5) ? true : false;
+				
+				if(randoBoolX) { //right of stage
+					imgArr[j].x = Math.floor(Math.random() * (1 + 2500 - 1920)) + 1920;	
+				} else { //left of stage
+					imgArr[j].x = Math.floor(Math.random() * (1 + -1000 - -2500)) + -2500;
+				}
+
+				if(randoBoolY) { //above stage
+					imgArr[j].y = Math.floor(Math.random() * (1 + 2500 - 1080)) + 1080;	;
+				} else { //below stage
+					imgArr[j].y = Math.floor(Math.random() * (1 + -1080 - -2500)) + -2500;
+				}
+
 		        imgArr[j].alpha = 0.99;
-				
-		        var pieceName:String = imgArr[j].getChildAt(1).name;
-				var c:String = pieceName.charAt( 2 );
 
-		        //each piece's center is the same, but the position is different; so need to cal y differently
-				/*if( c == "1" || c == "2" || pieceName == "pb3" )
-		            imgArr[j].y = 10;
-				else if( c == "3" || c == "4" )
-		            imgArr[j].y = -fullImg.height/4;
-				else                            
-		            imgArr[j].y = -fullImg.height/4*2;*/
+				Tweener.addTween( imgArr[j], { x: randoX, y: randoY, time: 1.5, delay: j*0.1 } ); //move onto the screen at intervals
 
-				//imgArr[j].y += Math.random()*(stage.stageHeight-300);
-
-				imgArr[j].y = randoY;
-				Tweener.addTween( imgArr[j], { x: randoX, time: 1.5 } );
-				
-				//pieces moving in from the right
-				//Tweener.addTween( imgArr[j], { x: pieceX, time: 1.5 } );
 			}//for each piece
-
-		    //addBlur( this[frameStr], 1.1 );
-			//Tweener.addTween( this[frameStr], { x: xpos, time: 1 } );
 
 			numDone=0;
-
-			/*for(j=0;j<numPieces;j++)
-			{
-				var pieceX: int = stage.stageWidth/2 + Math.random()*100;
-				//var randoX:int = Math.floor(Math.random() * 921) + 80; //random number between 80 - 1000. (1080 - 80 = 1000)
-				//var randoY:int = Math.floor(Math.random() * 1761) + 80; //random number between 80 - 1840. (1920 - 80 = 1840)
-				var randoX:int = Math.floor(Math.random() * (1 + (stage.stageWidth - 200) - 50)) + 50;
-				var randoY:int = Math.floor(Math.random() * (1 + (stage.stageHeight - 200) - 50)) + 50;
-
-				trace(randoX);
-				trace(randoY);
-
-				imgArr[j].x = stage.stageWidth*2;
-		        imgArr[j].alpha = 1;
-				
-		        var pieceName:String = imgArr[j].getChildAt(1).name;
-				var c:String = pieceName.charAt( 2 );
-
-		        //each piece's center is the same, but the position is different; so need to cal y differently
-				if( c == "1" || c == "2" || pieceName == "pb3" ) //y-coord is top row
-		            imgArr[j].y = 10;
-				else if( c == "3" || c == "4" ) //y-coord is middle row
-		            imgArr[j].y = -fullImg.height/4;
-				else                            
-		            imgArr[j].y = -fullImg.height/4*2; //y-coord is bottom row?
-
-				imgArr[j].y += Math.random()*(stage.stageHeight-300);
-				//imgArr[j].y = randoY;
-				//pieces moving in from the right
-				Tweener.addTween( imgArr[j], { x: pieceX, time: 1.5 } );
-				//Tweener.addTween( imgArr[j], { x: randoX, time: 1.5 } );
-			}//for each piece
-
-		    //addBlur( this[frameStr], 1.1 );
-			Tweener.addTween( this[frameStr], { x: xpos, time: 1 } );
-
-			numDone=0;*/
 		}
 
 
@@ -725,7 +656,6 @@ package com {
 				{	
 
 		            Tweener.addTween(e.target, {scaleX: 1.01, scaleY: 1.01, time: 0.5});
-		            //scaleFromCenter(e.target, 1.05, 1.05, pt_pivot);
 			        
 			        e.target.filters = [glowFilt];
 			        e.target.startTouchDrag( e.touchPointID );
@@ -775,16 +705,6 @@ package com {
 			}
 		}
 
-		private function scaleFromCenter(ob:*, sx:Number, sy:Number, ptScalePoint:Point):void { 
-			var m:Matrix=ob.transform.matrix;
-			m.tx -= ptScalePoint.x;
-			m.ty -= ptScalePoint.y;
-			m.scale(sx, sy);
-			m.tx += ptScalePoint.x;
-			m.ty += ptScalePoint.y;
-			ob.transform.matrix = m;
-		}
-
 		function checkProgress( target:MovieClip ):void
 		{
 		    //figure out which piece it is
@@ -801,13 +721,15 @@ package com {
 		    if( curX <= xpos + dif && curX >= xpos - dif && 
 		        curY <= ypos + dif && curY >= ypos - dif )
 		    {
-		        addChild(imgArr[piece]);
+		        addChildAt(imgArr[piece], getChildIndex(bg_woodtexture) + 1);
 		        
 		        Tweener.addTween(imgArr[piece], {x: xpos, y: ypos, alpha: 1, delay: 0.3, time: 0.5});
 		        //imgArr[piece].x = xpos;
 		        //imgArr[piece].y = ypos;
 		        //imgArr[piece].alpha = 1;
 		        //imgArr[piece].imgLoader.filters = [];
+		        trace(imgArr[piece].getChildAt(0));
+		        imgArr[piece].getChildAt(0).filters = [];
 				imgArr[piece].filters = [];
 		        numDone++;
 
@@ -846,43 +768,57 @@ package com {
 		{
 			if( finishedPuzzle )
 			{
-				fadeOutText();
-		        moveOutText();
+				//fadeOutText();
+		        //moveOutText();
 			}
 			else
 			{
-				Tweener.addTween( this[frameStr], { x: awayStageL, time: 3 } );
-
-				var k:int;
-				for( k=0; k<numPieces; k++ )
-				{
-					if( imgArr[k].alpha != 1 ) {
-						Tweener.addTween( imgArr[k], { x: awayStageR, time: 3 } );
+				for( var k=0; k<numPieces; k++ ) {
+					if( imgArr[k].alpha == 1 ) { //fade out puzzles in place
+						Tweener.addTween( imgArr[k], { alpha: 0, time: 1 , onComplete: function(){ /*imgArr[k].dispose(); imgArr[k] = null;*/ }} );
 					} else {
-						Tweener.addTween( imgArr[k], { x: awayStageL, time: 3 } );
+						//Tweener.addTween( imgArr[k], { scaleX: 3, scaleY: 3, alpha: 0, time: 2 } );
+						//drop it in a random place off screen
+						var randoBoolX:Boolean = (Math.random() > .5) ? true : false;
+						var randoBoolY:Boolean = (Math.random() > .5) ? true : false;
+						var randoX:int;
+						var randoY:int;
+						if(randoBoolX) { //right of stage
+							randoX = Math.floor(Math.random() * (1 + 2500 - 1920)) + 1920;	
+						} else { //left of stage
+							randoX = Math.floor(Math.random() * (1 + -1000 - -2500)) + -2500;
+						}
+
+						if(randoBoolY) { //above stage
+							randoY = Math.floor(Math.random() * (1 + 2500 - 1080)) + 1080;	;
+						} else { //baelow stage
+							randoY = Math.floor(Math.random() * (1 + -1080 - -2500)) + -2500;
+						}
+
+						Tweener.addTween( imgArr[k], { x: randoX, y: randoY, time: 1, delay: k*0.1, onComplete: function(){ /*imgArr[k].dispose(); imgArr[k] = null;*/ }} );
 					}
 				}
-				imgArr = new Array();
 			}
 
-			fullImg.x = awayStageL;
-			fullImg.removeEventListener( MouseEvent.CLICK, showInfo );
+			imgArr.splice(0);
 
-			//TEMP
-			bg_woodtexture.visible = false;
-			//addChild(container);
-			removeChild(bg_woodtexture);
-			//END TEMP
+			Tweener.addTween(bg_woodtexture, {scaleX: 0.7, scaleY: 0.7, alpha: 0, time: 2, delay: 1.5, onComplete: function(){
+				removeChild(bg_woodtexture);
+			}});
+			
 			container.scaleX = container.scaleY = 3;
 			container.alpha = 0;
 			addChild(container);
-			Tweener.addTween(container, {scaleX: 1, scaleY: 1, alpha: 1, time: 1, delay: 0.2 });
+			Tweener.addTween(container, {scaleX: 1, scaleY: 1, alpha: 1, time: 1, delay: 2 });
 
 			numLoaded = 0;
+			fileRequest = null;
+			fullImgLoader = null;
+			fullImgLoader = new Loader();
 
-			var timer:Timer = new Timer(300,1);
+			/*var timer:Timer = new Timer(300,1);
 			timer.addEventListener( TimerEvent.TIMER_COMPLETE, function(){ gotoAndStop( 2 ); removeChild(bg_woodtexture); } );
-			timer.start();
+			timer.start();*/
 		}
 
 
