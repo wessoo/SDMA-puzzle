@@ -172,7 +172,29 @@ package com {
 		}
 
 		public function imageLoaded(e:Event):void {
-			//card back
+			//card back. Load XML.
+			myCard.txt_title.text = metadata_xml.Content.Work[selectedPic].title;
+			
+			myCard.txt_metadata.text = "";
+			if(metadata_xml.Content.Work[selectedPic].artist != "") {
+				myCard.txt_metadata.text += metadata_xml.Content.Work[selectedPic].artist;
+			}
+			if(metadata_xml.Content.Work[selectedPic].life != "") {
+				myCard.txt_metadata.text += ", " + metadata_xml.Content.Work[selectedPic].life;
+			}
+			if(metadata_xml.Content.Work[selectedPic].date != "") {
+				myCard.txt_metadata.text += "\n" + metadata_xml.Content.Work[selectedPic].date;
+			}
+
+			myCard.txt_metadata.text += "\n" + metadata_xml.Content.Work[selectedPic].size + 
+				"\n" + metadata_xml.Content.Work[selectedPic].credit;
+
+			/*myCard.txt_metadata.text = metadata_xml.Content.Work[selectedPic].artist + ", " + 
+				metadata_xml.Content.Work[selectedPic].life + "\n" + 
+				metadata_xml.Content.Work[selectedPic].date + "\n" +
+				metadata_xml.Content.Work[selectedPic].size + "\n" +
+				metadata_xml.Content.Work[selectedPic].credit;*/
+			myCard.txt_desc.text = metadata_xml.Content.Work[selectedPic].description;
 			back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
 			back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1600,800,10,20);
 			back_plane.rotationY = 180;
@@ -253,7 +275,7 @@ package com {
 		        else
 		            index = i;
 		   
-				filename_list.push( metadata_xml.Content.Work[index].url );
+				//filename_list.push( metadata_xml.Content.Work[index].url );
 				title_list.push( metadata_xml.Content.Work[index].title );
 				description_list.push( metadata_xml.Content.Work[index].description );
 
@@ -304,8 +326,8 @@ package com {
 
 			var s_no:Number = parseInt(sp.name.slice(8,10)); //this is the ID of the work (based on order of 1-25 on website)
 
-			tn_title.text = title_list[s_no];
-			tn_desc.text = description_list[s_no];
+			//tn_title.text = title_list[s_no];
+			//tn_desc.text = description_list[s_no];
 
 			//move away tiles container
 			//Tweener.addTween( container, { x: 1920, time: 0.6, transition:"easeInExpo" } );
@@ -387,21 +409,7 @@ package com {
 		//createPuzzle() -> loadFullImage() -> setUpPuzzle()-> loadPuzzlePieces -> scramble()
 		function createPuzzle(): void
 		{
-			idlePopUp.alpha = 0;
-			//showLoading();
 			loadFullImage();
-		}
-
-		function showLoading():void
-		{
-		    if( loadingScreen == "1" )
-		        loading.y = ( stage.stageHeight - loading.height ) / 2 ;
-		}
-
-		function hideLoading():void
-		{
-		    if( loadingScreen == "1" )
-		        loading.y = -100;
 		}
 
 		/**
@@ -576,7 +584,6 @@ package com {
 					// loading images cause lags, so delay for smoother animation
 					var delayTimer:Timer = new Timer( 1000, 1 );
 					delayTimer.addEventListener( TimerEvent.TIMER_COMPLETE, function() {
-					    hideLoading();
 					    showBackBtn();
 		                scramble();
 					    //idleHandler(); //TEMP? Maybe.
@@ -728,6 +735,11 @@ package com {
 		        addChildAt(imgArr[piece], getChildIndex(bg_woodtexture) + 1);
 		        
 		        Tweener.addTween(imgArr[piece], {x: xpos, y: ypos, alpha: 1, delay: 0.3, time: 0.5});
+		        imgArr[piece].removeEventListener(MouseEvent.MOUSE_DOWN, onMouse);
+				imgArr[piece].addEventListener( MouseEvent.MOUSE_UP,   onMouse );
+				imgArr[piece].addEventListener( TouchEvent.TOUCH_BEGIN, onTouch );
+				imgArr[piece].addEventListener( TouchEvent.TOUCH_END,   onTouch );
+
 		        //imgArr[piece].x = xpos;
 		        //imgArr[piece].y = ypos;
 		        //imgArr[piece].alpha = 1;
@@ -764,7 +776,6 @@ package com {
 		/* RETURN TO MAIN TILE INTERFACE */
 		function returnMainBtnHandler(e:MouseEvent):void
 		{
-			resetTimers();
 			returnMain();
 		}
 
@@ -825,6 +836,7 @@ package com {
 			fullImg = null;
 			front_plane = null;
 			back_plane = null;
+			//Tweener.addTween(this, {time: 1, onComplete: function() { sceneCard.removeChild(imgCard); }});
 			sceneCard.removeChild(imgCard);
 			imgCard = new org.papervision3d2.objects.DisplayObject3D();;
 			fullImg = new MovieClip();
@@ -857,167 +869,6 @@ package com {
 		    
 		    addChildAt(viewport, getChildIndex(bg_woodtexture) + 1);
 		    Tweener.addTween(viewport, {alpha: 1, delay: 1.5, time: 1});
-		}
-
-
-		/****************/
-		/* IDLE HANDLER */
-		/****************/
-		function idleHandler():void
-		{
-			resetTimers();
-
-			stage.addEventListener(MouseEvent.MOUSE_DOWN, timerResetHandler );
-			
-		    idleTimer.addEventListener(TimerEvent.TIMER, idleTimerHandler);
-		    idleTimer.start();
-		}//idleHandler
-
-		/**
-		 * @user has not played for over 3 minutes, prompt user with countdown window
-		 */
-		function idleTimerHandler(e:TimerEvent):void 
-		{
-			var temp:Number = ( stage.stageHeight - idlePopUp.height )/2;
-			idlePopUp.y = temp;
-
-			addChild( idlePopUp );
-			Tweener.addTween( idlePopUp, { alpha: 1, time: 1 } );
-			
-			idlePopUp.gotoAndPlay(1);
-
-			var txtCountDown:Timer = new Timer( 1000, 9 );
-
-		    sec.y = 463.3;
-			addChild( sec );
-			sec.text = "10";
-			i = 9;
-			txtCountDown.addEventListener( TimerEvent.TIMER, function(){
-				sec.text = " " + i--;
-			} );
-			txtCountDown.start();
-
-			countDown.addEventListener(TimerEvent.TIMER, countDownHandler );
-			countDown.start();
-		}//inactivePopUp
-
-		/*
-		 * @return to main screen after count down
-		 */
-		function countDownHandler( e:TimerEvent ): void
-		{
-			Tweener.addTween( idlePopUp, { alpha: 0, time: 1 } );
-			idlePopUp.y = -130;
-			sec.y = -130;
-
-			resetTimers();
-			removeTimerListeners();
-
-			returnMain();
-		}
-
-		/**
-		 * @reset timer when user is actively playing
-		 */
-		function timerResetHandler(e:MouseEvent):void 
-		{
-			Tweener.addTween( idlePopUp, { alpha: 0, time: 1 } );
-			idlePopUp.y = -130;
-		    sec.y = -130;
-				
-			resetTimers();
-
-		    idleTimer.start();
-		}
-
-		function resetTimers():void
-		{
-			countDown.reset();
-		    idleTimer.reset();
-			idlePopUp.stop();
-		}
-
-		function removeTimerListeners(): void
-		{
-			idleTimer.removeEventListener(TimerEvent.TIMER, idleTimerHandler);
-			countDown.removeEventListener(TimerEvent.TIMER, countDownHandler );
-			stage.removeEventListener(MouseEvent.MOUSE_DOWN, timerResetHandler );
-		}
-		/*********************/
-		/* IDLE HANDLER ENDS */
-		/*********************/
-
-
-
-		/*********/
-		/* VIDEO */
-		/*********/
-		function initVid(e:MouseEvent): void
-		{
-			resetTimers();
-
-			var vidFolder:String 		= "videos/";
-
-			/* VIDEO PROPERTIES */
-			var videoURL:String         = vidFolder + "vid" + selectedPic + ".flv";
-			var videoWidth:Number       = stage.stageWidth*videoRatio;
-			var videoHeight:Number      = stage.stageHeight*videoRatio;
-			var autoPlayVideo:Boolean   = true;
-			
-			//create a video player instance using the vars we just created
-			var player:Colibri = new Colibri( videoWidth,
-										      videoHeight,
-											  videoURL,
-											  autoPlayVideo );
-
-			player.video.stream.bufferTime = 2;
-			
-			//player position..
-			player.x = ( stage.stageWidth  - videoWidth  )/2;
-			player.y = ( stage.stageHeight - videoHeight )/2;
-			
-			/* REMOVE frame, img, backBtn, vidBtn, text */
-			imgX = fullImg.x;
-			fullImg.x = awayStageL;
-
-			/* set player opacity to 0 for fade in effect */
-			player.alpha = 0;
-
-			/* delay player time to allow tween motion */
-			var timer:Timer = new Timer(500,1);
-			timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(){addChild(player);});
-			timer.start();
-
-			/* fade in player */
-			Tweener.addTween( player, { alpha: 1, time : 3 } );
-			
-			/* set 0, mute */
-			var st:SoundTransform = new SoundTransform();
-			st.volume = 1;
-			player.video.stream.soundTransform = st;
-			
-			/* go back after player is finished */
-		    player.addEventListener( ColibriEvent.ON_FINISHED, function() 
-			{
-				/* fade out player */
-				Tweener.addTween( player, { alpha: 0, time : 1 } );
-					
-				/* kill player after player fades out */
-				var afterFade:Timer = new Timer( 1000, 1 );
-				afterFade.addEventListener( TimerEvent.TIMER_COMPLETE, function() 
-				{ 
-				    player.x = awayStageL; 
-					player.destroy(); 
-					player = null;
-				} );
-				afterFade.start();
-					
-				/* BRING BACK frame, img, backBtn, vidBtn, text */
-				fullImg.x = imgX;
-				showBackBtn();
-					
-				idleHandler();
-			} );
-		} //end initVide
+		}	
 	}
 }
