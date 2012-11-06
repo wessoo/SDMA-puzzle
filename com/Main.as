@@ -103,8 +103,6 @@ package com {
 					timer.start();
 				}
 
-				tn_title.alpha = 0;
-				txtBg.alpha = 0;
 				bg_woodtexture.visible = false;
 
 				//Set up thumbnail environment
@@ -124,7 +122,7 @@ package com {
 
 				//Set up card environment
 				back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
-				back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1700,1030,10,20);
+				back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1600,800,10,20);
 				back_plane.rotationY = 180;
 				//addChildAt(viewport, getChildIndex(container) + 1); //DON'T SHOW CARD
 				camera.focus = 100;
@@ -174,14 +172,19 @@ package com {
 		}
 
 		public function imageLoaded(e:Event):void {
+			//card back
+			back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
+			back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1600,800,10,20);
+			back_plane.rotationY = 180;
+			back_material.interactive = true;
+			back_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS, flipCard);
+
+			//card front
 			var bmp:Bitmap = imgLoader.content as Bitmap;
 			var front_material:org.papervision3d2.materials.BitmapMaterial = new org.papervision3d2.materials.BitmapMaterial(bmp.bitmapData);
-			back_material.interactive = true;
-			front_material.interactive = true;
-
 			front_plane = new org.papervision3d2.objects.primitives.Plane(front_material,fullImg.width,fullImg.height,4,5);
+			front_material.interactive = true;
 			front_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS, flipCard);
-			back_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS, flipCard);
 
 			imgCard.addChild(front_plane);
 			imgCard.addChild(back_plane);
@@ -201,7 +204,7 @@ package com {
 				imgCard.rotationY = 0;
 				Tweener.addTween(imgCard, {rotationY: 180, time: 1, onComplete: function() {
 					addChildAt(mv_calder, getChildIndex(viewport) + 1);
-					mv_calder.y = 505;
+					mv_calder.y = 263;
 				}});
 			} else {
 				trace("facing front");
@@ -349,7 +352,7 @@ package com {
 
 		function showBackBtn(): void
 		{
-		    addChild( backBtn );
+		    addChildAt( backBtn, getChildIndex(bg_woodtexture) + 1 );
 		    backBtn.alpha = 0;
 			Tweener.addTween( backBtn, { alpha: 1, delay: 1, time: 1 } );
 			backBtn.addEventListener(MouseEvent.CLICK, returnMainBtnHandler );
@@ -661,7 +664,7 @@ package com {
 			        e.target.filters = [glowFilt];
 			        e.target.startTouchDrag( e.touchPointID );
 				    e.target.parent.addChild( e.target ); //bring foward
-		            addChild( backBtn );
+		            //addChild( backBtn );
 				}
 				else //touchEnd
 				{
@@ -693,7 +696,7 @@ package com {
 					e.target.filters = [glowFilt];
 					e.target.startDrag();
 					e.target.parent.addChild(e.target); //bring foward
-		        	addChild( backBtn );
+		        	//addChild( backBtn );
 				}
 				else //mouseUp
 				{
@@ -772,6 +775,8 @@ package com {
 				Tweener.addTween(viewport, {alpha: 0, time: 1, onComplete: function() {
 					removeChild(viewport);
 				}});
+
+				mv_calder.y = 1200;
 			}
 			else
 			{
@@ -819,6 +824,9 @@ package com {
 			fileRequest = null;
 			fullImg = null;
 			front_plane = null;
+			back_plane = null;
+			sceneCard.removeChild(imgCard);
+			imgCard = new org.papervision3d2.objects.DisplayObject3D();;
 			fullImg = new MovieClip();
 			fullImgLoader = null;
 			fullImgLoader = new Loader();
@@ -849,124 +857,7 @@ package com {
 		    
 		    addChildAt(viewport, getChildIndex(bg_woodtexture) + 1);
 		    Tweener.addTween(viewport, {alpha: 1, delay: 1.5, time: 1});
-		    
-
-			/*this[frameStr].alpha = 0;
-			this[frameStr].x = awayStageL;
-			this[frameStr].alpha = 1;*/
-
-			//hideBackBtn();
-
-			/** 
-			 * Calculate Img Size 
-			 */
-			/*var proportion: Number;
-			var imgW:Number;
-			var imgH:Number;
-			
-			if( fullImg.width > fullImg.height )
-			{
-				proportion = (stage.stageWidth - 50)/fullImg.width;
-				imgH = fullImg.height * proportion;
-				if( imgH + 50 > stage.stageHeight )
-					proportion = (stage.stageHeight - 50)/fullImg.height;
-			}
-			else
-			{
-				proportion = (stage.stageHeight - 50)/fullImg.height;
-				imgW = fullImg.width * proportion;
-				if( imgH + 50 > stage.stageWidth/2 )
-					proportion = (stage.stageWidth - 50)/fullImg.width;
-			}
-			
-			imgW = fullImg.width * proportion;
-			imgH = fullImg.height * proportion;*/
-
-			/** 
-			 * Animate Img to enlarge and move to the center
-			 */
-			//fullImg.alpha = 1;
-
-		    //var imgX:Number = ( stage.stageWidth - imgW )/2;
-		    //var imgY:Number = ( stage.stageHeight - imgH )/2;
-
-			//Tweener.addTween( fullImg, { width: imgW, height: imgH, y: imgY ,x: imgX , time: 1.5 } );
-			
-			//fullImg.addEventListener( MouseEvent.CLICK, showInfo );
-
-			//resize txt
-		    /*tn_title.width = imgW;
-		    tn_desc.width = imgW;
-		    tn_desc.height = imgH;
-		    txtBg.width = imgW;
-		    txtBg.height = imgH;
-
-		    //hide text
-		    tn_title.alpha = 0;
-		    tn_desc.alpha = 0;
-		    txtBg.alpha = 0;
-		    moveInText();*/
 		}
-
-		function showInfo( e: MouseEvent ):void
-		{
-			if( !infoShown ) 
-			{
-				Tweener.addTween( fullImg, { alpha: 0, time: 1.5 } );
-			    showBackBtn();
-			    fadeInText();
-			    infoShown = true;
-			}
-			else
-			{
-				Tweener.addTween( fullImg, { alpha: 1, time: 1.5 } );
-			    hideBackBtn();
-			    fadeOutText();
-			    infoShown = false;
-			}
-		}
-
-		function moveInText():void
-		{
-			//text position
-			tn_title.x = ( stage.stageWidth - txtBg.width )/2; + 1;
-			tn_title.y = ( stage.stageHeight - txtBg.height )/2 + 1;
-			
-			tn_desc.x = tn_title.x;
-			tn_desc.y = tn_title.y + tn_title.height;
-
-			txtBg.x = tn_title.x - 1;
-			txtBg.y = tn_title.y - 1;
-		}
-
-		function moveOutText():void
-		{
-		    //1 sec for txt to fade out
-		    var txtTimer: Timer = new Timer( 1000, 1 );
-			txtTimer.addEventListener( TimerEvent.TIMER_COMPLETE, function(){
-				tn_title.x = awayStageR;
-				tn_desc.x = awayStageR;
-				txtBg.x = awayStageR;
-			});
-			txtTimer.start();
-		}
-
-		function fadeInText():void
-		{
-			//fade in text
-			Tweener.addTween( tn_title, { alpha: 1, time: 1 } );
-			Tweener.addTween( tn_desc,  { alpha: 1, time: 1 } );
-			Tweener.addTween( txtBg,  { alpha: 1, time: 1 } );
-		}
-
-		function fadeOutText(): void
-		{
-		    //fade out text
-			Tweener.addTween( tn_title, { alpha: 0, time: 1 } );
-			Tweener.addTween( tn_desc,  { alpha: 0, time: 1 } );
-			Tweener.addTween( txtBg,  { alpha: 0, time: 1 } );
-		}
-
 
 
 		/****************/
@@ -1088,8 +979,6 @@ package com {
 			/* REMOVE frame, img, backBtn, vidBtn, text */
 			imgX = fullImg.x;
 			fullImg.x = awayStageL;
-			hideBackBtn();
-			fadeOutText();
 
 			/* set player opacity to 0 for fade in effect */
 			player.alpha = 0;
@@ -1126,7 +1015,6 @@ package com {
 				/* BRING BACK frame, img, backBtn, vidBtn, text */
 				fullImg.x = imgX;
 				showBackBtn();
-				fadeInText();
 					
 				idleHandler();
 			} );
