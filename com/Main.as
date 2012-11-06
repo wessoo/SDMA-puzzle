@@ -130,7 +130,7 @@ package com {
 				addEventListener(Event.ENTER_FRAME, renderCard);
 				
 				//videos
-				mv_calder.addEventListener(MouseEvent.MOUSE_UP, calder_up)
+				mv_nevelson.addEventListener(MouseEvent.MOUSE_UP, calder_up)
 
 				p_dict = new Dictionary();
 				pa = new Array();
@@ -144,12 +144,8 @@ package com {
 			    xml_loader.load( new URLRequest("25works_metadata.xml") );
 		    	xml_loader.addEventListener(Event.COMPLETE, create_thumbnail);
 
-		    	mv_calder.video.fullScreenTakeOver = false;
+		    	mv_nevelson.video.fullScreenTakeOver = mv_bougeureau.video.fullScreenTakeOver = false;
 		    	removeChild(backBtn);
-
-				idleTimer = new Timer(180*1000); //3minutes, 180 seconds
-				countDown = new Timer( 10 *1000 ); //10 seconds count down for pop up
-
 		}
 		
 		function render(e:Event):void
@@ -179,8 +175,10 @@ package com {
 			if(metadata_xml.Content.Work[selectedPic].artist != "") {
 				myCard.txt_metadata.text += metadata_xml.Content.Work[selectedPic].artist;
 			}
-			if(metadata_xml.Content.Work[selectedPic].life != "") {
+			if(metadata_xml.Content.Work[selectedPic].artist != "" && metadata_xml.Content.Work[selectedPic].life != "") {
 				myCard.txt_metadata.text += ", " + metadata_xml.Content.Work[selectedPic].life;
+			} else {
+				myCard.txt_metadata.text += metadata_xml.Content.Work[selectedPic].life;
 			}
 			if(metadata_xml.Content.Work[selectedPic].date != "") {
 				myCard.txt_metadata.text += "\n" + metadata_xml.Content.Work[selectedPic].date;
@@ -225,15 +223,15 @@ package com {
 				cardFacingFront = false;
 				imgCard.rotationY = 0;
 				Tweener.addTween(imgCard, {rotationY: 180, time: 1, onComplete: function() {
-					addChildAt(mv_calder, getChildIndex(viewport) + 1);
-					mv_calder.y = 263;
+					addChildAt(mv_nevelson, getChildIndex(viewport) + 1);
+					mv_nevelson.y = 263;
 				}});
 			} else {
 				trace("facing front");
 				cardFacingFront = true;
 				imgCard.rotationY = 180;
 				Tweener.addTween(imgCard, {rotationY: 360, time: 1});
-				removeChild(mv_calder);
+				removeChild(mv_nevelson);
 			}
 			//Tweener.addTween(back_plane, {rotationZ: 180, time: 1});
 		}
@@ -242,14 +240,14 @@ package com {
 			//trace("clicked!");
 			if(!vidPlaying) {
 				vidPlaying = true;
-				mv_calder.video.play();
-				Tweener.addTween(mv_calder.graphic_play, {alpha: 0, time: 1});
-				Tweener.addTween(mv_calder.graphic_videoblack, {alpha: 0, time: 1});
+				mv_nevelson.video.play();
+				Tweener.addTween(mv_nevelson.graphic_play, {alpha: 0, time: 1});
+				Tweener.addTween(mv_nevelson.graphic_videoblack, {alpha: 0, time: 1});
 			} else {
 				vidPlaying = false;
-				mv_calder.video.pause();
-				Tweener.addTween(mv_calder.graphic_play, {alpha: 1, time: 1});
-				Tweener.addTween(mv_calder.graphic_videoblack, {alpha: 0.5, time: 1});
+				mv_nevelson.video.pause();
+				Tweener.addTween(mv_nevelson.graphic_play, {alpha: 1, time: 1});
+				Tweener.addTween(mv_nevelson.graphic_videoblack, {alpha: 0.5, time: 1});
 			}
 		}
 
@@ -736,15 +734,11 @@ package com {
 		        
 		        Tweener.addTween(imgArr[piece], {x: xpos, y: ypos, alpha: 1, delay: 0.3, time: 0.5});
 		        imgArr[piece].removeEventListener(MouseEvent.MOUSE_DOWN, onMouse);
-				imgArr[piece].addEventListener( MouseEvent.MOUSE_UP,   onMouse );
-				imgArr[piece].addEventListener( TouchEvent.TOUCH_BEGIN, onTouch );
-				imgArr[piece].addEventListener( TouchEvent.TOUCH_END,   onTouch );
+				imgArr[piece].removeEventListener( MouseEvent.MOUSE_UP,   onMouse );
+				imgArr[piece].removeEventListener( TouchEvent.TOUCH_BEGIN, onTouch );
+				imgArr[piece].removeEventListener( TouchEvent.TOUCH_END,   onTouch );
 
-		        //imgArr[piece].x = xpos;
-		        //imgArr[piece].y = ypos;
-		        //imgArr[piece].alpha = 1;
 		        //imgArr[piece].imgLoader.filters = [];
-		        trace(imgArr[piece].getChildAt(0));
 		        imgArr[piece].getChildAt(0).filters = [];
 				imgArr[piece].filters = [];
 		        numDone++;
@@ -787,7 +781,7 @@ package com {
 					removeChild(viewport);
 				}});
 
-				mv_calder.y = 1200;
+				mv_nevelson.y = 1200;
 			}
 			else
 			{
@@ -836,9 +830,17 @@ package com {
 			fullImg = null;
 			front_plane = null;
 			back_plane = null;
-			//Tweener.addTween(this, {time: 1, onComplete: function() { sceneCard.removeChild(imgCard); }});
-			sceneCard.removeChild(imgCard);
-			imgCard = new org.papervision3d2.objects.DisplayObject3D();;
+			Tweener.addTween(this, {delay: 1, onComplete: function() { 
+				sceneCard.removeChild(imgCard);
+				imgCard = new org.papervision3d2.objects.DisplayObject3D();
+			}});
+			//sceneCard.removeChild(imgCard);
+			/*var timer:Timer = new Timer(1000,1);
+	        timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(){
+	        	sceneCard.removeChild(imgCard);
+	        });
+			timer.start();*/
+			//imgCard = new org.papervision3d2.objects.DisplayObject3D();
 			fullImg = new MovieClip();
 			fullImgLoader = null;
 			fullImgLoader = new Loader();
