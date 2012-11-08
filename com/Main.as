@@ -130,7 +130,8 @@ package com {
 				addEventListener(Event.ENTER_FRAME, renderCard);
 				
 				//videos
-				mv_nevelson.addEventListener(MouseEvent.MOUSE_UP, calder_up)
+				mv_nevelson.addEventListener(MouseEvent.MOUSE_UP, nevelson_up)
+		    	mv_nevelson.video.fullScreenTakeOver = mv_bougeureau.video.fullScreenTakeOver = false;
 
 				p_dict = new Dictionary();
 				pa = new Array();
@@ -144,8 +145,12 @@ package com {
 			    xml_loader.load( new URLRequest("25works_metadata.xml") );
 		    	xml_loader.addEventListener(Event.COMPLETE, create_thumbnail);
 
-		    	mv_nevelson.video.fullScreenTakeOver = mv_bougeureau.video.fullScreenTakeOver = false;
+		    	//button prep
 		    	removeChild(backBtn);
+		    	removeChild(blocker);
+		    	removeChild(window_credits);
+		    	button_info.gotoAndStop("white");
+		    	button_info.addEventListener(MouseEvent.CLICK, info_click);
 		}
 		
 		function render(e:Event):void
@@ -211,15 +216,11 @@ package com {
 			sceneCard.addChild(imgCard);
 		}
 
-		public function loadCard():void {
-
-		}
-
 		public function flipCard(e:InteractiveScene3DEvent) {
+			playSound("audio/page_turn.mp3");
+
 			//rotate from front
-			trace("flip");
 			if(cardFacingFront) {
-				trace("facing back");
 				cardFacingFront = false;
 				imgCard.rotationY = 0;
 				Tweener.addTween(imgCard, {rotationY: 180, time: 1, onComplete: function() {
@@ -227,7 +228,12 @@ package com {
 					mv_nevelson.y = 263;
 				}});
 			} else {
-				trace("facing front");
+				if(vidPlaying) {
+					vidPlaying = false;
+					mv_nevelson.video.pause();
+					mv_nevelson.graphic_play.alpha = 1;
+					mv_nevelson.graphic_videoblack.alpha = 0.5;
+				}
 				cardFacingFront = true;
 				imgCard.rotationY = 180;
 				Tweener.addTween(imgCard, {rotationY: 360, time: 1});
@@ -236,7 +242,7 @@ package com {
 			//Tweener.addTween(back_plane, {rotationZ: 180, time: 1});
 		}
 
-		public function calder_up(e:MouseEvent):void {
+		public function nevelson_up(e:MouseEvent):void {
 			//trace("clicked!");
 			if(!vidPlaying) {
 				vidPlaying = true;
@@ -249,6 +255,45 @@ package com {
 				Tweener.addTween(mv_nevelson.graphic_play, {alpha: 1, time: 1});
 				Tweener.addTween(mv_nevelson.graphic_videoblack, {alpha: 0.5, time: 1});
 			}
+		}
+
+		private function placeVideo(vidNum:int):void {
+
+		}
+
+		private function playVideo():void {
+
+		}
+
+		private function pauseVideo():void {
+
+		}
+
+		private function stopVideo():void {
+
+		}
+
+		public function info_click(e:MouseEvent):void {
+			window_credits.alpha = 0;
+			window_credits.scaleX = window_credits.scaleY = 0.8;
+			addChild(window_credits);
+
+			Tweener.addTween(window_credits, {scaleX: 1, scaleY: 1, time: 1, transition: "easeOutElastic"});
+			Tweener.addTween(window_credits, {alpha: 1, time: 1});
+
+			addChild(blocker);
+			blocker.addEventListener(MouseEvent.CLICK, exit_info);
+		}
+
+		private function exit_info(e:MouseEvent):void {
+			Tweener.addTween(window_credits, {alpha: 0, scaleX: 0.8, scaleY: 0.8, time: 1, onComplete: function() {
+				removeChild(window_credits);
+			}});
+
+			Tweener.addTween(this, {delay: 1, onComplete: function(){ 
+				blocker.removeEventListener(MouseEvent.CLICK, exit_info);
+				removeChild(blocker); 
+			}});
 		}
 
 		function create_thumbnail(e:Event):void
@@ -315,35 +360,21 @@ package com {
 
 		function p_click(me:MouseEvent) 
 		{
-			//trace("p_click() called");
+			playSound("audio/select.mp3");
+
 			var sp:Sprite = me.target as Sprite;
 			Tweener.addTween(container, {scaleX: 3, scaleY: 3, alpha: 0, time: 1, delay: 0.2, onComplete: function() {
 				container.scaleX = container.scaleY = container.alpha = 1;
 				removeChild(container);
 			}});
+			Tweener.addTween(button_info, {alpha: 0, time: 1, onComplete: function(){ button_info.gotoAndStop("wooden"); }})
 
 			var s_no:Number = parseInt(sp.name.slice(8,10)); //this is the ID of the work (based on order of 1-25 on website)
 
-			//tn_title.text = title_list[s_no];
-			//tn_desc.text = description_list[s_no];
-
-			//move away tiles container
-			//Tweener.addTween( container, { x: 1920, time: 0.6, transition:"easeInExpo" } );
-
 			fileRequest = new URLRequest(metadata_xml.Content.Work[s_no].url);
 			selectedPic = s_no;
-			/*var timer:Timer = new Timer(1000,1);
-	        timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(){
-								   
-   	            timer.removeEventListener(TimerEvent.TIMER_COMPLETE,timerHandler);
-
-		        //gotoAndStop( 3 );
-		        createPuzzle();
-	        });
-			timer.start();*/
 
 			Tweener.addTween(this, {delay: 1, onComplete: function() {
-				trace("Calling createPuzzle()");
 				createPuzzle();
 			}});
 
@@ -450,7 +481,7 @@ package com {
 				fullImg.width *= resizePercent;
 				fullImg.height *= resizePercent;
 
-				//center the img to the left side
+				//center the img
 				xpos = fullImg.x = ( stage.stageWidth/2 - fullImg.width/2 );
 				ypos = fullImg.y = ( stage.stageHeight - fullImg.height ) / 2;
 
@@ -467,7 +498,6 @@ package com {
 		 */
 		function setUpPuzzle(): void 
 		{
-			//trace("setUpPuzzle() called");
 			var pieceNum:int;
 		    puzzlePicker = Math.random();
 
@@ -495,7 +525,6 @@ package com {
 		        //trace("calling loadPuzzlePieces()");
 		        loadPuzzlePieces( this[puzzleStr + pieceNum] );
 		    }
-		    //trace("This is the image array: " + imgArr);
 
 		    //wood texture
 		    bg_woodtexture.visible = true;
@@ -506,8 +535,8 @@ package com {
 
 			//frame ADD THIS TO bg_woodtexture
 		    bg_woodtexture.addChild(this[frameStr]);
-		    this[frameStr].width = fullImg.width*1.02;
-		    this[frameStr].height = fullImg.height*1.02;
+		    this[frameStr].width = effect_glow.width = fullImg.width*1.02;
+		    this[frameStr].height = effect_glow.height = fullImg.height*1.02;
 		    this[frameStr].x = xpos - stage.stageWidth/2;
 		    this[frameStr].y = ypos - stage.stageHeight/2;
 		}//setUpPuzzle
@@ -567,11 +596,8 @@ package com {
 				dropShdw.distance = 20;
 				dropShdw.color = 0x000000;
 				dropShdw.blurX = dropShdw.blurY = 10;
-				//img.filters = [dropShdw];
 				imgLoader.filters = [dropShdw];
-				//msk.filters = [dropShdw];
 				addChild( img );
-				//addOutline( img, 0xbbbbbb, 3 ); //(target, color, thickness )
 
 				numLoaded++;
 				//trace("numLoaded: " + numLoaded);
@@ -584,7 +610,8 @@ package com {
 					delayTimer.addEventListener( TimerEvent.TIMER_COMPLETE, function() {
 					    showBackBtn();
 		                scramble();
-					    //idleHandler(); //TEMP? Maybe.
+					    addChildAt(button_info, getChildIndex(bg_woodtexture) + 1);
+					    Tweener.addTween(button_info, {alpha: 1, time: 1, delay: 1});
 					});
 					delayTimer.start();
 				}
@@ -743,18 +770,49 @@ package com {
 				imgArr[piece].filters = [];
 		        numDone++;
 
-		        if( numDone >= numPieces ) 
-				{ //puzzle finished
-		            playSound("win.mp3");
-		            puzzleComplete();
+		        if( numDone >= numPieces ) { //puzzle finished
+		            addChildAt(effect_glow, numChildren - 1);
+		            Tweener.addTween(this, {delay: 0.8, onComplete: function() {
+		            	playSound("audio/tada.mp3");
+		            	effect_glow.gotoAndPlay("play");
+		            }});
+
+		            Tweener.addTween(this, {delay: 1, onComplete: function() {
+		            	puzzleComplete();
+		            }});
+
+		            Tweener.addTween(this, {delay: 2, onComplete: function(){ removeChild(effect_glow); }});
 		        }
 		        else 
 				{ //puzzle not finished yet
-		            playSound("ok.mp3");
+		            playSound("audio/ting.mp3");
 		        }
 		    } //if close enough
 		}
 
+		function puzzleComplete():void
+		{	
+			finishedPuzzle = true;
+
+		    var k;
+		    for( k=0; k<numPieces; k++ )
+			{
+		        
+		        removeChild(imgArr[k]);
+		        /*Tweener.addTween(imgArr[k], {alpha: 0, time: 1, delay: 1, onComplete: function() { 
+		        	imgArr[k].removeEventListener( MouseEvent.MOUSE_DOWN, onMouse );
+		        	imgArr[k].removeEventListener( MouseEvent.MOUSE_UP, onMouse );
+					imgArr[k].removeEventListener( TouchEvent.TOUCH_BEGIN, onTouch );
+					imgArr[k].removeEventListener( TouchEvent.TOUCH_END, onTouch );
+					removeChild(imgArr[k]);
+		        }});*/
+		        //imgArr[k].x = awayStageL;
+		    }
+
+		    viewport.alpha = 1;		    
+		    addChildAt(viewport, getChildIndex(bg_woodtexture) + 1);
+		    //Tweener.addTween(viewport, {alpha: 1, delay: 1.5, time: 1});
+		}	
 
 
 		/* PLAY SOUND */
@@ -782,6 +840,11 @@ package com {
 				}});
 
 				mv_nevelson.y = 1200;
+				if(vidPlaying) {
+					vidPlaying = false;
+					mv_nevelson.video.stop();
+					mv_nevelson.graphic_play.alpha = mv_nevelson.graphic_videoblack.alpha = 1;
+				}
 			}
 			else
 			{
@@ -817,6 +880,8 @@ package com {
 			//remove bg and back
 			Tweener.addTween(bg_woodtexture, {scaleX: 0.7, scaleY: 0.7, alpha: 0, time: 2, delay: 1.5, onComplete: function(){ removeChild(bg_woodtexture); }});
 			Tweener.addTween(backBtn, {alpha: 0, time: 1, onComplete: function() { removeChild(backBtn); }})
+			Tweener.addTween(button_info, {alpha: 0, time: 1, onComplete: function() { button_info.gotoAndStop("white"); } });
+			Tweener.addTween(button_info, {alpha: 1, time: 1, delay: 3.5});
 			
 			//scale back thumbs
 			container.scaleX = container.scaleY = 3;
@@ -834,13 +899,7 @@ package com {
 				sceneCard.removeChild(imgCard);
 				imgCard = new org.papervision3d2.objects.DisplayObject3D();
 			}});
-			//sceneCard.removeChild(imgCard);
-			/*var timer:Timer = new Timer(1000,1);
-	        timer.addEventListener(TimerEvent.TIMER_COMPLETE, function(){
-	        	sceneCard.removeChild(imgCard);
-	        });
-			timer.start();*/
-			//imgCard = new org.papervision3d2.objects.DisplayObject3D();
+
 			fullImg = new MovieClip();
 			fullImgLoader = null;
 			fullImgLoader = new Loader();
@@ -848,29 +907,5 @@ package com {
 
 
 
-		function puzzleComplete():void
-		{	
-			finishedPuzzle = true;
-
-		    var k;
-		    for( k=0; k<numPieces; k++ )
-			{
-		        
-		        removeChild(imgArr[k]);
-		        /*Tweener.addTween(imgArr[k], {alpha: 0, time: 1, delay: 1, onComplete: function() { 
-		        	imgArr[k].removeEventListener( MouseEvent.MOUSE_DOWN, onMouse );
-		        	imgArr[k].removeEventListener( MouseEvent.MOUSE_UP, onMouse );
-					imgArr[k].removeEventListener( TouchEvent.TOUCH_BEGIN, onTouch );
-					imgArr[k].removeEventListener( TouchEvent.TOUCH_END, onTouch );
-					removeChild(imgArr[k]);
-		        }});*/
-		        //imgArr[k].x = awayStageL;
-		    }
-
-		    viewport.alpha = 0;
-		    
-		    addChildAt(viewport, getChildIndex(bg_woodtexture) + 1);
-		    Tweener.addTween(viewport, {alpha: 1, delay: 1.5, time: 1});
-		}	
 	}
 }
