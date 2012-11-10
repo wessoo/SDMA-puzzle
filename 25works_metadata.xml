@@ -4,6 +4,7 @@
 	<Content>
 		<Work id="1">
 			<url>images/1959-7.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1959-7.jpg</thumburl>
 			<accession>1959:7</accession>
 			<artist>Robert Henri</artist>
@@ -17,6 +18,7 @@ This painting of Robert Henri’s second wife, Marjorie Organ Henri, was given b
 		</Work>
 		<Work id="2">
 			<url>images/1979-18-1.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1979-18-1.jpg</thumburl>
 			<accession>1979.18.2</accession>
 			<artist></artist>
@@ -29,6 +31,7 @@ This painting of Robert Henri’s second wife, Marjorie Organ Henri, was given b
 		</Work>
 		<Work id="3">
 			<url>images/1925-1.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1925-1.jpg</thumburl>
 			<accession>1925:1</accession>
 			<artist>Joaquín Sorolla y Bastida</artist>
@@ -42,6 +45,7 @@ Sorolla painted plein air portraits with great skill and success, starting with 
 		</Work>
 		<Work id="4">
 			<url>images/1968-82.jpg</url>
+			<video>mv_bougeureau</video>
 			<thumburl>thumbs/1968-82.jpg</thumburl>
 			<accession>1968:82</accession>
 			<artist>William-Adolphe Bouguereau</artist>
@@ -55,6 +59,7 @@ Moreover, during the decades when the Realists and Impressionists developed thei
 		</Work>
 		<Work id="5">
 			<url>images/1940-76.jpg</url>
+			<video>mv_greco</video>
 			<thumburl>thumbs/1940-76.jpg</thumburl>
 			<accession>1940:76</accession>
 			<artist>El Greco (Domenikos Theotokopoulos)</artist>
@@ -69,6 +74,7 @@ This work is marked by a religious intensity that can be related to the concerns
 		</Work>
 		<Work id="6">
 			<url>images/1941-83.jpg</url>
+			<video>mv_guanyin</video>
 			<thumburl>thumbs/1941-83.jpg</thumburl>
 			<accession>1941.83</accession>
 			<artist></artist>
@@ -82,6 +88,7 @@ The character “Da” has been carved on each foot, which indicates that it was
 		</Work>
 		<Work id="7">
 			<url>images/1964-130.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1964-130.jpg</thumburl>
 			<accession>1964:130</accession>
 			<artist>Rufino Tamayo</artist>
@@ -95,6 +102,7 @@ Tamayo created both easel paintings and large-scale murals. He was a contemporar
 		</Work>
 		<Work id="8">
 			<url>images/L3343-17.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/L3343-17.jpg</thumburl>
 			<accession></accession>
 			<artist></artist>
@@ -108,6 +116,7 @@ Placed on the walls of collective family shrines, these sculptures were designed
 		</Work>
 		<Work id="9">
 			<url>images/1941-100.jpg</url>
+			<video>mv_giorgione</video>
 			<thumburl>thumbs/1941-100.jpg</thumburl>
 			<accession>1941:100</accession>
 			<artist>Giorgione (Giorgio da Castelfranco)</artist>
@@ -122,6 +131,7 @@ The composition is closely cropped around the head of the sitter, and the settin
 		</Work>
 		<Work id="10">
 			<url>images/1934-77.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1934-77.jpg</thumburl>
 			<accession>1934.77</accession>
 			<artist>Henri Matisse</artist>
@@ -134,6 +144,7 @@ The composition is closely cropped around the head of the sitter, and the settin
 		</Work>
 		<Work id="11">
 			<url>images/1990-144.jpg</url>
+			<video>mv_shiva</video>
 			<thumburl>thumbs/1990-144.jpg</thumburl>
 			<accession>1990.144</accession>
 			<artist></artist>
@@ -147,6 +158,7 @@ Shiva's four arms indicate his superhuman power, and the plain halo encircling h
 		</Work>
 		<Work id="12">
 			<url>images/1961-94.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1961-94.jpg</thumburl>
 			<accession>1961:94</accession>
 			<artist></artist>
@@ -160,6 +172,7 @@ The scroll unfolds with alternating sections of calligraphy and figural painting
 		</Work>
 		<Work id="13">
 			<url>images/1937-30.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1937-30.jpg</thumburl>
 			<accession>1937:30</accession>
 			<artist>Thomas Eakins</artist>
@@ -173,6 +186,7 @@ This life-sized portrait is typical of Eakins’s later works in which the subje
 		</Work>
 		<Work id="14">
 			<url>images/1970-20.jpg</url>
+			<video>mv_rivera</video>
 			<thumburl>thumbs/1970-20.jpg</thumburl>
 			<accession>1970:20</accession>
 			<artist>Diego Rivera</artist>
@@ -187,6 +201,7 @@ The anthropomorphic tree that is transformed from a symbol of the natural world 
 		</Work>
 		<Work id="15">
 			<url>images/1953-37.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1953-37.jpg</thumburl>
 			<accession>1953:37</accession>
 			<artist></artist>
@@ -200,6 +215,7 @@ Jingdezhen ware made during the flourishing Yongle period of the Qing dynasty re
 		</Work>
 		<Work id="16">
 			<url>images/1976-137.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1976-137.jpg</thumburl>
 			<accession>1976:137</accession>
 			<artist>Louise Nevelson</artist>
@@ -214,6 +230,7 @@ In contrast to Night Presence II’s forest of standing forms, the sculpture cou
 		</Work>
 		<Work id="17">
 			<url>images/1979-19.jpg</url>
+			<video>mv_stella</video>
 			<thumburl>thumbs/1979-19.jpg</thumburl>
 			<accession>1979:19</accession>
 			<artist>Frank Stella</artist>
@@ -227,6 +244,7 @@ In marked contrast to the paradigm of painting as a magic window, Stella advance
 		</Work>
 		<Work id="18">
 			<url>images/2011-90.JPG</url>
+			<video>none</video>
 			<thumburl>thumbs/2011-90.JPG</thumburl>
 			<accession>2011:90</accession>
 			<artist>Otto Dix</artist>
@@ -239,6 +257,7 @@ In marked contrast to the paradigm of painting as a magic window, Stella advance
 		</Work>
 		<Work id="19">
 			<url>images/1965-26.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1965-26.jpg</thumburl>
 			<accession>1965:26</accession>
 			<artist>Alfred R. Mitchell</artist>
@@ -252,6 +271,7 @@ Like many of his contemporary artists in Southern California, Mitchell combined 
 		</Work>
 		<Work id="20">
 			<url>images/1971-12.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1971-12.jpg</thumburl>
 			<accession>1971:12</accession>
 			<artist>Georgia O'Keeffe</artist>
@@ -266,6 +286,7 @@ The San Diego Museum of Art possesses three other works by the artist: Barn with
 		</Work>
 		<Work id="21">
 			<url>images/1977-9.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1977-9.jpg</thumburl>
 			<accession>1977:9</accession>
 			<artist>Eastman Johnson</artist>
@@ -279,6 +300,7 @@ Women figured prominently in Johnson’s work, and he frequently painted them al
 		</Work>
 		<Work id="22">
 			<url>images/1974-72.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1974-72.jpg</thumburl>
 			<accession>1974.72</accession>
 			<artist>Asher Brown Durand</artist>
@@ -292,6 +314,7 @@ Durand’s canvases reflect the great passion and unrelenting respect he possess
 		</Work>
 		<Work id="23">
 			<url>images/1938-244.jpg</url>
+			<video>mv_goya</video>
 			<thumburl>thumbs/1938-244.jpg</thumburl>
 			<accession>1938:244</accession>
 			<artist>Francisco José de Goya y Lucientes</artist>
@@ -306,6 +329,7 @@ Likewise, while there can be no question of the sitter’s importance, there is 
 		</Work>
 		<Work id="24">
 			<url>images/1990-786.jpg</url>
+			<video>none</video>
 			<thumburl>thumbs/1990-786.jpg</thumburl>
 			<accession>1990:786</accession>
 			<artist>Ruknuddin</artist>
@@ -320,6 +344,7 @@ The episodes usually involve not only the hero and heroine (Krishna and Radha) b
 		</Work>
 		<Work id="25">
 			<url>images/1945-43.jpg</url>
+			<video>mv_cotan</video>
 			<thumburl>thumbs/1945-43.jpg</thumburl>
 			<accession>1945:43</accession>
 			<artist>Juan Sánchez Cotán</artist>
