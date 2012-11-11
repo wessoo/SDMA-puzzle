@@ -979,6 +979,7 @@ package com {
 			front_plane = null;
 			back_plane = null;
 			cardFacingFront = true;
+			finishedPuzzle = false;
 			Tweener.addTween(this, {delay: 1, onComplete: function() { 
 				sceneCard.removeChild(imgCard);
 				imgCard = new org.papervision3d2.objects.DisplayObject3D();
