@@ -117,13 +117,11 @@ package com {
 				//Image loader
 				imgLoader = new Loader();
 				imgLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, imageLoaded );
-				//imgLoader.load(new URLRequest("images/1925-1.jpg"));
 
 				//Set up card environment
 				back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
 				back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1600,800,10,20);
 				back_plane.rotationY = 180;
-				//addChildAt(viewport, getChildIndex(container) + 1); //DON'T SHOW CARD
 				camera.focus = 100;
 				camera.zoom = 10;
 				addEventListener(Event.ENTER_FRAME, renderCard);
@@ -167,6 +165,8 @@ package com {
 		    	removeChild(backBtn);
 		    	removeChild(blocker);
 		    	removeChild(window_credits);
+		    	removeChild(effect_glow);
+		    	graphic_flipme.alpha = 0;
 		    	button_info.gotoAndStop("white");
 		    	button_info.addEventListener(MouseEvent.CLICK, info_click);
 		}
@@ -180,8 +180,8 @@ package com {
 				else
 					Tweener.addTween(pa[i].pl, {rotationY:pa[i].rotY, rotationZ:pa[i].rotZ, z:pa[i].z, time:2});
 			}
-			//cam.x = ( 800 - stage.mouseX ) * 0.1;
-			//cam.y = ( 480 - stage.mouseY ) * 0.1;
+			cam.x = ( 800 - stage.mouseX ) * 0.1;
+			cam.y = ( 480 - stage.mouseY ) * 0.1;
 
 			scene.renderCamera(cam);
 		}
@@ -236,21 +236,25 @@ package com {
 
 		public function flipCard(e:InteractiveScene3DEvent) {
 			playSound("audio/page_turn.mp3");
-			trace("flipCard() called");
 			//rotate from front
 			if(cardFacingFront) {
-				trace("flip to back");
+				//trace("flip to back");
 				cardFacingFront = false;
 				imgCard.rotationY = 0;
+				
 				Tweener.addTween(imgCard, {rotationY: 180, time: 1, onComplete: function() {
-					trace("video_list[selectedPic]: " + video_list[selectedPic]);
+					//get video if has video
 					if(video_list[selectedPic] != null) {
-						trace("adding video!");
 						getVideo();
 					}
 				}});
+
+				//turn off guidance
+				if(graphic_flipme.alpha == 1) {
+					Tweener.addTween(graphic_flipme, {alpha: 0, time: 0.5});
+				}
 			} else {
-				trace("flip to front");
+				//trace("flip to front");
 				cardFacingFront = true;
 				imgCard.rotationY = 180;
 				Tweener.addTween(imgCard, {rotationY: 360, time: 1});
@@ -302,8 +306,8 @@ package com {
 				addChildAt(video_list[selectedPic], getChildIndex(viewport) + 1);
 				addChildAt(vid_time, getChildIndex(viewport) + 1);
 
-				Tweener.addTween(video_list[selectedPic], {alpha: 1, time: 0.5});
-				Tweener.addTween(vid_time, {alpha: 1, time: 0.5});
+				Tweener.addTween(video_list[selectedPic], {alpha: 1, time: 1});
+				Tweener.addTween(vid_time, {alpha: 1, time: 1});
 
 			}
 		}
@@ -440,7 +444,6 @@ package com {
 				p.z = pa[i].z;
 			}//for
 
-			trace(video_list);
 		}//create thumbnail
 
 		function p_rollover(me:MouseEvent) 
@@ -474,6 +477,7 @@ package com {
 
 			if(video_list[selectedPic] != null) {
 				video_list[selectedPic].video.stop();
+				trace("video rewound!");
 			}
 
 			Tweener.addTween(this, {delay: 1, onComplete: function() {
@@ -481,7 +485,7 @@ package com {
 			}});
 
 			blockerOn();
-			Tweener.addTween(this, {delay: 1.5, onComplete: blockerOff});
+			Tweener.addTween(this, {delay: 3, onComplete: blockerOff});
 		}
 
 		function timerHandler(e:TimerEvent):void
@@ -643,6 +647,9 @@ package com {
 		    this[frameStr].height = effect_glow.height = fullImg.height*1.02;
 		    this[frameStr].x = xpos - stage.stageWidth/2;
 		    this[frameStr].y = ypos - stage.stageHeight/2;
+
+		    //place flipme
+		    graphic_flipme.x = xpos + this[frameStr].width + 90;
 		}//setUpPuzzle
 
 		/**
@@ -727,8 +734,9 @@ package com {
 		{
 			for(j = 0; j < numPieces; j++)
 			{
-				var randoX:int = Math.floor(Math.random() * (1 + (stage.stageWidth - 1200) - 0)) + 0;
-				var randoY:int = Math.floor(Math.random() * (1 + (stage.stageHeight - 1000) - 0)) + 0;
+				//Math.floor(Math.random()*(1+High-Low))+Low. High was stageWidth - 1200 and stageHeight - 1000 
+				var randoX:int = Math.floor(Math.random() * (1 + (stage.stageWidth - 850) - 0)) + 0;
+				var randoY:int = Math.floor(Math.random() * (1 + (stage.stageHeight - 800) - 0)) + 0;
 				
 				//drop it in a random place off screen
 				var randoBoolX:Boolean = (Math.random() > .5) ? true : false;
@@ -866,7 +874,7 @@ package com {
 		        }
 		        else 
 				{ //puzzle not finished yet
-		            playSound("audio/ting.mp3");
+		            playSound("audio/tock.mp3");
 		        }
 		    } //if close enough
 		}
@@ -880,6 +888,8 @@ package com {
 		        removeChild(imgArr[k]);
 		    }
 
+		    addChildAt(graphic_flipme, getChildIndex(bg_woodtexture) + 1);
+		    Tweener.addTween(graphic_flipme, {alpha: 1, time: 0.5});
 		    viewport.alpha = 1;		    
 		    addChildAt(viewport, getChildIndex(bg_woodtexture) + 1);
 		}	
@@ -947,6 +957,7 @@ package com {
 			Tweener.addTween(backBtn, {alpha: 0, time: 1, onComplete: function() { removeChild(backBtn); }})
 			Tweener.addTween(button_info, {alpha: 0, time: 1, onComplete: function() { button_info.gotoAndStop("white"); } });
 			Tweener.addTween(button_info, {alpha: 1, time: 1, delay: 3.5});
+			Tweener.addTween(graphic_flipme, {alpha: 0, time: 1});
 			
 			//scale back thumbs
 			container.scaleX = container.scaleY = 3;
@@ -970,6 +981,9 @@ package com {
 			fullImg = new MovieClip();
 			fullImgLoader = null;
 			fullImgLoader = new Loader();
+
+			blockerOn();
+			Tweener.addTween(this, {delay: 3.5, onComplete: blockerOff});
 		}
 
 		public function blockerOn():void {
