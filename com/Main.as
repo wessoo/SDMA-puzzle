@@ -210,12 +210,12 @@ package com {
 			myCard.txt_metadata.text += "\n" + metadata_xml.Content.Work[selectedPic].size + 
 				"\n" + metadata_xml.Content.Work[selectedPic].credit;
 
-			/*myCard.txt_metadata.text = metadata_xml.Content.Work[selectedPic].artist + ", " + 
-				metadata_xml.Content.Work[selectedPic].life + "\n" + 
-				metadata_xml.Content.Work[selectedPic].date + "\n" +
-				metadata_xml.Content.Work[selectedPic].size + "\n" +
-				metadata_xml.Content.Work[selectedPic].credit;*/
 			myCard.txt_desc.text = metadata_xml.Content.Work[selectedPic].description;
+			if(video_list[selectedPic] == null) {
+				myCard.graphic_videoblack.visible = myCard.graphic_play.visible = false;
+			} else {
+				myCard.graphic_videoblack.visible = myCard.graphic_play.visible = true;
+			}
 			back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
 			back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1600,800,10,20);
 			back_plane.rotationY = 180;
@@ -297,10 +297,14 @@ package com {
 
 		private function getVideo():void {
 			if(video_list[selectedPic] != null) {
-				addChildAt(video_list[selectedPic], getChildIndex(viewport) + 1);
+				video_list[selectedPic].alpha = vid_time.alpha = 0;
 				video_list[selectedPic].y = 263;
-
+				addChildAt(video_list[selectedPic], getChildIndex(viewport) + 1);
 				addChildAt(vid_time, getChildIndex(viewport) + 1);
+
+				Tweener.addTween(video_list[selectedPic], {alpha: 1, time: 0.5});
+				Tweener.addTween(vid_time, {alpha: 1, time: 0.5});
+
 			}
 		}
 
@@ -362,6 +366,7 @@ package com {
 		}
 
 		public function info_click(e:MouseEvent):void {
+			trace("numChildren: " + numChildren);
 			window_credits.alpha = 0;
 			window_credits.scaleX = window_credits.scaleY = 0.8;
 			addChild(window_credits);
@@ -374,12 +379,12 @@ package com {
 		}
 
 		private function exit_info(e:MouseEvent):void {
+			blocker.removeEventListener(MouseEvent.CLICK, exit_info);
 			Tweener.addTween(window_credits, {alpha: 0, scaleX: 0.8, scaleY: 0.8, time: 1, onComplete: function() {
 				removeChild(window_credits);
 			}});
 
 			Tweener.addTween(this, {delay: 1, onComplete: function(){ 
-				blocker.removeEventListener(MouseEvent.CLICK, exit_info);
 				removeChild(blocker); 
 			}});
 		}
@@ -455,6 +460,7 @@ package com {
 			playSound("audio/select.mp3");
 
 			var sp:Sprite = me.target as Sprite;
+
 			Tweener.addTween(container, {scaleX: 3, scaleY: 3, alpha: 0, time: 1, delay: 0.2, onComplete: function() {
 				container.scaleX = container.scaleY = container.alpha = 1;
 				removeChild(container);
@@ -474,6 +480,8 @@ package com {
 				createPuzzle();
 			}});
 
+			blockerOn();
+			Tweener.addTween(this, {delay: 1.5, onComplete: blockerOff});
 		}
 
 		function timerHandler(e:TimerEvent):void
@@ -714,29 +722,6 @@ package com {
 			}//loadPuzRdy
 		}
 
-		function addOutline(obj:*, color:uint, thickness:Number):void 
-		{
-		    var outline:GlowFilter = new GlowFilter();
-		    outline.blurX = outline.blurY = thickness;
-		    outline.color = color;
-		    outline.quality = BitmapFilterQuality.HIGH;
-		    outline.strength = 5;
-			outline.alpha = 0.5;
-		    var filterArray:Array = new Array();
-		    filterArray.push(outline);
-		    obj.filters = filterArray;
-		}
-
-		function addBlur(obj:*, thickness:Number):void 
-		{
-		    var outline:BlurFilter = new BlurFilter();
-		    outline.blurX = outline.blurY = thickness;
-		    outline.quality = BitmapFilterQuality.HIGH;
-		    var filterArray:Array = new Array();
-		    filterArray.push(outline);
-		    obj.filters = filterArray;
-		}
-
 		/* SCRAMBLE PUZZLE */
 		function scramble(): void
 		{
@@ -899,7 +884,6 @@ package com {
 		    addChildAt(viewport, getChildIndex(bg_woodtexture) + 1);
 		}	
 
-
 		/* PLAY SOUND */
 		function playSound(file:String): void 
 		{
@@ -907,8 +891,6 @@ package com {
 			sound.load(new URLRequest(file));
 			sound.play();
 		}
-
-
 
 		/* RETURN TO MAIN TILE INTERFACE */
 		function returnMainBtnHandler(e:MouseEvent):void
@@ -990,7 +972,14 @@ package com {
 			fullImgLoader = new Loader();
 		}
 
+		public function blockerOn():void {
+			//trace("blocker ON");
+			addChild(blocker);
+			setChildIndex(blocker, numChildren - 1);
+		}
 
-
+		public function blockerOff():void {
+			removeChild(blocker);
+		}
 	}
 }
