@@ -147,6 +147,7 @@ package com {
 				mv_rivera.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
 				mv_shiva.addEventListener(MouseEvent.MOUSE_UP, vid_click);
 				mv_shiva.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_nevelson.video.autoRewind = mv_bougeureau.video.autoRewind = mv_goya.video.autoRewind = mv_greco.video.autoRewind = mv_giorgione.video.autoRewind = mv_cotan.video.autoRewind = mv_guanyin.video.autoRewind = mv_stella.video.autoRewind = mv_rivera.video.autoRewind = mv_shiva.video.autoRewind = true;
 		    	mv_nevelson.video.fullScreenTakeOver = mv_bougeureau.video.fullScreenTakeOver = mv_goya.video.fullScreenTakeOver = mv_greco.video.fullScreenTakeOver = mv_giorgione.video.fullScreenTakeOver = mv_cotan.video.fullScreenTakeOver = mv_guanyin.video.fullScreenTakeOver = mv_stella.video.fullScreenTakeOver = mv_rivera.video.fullScreenTakeOver = mv_shiva.video.fullScreenTakeOver = false;
 		    	removeChild(vid_time);
 				video_list = new Array();
@@ -281,14 +282,13 @@ package com {
 			}
 		}
 		private function vid_complete(e:fl.video.VideoEvent):void {
-			trace("video over!");
-
 			if(video_list[selectedPic] != null) {
 				video_list[selectedPic].video.stop();
 				Tweener.addTween(video_list[selectedPic].graphic_videoblack, {alpha: 1, time: 1});
 				Tweener.addTween(video_list[selectedPic].graphic_play, {alpha: 1, time: 1});
 				removeEventListener(Event.ENTER_FRAME, updateTime);
 				vid_time.text = "00:00"
+				vidPlaying = false;
 			}
 		}
 
@@ -477,7 +477,6 @@ package com {
 
 			if(video_list[selectedPic] != null) {
 				video_list[selectedPic].video.stop();
-				trace("video rewound!");
 			}
 
 			Tweener.addTween(this, {delay: 1, onComplete: function() {
@@ -649,7 +648,7 @@ package com {
 		    this[frameStr].y = ypos - stage.stageHeight/2;
 
 		    //place flipme
-		    graphic_flipme.x = xpos + this[frameStr].width + 90;
+		    graphic_flipme.x = xpos + this[frameStr].width + 135;
 		}//setUpPuzzle
 
 		/**
@@ -735,8 +734,8 @@ package com {
 			for(j = 0; j < numPieces; j++)
 			{
 				//Math.floor(Math.random()*(1+High-Low))+Low. High was stageWidth - 1200 and stageHeight - 1000 
-				var randoX:int = Math.floor(Math.random() * (1 + (stage.stageWidth - 850) - 0)) + 0;
-				var randoY:int = Math.floor(Math.random() * (1 + (stage.stageHeight - 800) - 0)) + 0;
+				var randoX:int = Math.floor(Math.random() * (1 + (stage.stageWidth - 900) - -200)) + -200;
+				var randoY:int = Math.floor(Math.random() * (1 + (stage.stageHeight - 800) - -200)) + -200;
 				
 				//drop it in a random place off screen
 				var randoBoolX:Boolean = (Math.random() > .5) ? true : false;
@@ -945,7 +944,7 @@ package com {
 							randoY = Math.floor(Math.random() * (1 + -1080 - -2500)) + -2500;
 						}
 
-						Tweener.addTween( imgArr[k], { x: randoX, y: randoY, time: 1, delay: k*0.1, onComplete: function(){ /*imgArr[k].dispose(); imgArr[k] = null;*/ }} );
+						Tweener.addTween( imgArr[k], { x: randoX, y: randoY, time: 1, delay: k*0.1, onComplete: function(){ /*	imgArr[k].dispose(); imgArr[k] = null;*/ }} );
 					}
 				}
 			}
