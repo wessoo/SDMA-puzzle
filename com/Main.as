@@ -241,7 +241,6 @@ package com {
 			}			
 			
 			function imgThumb_ready(e:Event) {
-				trace("imgThumb_ready() called");
 				var resizeRatio:Number;
 				if(imgThumb.width > imgThumb.height) {
 					resizeRatio = (800 - 80) / imgThumb.width;
@@ -519,7 +518,7 @@ package com {
 			}});
 
 			blockerOn();
-			Tweener.addTween(this, {delay: 3, onComplete: blockerOff});
+			Tweener.addTween(this, {delay: 6, onComplete: blockerOff});
 		}
 
 		function timerHandler(e:TimerEvent):void
@@ -672,6 +671,7 @@ package com {
 			bg_woodtexture.scaleX = bg_woodtexture.scaleY = 0.7;
 			bg_woodtexture.alpha = 0;
 			addChild(bg_woodtexture);
+			addChild(blocker);
 			Tweener.addTween(bg_woodtexture, {scaleX: 1, scaleY: 1, alpha: 1, delay: 0.8, time: 3});
 
 			//frame ADD THIS TO bg_woodtexture
@@ -742,6 +742,7 @@ package com {
 				dropShdw.blurX = dropShdw.blurY = 10;
 				imgLoader.filters = [dropShdw];
 				addChild( img );
+				addChild(blocker);
 
 				numLoaded++;
 				//trace("numLoaded: " + numLoaded);
