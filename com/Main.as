@@ -55,6 +55,7 @@ package com {
 		    private var numTiles:int;
 		    private var metadata_xml:XML;
 		    private var pic_loader:Loader;
+		    private var imgThumb:Loader = new Loader(); //thumb to appear on back of card
 		    private var xml_loader:URLLoader;
 
 		    private var numImg: int = 25;
@@ -194,7 +195,6 @@ package com {
 		public function imageLoaded(e:Event):void {
 			//card back. Load XML.
 			myCard.txt_title.text = metadata_xml.Content.Work[selectedPic].title;
-			
 			myCard.txt_metadata.text = "";
 			if(metadata_xml.Content.Work[selectedPic].artist != "") {
 				myCard.txt_metadata.text += metadata_xml.Content.Work[selectedPic].artist;
@@ -210,19 +210,8 @@ package com {
 
 			myCard.txt_metadata.text += "\n" + metadata_xml.Content.Work[selectedPic].size + 
 				"\n" + metadata_xml.Content.Work[selectedPic].credit;
-
 			myCard.txt_desc.text = metadata_xml.Content.Work[selectedPic].description;
-			if(video_list[selectedPic] == null) {
-				myCard.graphic_videoblack.visible = myCard.graphic_play.visible = false;
-			} else {
-				myCard.graphic_videoblack.visible = myCard.graphic_play.visible = true;
-			}
-			back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
-			back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1600,800,10,20);
-			back_plane.rotationY = 180;
-			back_material.interactive = true;
-			back_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS, flipCard);
-
+			
 			//card front
 			var bmp:Bitmap = imgLoader.content as Bitmap;
 			var front_material:org.papervision3d2.materials.BitmapMaterial = new org.papervision3d2.materials.BitmapMaterial(bmp.bitmapData);
@@ -230,9 +219,53 @@ package com {
 			front_material.interactive = true;
 			front_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS, flipCard);
 
-			imgCard.addChild(front_plane);
-			imgCard.addChild(back_plane);
-			sceneCard.addChild(imgCard);
+			//video holder
+			if(video_list[selectedPic] == null) { //no video
+				myCard.graphic_videoblack.visible = myCard.graphic_play.visible = false;
+
+				//place artwork on card
+				imgThumb.load( fileRequest );
+				imgThumb.contentLoaderInfo.addEventListener( Event.COMPLETE, imgThumb_ready );
+			} else {	//has video
+				myCard.graphic_videoblack.visible = myCard.graphic_play.visible = true;
+				
+				back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
+				back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1600,800,10,20);
+				back_plane.rotationY = 180;
+				back_material.interactive = true;
+				back_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS, flipCard);
+
+				imgCard.addChild(back_plane);
+				imgCard.addChild(front_plane);
+				sceneCard.addChild(imgCard);
+			}			
+			
+			function imgThumb_ready(e:Event) {
+				trace("imgThumb_ready() called");
+				var resizeRatio:Number;
+				if(imgThumb.width > imgThumb.height) {
+					resizeRatio = (800 - 80) / imgThumb.width;
+				} else {
+					resizeRatio = (800 - 80) / imgThumb.height;
+				}
+
+				imgThumb.width = imgThumb.width * resizeRatio;
+				imgThumb.height = imgThumb.height * resizeRatio;
+				imgThumb.x = 1200 - imgThumb.width/2;
+				imgThumb.y = 400 - imgThumb.height/2;
+
+				myCard.addChild(imgThumb);
+
+				back_material = new org.papervision3d2.materials.MovieMaterial(myCard);
+				back_plane = new org.papervision3d2.objects.primitives.Plane(back_material,1600,800,10,20);
+				back_plane.rotationY = 180;
+				back_material.interactive = true;
+				back_plane.addEventListener(InteractiveScene3DEvent.OBJECT_PRESS, flipCard);
+				
+				imgCard.addChild(front_plane);
+				imgCard.addChild(back_plane);
+				sceneCard.addChild(imgCard);
+			}
 		}
 
 		public function flipCard(e:InteractiveScene3DEvent) {
@@ -242,12 +275,13 @@ package com {
 				//trace("flip to back");
 				cardFacingFront = false;
 				imgCard.rotationY = 0;
-				
+				backBtn.removeEventListener(MouseEvent.CLICK, returnMainBtnHandler);
 				Tweener.addTween(imgCard, {rotationY: 180, time: 1, onComplete: function() {
 					//get video if has video
 					if(video_list[selectedPic] != null) {
 						getVideo();
 					}
+					backBtn.addEventListener(MouseEvent.CLICK, returnMainBtnHandler);
 				}});
 
 				//turn off guidance
@@ -258,7 +292,8 @@ package com {
 				//trace("flip to front");
 				cardFacingFront = true;
 				imgCard.rotationY = 180;
-				Tweener.addTween(imgCard, {rotationY: 360, time: 1});
+				backBtn.removeEventListener(MouseEvent.CLICK, returnMainBtnHandler);
+				Tweener.addTween(imgCard, {rotationY: 360, time: 1, onComplete: function() {backBtn.addEventListener(MouseEvent.CLICK, returnMainBtnHandler);} });
 
 				if(video_list[selectedPic] != null) {
 					hideVideo();
@@ -560,8 +595,7 @@ package com {
 
 		    function loaderReady(e:Event) 
 			{
-				//trace("loaderReady() called");
-				imgLoader.load( fileRequest );
+				imgLoader.load( fileRequest );		//3D card image
 				fullImg.addChild( fullImgLoader );
 
 		        var resizePercent: Number;
@@ -716,7 +750,7 @@ package com {
 				{
 					//trace("imgArr after numLoaded complete:" + imgArr);
 					// loading images cause lags, so delay for smoother animation
-					var delayTimer:Timer = new Timer( 1000, 1 );
+					var delayTimer:Timer = new Timer( 1500, 1 );
 					delayTimer.addEventListener( TimerEvent.TIMER_COMPLETE, function() {
 					    showBackBtn();
 		                scramble();
@@ -944,7 +978,7 @@ package com {
 							randoY = Math.floor(Math.random() * (1 + -1080 - -2500)) + -2500;
 						}
 
-						Tweener.addTween( imgArr[k], { x: randoX, y: randoY, time: 1, delay: k*0.1, onComplete: function(){ /*	imgArr[k].dispose(); imgArr[k] = null;*/ }} );
+						Tweener.addTween( imgArr[k], { x: randoX, y: randoY, time: 1, delay: k*0.1, onComplete: function(){ /*(imgArr[k].dispose(); imgArr[k] = null;*/ }} );
 					}
 				}
 			}
@@ -952,7 +986,7 @@ package com {
 			imgArr.splice(0);
 
 			//remove bg and back
-			Tweener.addTween(bg_woodtexture, {scaleX: 0.7, scaleY: 0.7, alpha: 0, time: 2, delay: 1.5, onComplete: function(){ removeChild(bg_woodtexture); }});
+			Tweener.addTween(bg_woodtexture, {scaleX: 0.7, scaleY: 0.7, alpha: 0, time: 2, delay: 1.1, onComplete: function(){ removeChild(bg_woodtexture); }});
 			Tweener.addTween(backBtn, {alpha: 0, time: 1, onComplete: function() { removeChild(backBtn); }})
 			Tweener.addTween(button_info, {alpha: 0, time: 1, onComplete: function() { button_info.gotoAndStop("white"); } });
 			Tweener.addTween(button_info, {alpha: 1, time: 1, delay: 3.5});
@@ -965,6 +999,9 @@ package com {
 			Tweener.addTween(container, {scaleX: 1, scaleY: 1, alpha: 1, time: 1, delay: 2 });
 
 			//reset
+			if(video_list[selectedPic] == null) {
+				myCard.removeChild(imgThumb);
+			}
 			numLoaded = 0;
 			fileRequest = null;
 			fullImg = null;
@@ -980,6 +1017,7 @@ package com {
 			fullImg = new MovieClip();
 			fullImgLoader = null;
 			fullImgLoader = new Loader();
+			imgThumb = new Loader();
 
 			blockerOn();
 			Tweener.addTween(this, {delay: 3.5, onComplete: blockerOff});
