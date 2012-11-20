@@ -169,8 +169,10 @@ package com {
 		    	removeChild(window_credits);
 		    	removeChild(effect_glow);
 		    	graphic_flipme.alpha = 0;
-		    	button_info.gotoAndStop("white");
-		    	button_info.addEventListener(MouseEvent.CLICK, info_click);
+		    	button_info.visible = false;
+		    	//button_info.gotoAndStop("white");
+		    	//button_info.addEventListener(MouseEvent.CLICK, info_click);
+		    	graphic_flipme.addEventListener(MouseEvent.CLICK, flipme);
 		}
 		
 		function render(e:Event):void
@@ -245,13 +247,13 @@ package com {
 				if(imgThumb.width > imgThumb.height) {
 					resizeRatio = (800 - 80) / imgThumb.width;
 				} else {
-					resizeRatio = (800 - 80) / imgThumb.height;
+					resizeRatio = (800 - 180) / imgThumb.height;
 				}
 
 				imgThumb.width = imgThumb.width * resizeRatio;
 				imgThumb.height = imgThumb.height * resizeRatio;
-				imgThumb.x = 1200 - imgThumb.width/2;
-				imgThumb.y = 400 - imgThumb.height/2;
+				imgThumb.x = (1200 - imgThumb.width/2) - 20;
+				imgThumb.y = (400 - imgThumb.height/2) + 30;
 
 				myCard.addChild(imgThumb);
 
@@ -303,6 +305,28 @@ package com {
 				}
 
 			}
+		}
+
+		public function flipme(e:MouseEvent) {
+			playSound("audio/page_turn.mp3");
+			//rotate from front
+			
+			//trace("flip to back");
+			cardFacingFront = false;
+			imgCard.rotationY = 0;
+			backBtn.removeEventListener(MouseEvent.CLICK, returnMainBtnHandler);
+			Tweener.addTween(imgCard, {rotationY: 180, time: 1, onComplete: function() {
+				//get video if has video
+				if(video_list[selectedPic] != null) {
+					getVideo();
+				}
+				backBtn.addEventListener(MouseEvent.CLICK, returnMainBtnHandler);
+			}});
+
+			//turn off guidance
+			if(graphic_flipme.alpha == 1) {
+				Tweener.addTween(graphic_flipme, {alpha: 0, time: 0.5});
+			}			
 		}
 
 		public function vid_click(e:MouseEvent):void {
@@ -404,7 +428,6 @@ package com {
 		}
 
 		public function info_click(e:MouseEvent):void {
-			trace("numChildren: " + numChildren);
 			window_credits.alpha = 0;
 			window_credits.scaleX = window_credits.scaleY = 0.8;
 			addChild(window_credits);
@@ -470,7 +493,7 @@ package com {
 				p_container.addEventListener( MouseEvent.ROLL_OUT, p_rollout );
 				p_container.addEventListener( MouseEvent.CLICK, p_click );
 				
-				pa.push({pl:p, rotY:Math.random() * 360, rotZ:Math.random() * 360, z:Math.random() * 4000 + 1500});
+				pa.push({pl:p, rotY:Math.random() * 360, rotZ:Math.random() * 360, z:Math.random() * 1500 + 500});
 				p.rotationY = pa[i].rotY;
 				p.rotationZ = pa[i].rotZ;
 				p.x = i % 5 * ( thumbSize + thumbGap + 60 );
@@ -502,7 +525,7 @@ package com {
 				container.scaleX = container.scaleY = container.alpha = 1;
 				removeChild(container);
 			}});
-			Tweener.addTween(button_info, {alpha: 0, time: 1, onComplete: function(){ button_info.gotoAndStop("wooden"); }})
+			Tweener.addTween(button_info, {alpha: 0, time: 1, onComplete: function(){ button_info.gotoAndStop("wooden"); button_info.visible = true; }})
 
 			var s_no:Number = parseInt(sp.name.slice(8,10)); //this is the ID of the work (based on order of 1-25 on website)
 
@@ -682,7 +705,7 @@ package com {
 		    this[frameStr].y = ypos - stage.stageHeight/2;
 
 		    //place flipme
-		    graphic_flipme.x = xpos + this[frameStr].width + 135;
+		    //graphic_flipme.x = xpos + this[frameStr].width + 135;
 		}//setUpPuzzle
 
 		/**
@@ -922,10 +945,12 @@ package com {
 		        removeChild(imgArr[k]);
 		    }
 
-		    addChildAt(graphic_flipme, getChildIndex(bg_woodtexture) + 1);
+		    
+		    graphic_flipme.visible = true;
 		    Tweener.addTween(graphic_flipme, {alpha: 1, time: 0.5});
 		    viewport.alpha = 1;		    
 		    addChildAt(viewport, getChildIndex(bg_woodtexture) + 1);
+		    addChildAt(graphic_flipme, getChildIndex(viewport) + 1);
 		}	
 
 		/* PLAY SOUND */
@@ -989,9 +1014,9 @@ package com {
 			//remove bg and back
 			Tweener.addTween(bg_woodtexture, {scaleX: 0.7, scaleY: 0.7, alpha: 0, time: 2, delay: 1.1, onComplete: function(){ removeChild(bg_woodtexture); }});
 			Tweener.addTween(backBtn, {alpha: 0, time: 1, onComplete: function() { removeChild(backBtn); }})
-			Tweener.addTween(button_info, {alpha: 0, time: 1, onComplete: function() { button_info.gotoAndStop("white"); } });
-			Tweener.addTween(button_info, {alpha: 1, time: 1, delay: 3.5});
-			Tweener.addTween(graphic_flipme, {alpha: 0, time: 1});
+			Tweener.addTween(button_info, {alpha: 0, time: 1, onComplete: function() { /*button_info.gotoAndStop("white");*/ button_info.visible = false; } });
+			//Tweener.addTween(button_info, {alpha: 1, time: 1, delay: 3.5});
+			Tweener.addTween(graphic_flipme, {alpha: 0, time: 1, onComplete: function() { graphic_flipme.visible = false; }});
 			
 			//scale back thumbs
 			container.scaleX = container.scaleY = 3;
