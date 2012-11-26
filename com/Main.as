@@ -148,8 +148,12 @@ package com {
 				mv_rivera.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
 				mv_shiva.addEventListener(MouseEvent.MOUSE_UP, vid_click);
 				mv_shiva.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
-				mv_nevelson.video.autoRewind = mv_bougeureau.video.autoRewind = mv_goya.video.autoRewind = mv_greco.video.autoRewind = mv_giorgione.video.autoRewind = mv_cotan.video.autoRewind = mv_guanyin.video.autoRewind = mv_stella.video.autoRewind = mv_rivera.video.autoRewind = mv_shiva.video.autoRewind = true;
-		    	mv_nevelson.video.fullScreenTakeOver = mv_bougeureau.video.fullScreenTakeOver = mv_goya.video.fullScreenTakeOver = mv_greco.video.fullScreenTakeOver = mv_giorgione.video.fullScreenTakeOver = mv_cotan.video.fullScreenTakeOver = mv_guanyin.video.fullScreenTakeOver = mv_stella.video.fullScreenTakeOver = mv_rivera.video.fullScreenTakeOver = mv_shiva.video.fullScreenTakeOver = false;
+				mv_johnson.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_johnson.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_durand.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_durand.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_nevelson.video.autoRewind = mv_bougeureau.video.autoRewind = mv_goya.video.autoRewind = mv_greco.video.autoRewind = mv_giorgione.video.autoRewind = mv_cotan.video.autoRewind = mv_guanyin.video.autoRewind = mv_stella.video.autoRewind = mv_rivera.video.autoRewind = mv_shiva.video.autoRewind = mv_johnson.video.autoRewind = mv_durand.video.autoRewind = true;
+		    	mv_nevelson.video.fullScreenTakeOver = mv_bougeureau.video.fullScreenTakeOver = mv_goya.video.fullScreenTakeOver = mv_greco.video.fullScreenTakeOver = mv_giorgione.video.fullScreenTakeOver = mv_cotan.video.fullScreenTakeOver = mv_guanyin.video.fullScreenTakeOver = mv_stella.video.fullScreenTakeOver = mv_rivera.video.fullScreenTakeOver = mv_shiva.video.fullScreenTakeOver = mv_johnson.video.fullScreenTakeOver = mv_durand.video.fullScreenTakeOver = false;
 		    	removeChild(vid_time);
 				video_list = new Array();
 
@@ -171,7 +175,7 @@ package com {
 		    	graphic_flipme.alpha = 0;
 		    	button_info.visible = false;
 		    	//button_info.gotoAndStop("white");
-		    	//button_info.addEventListener(MouseEvent.CLICK, info_click);
+		    	button_info.addEventListener(MouseEvent.CLICK, info_click);
 		    	graphic_flipme.addEventListener(MouseEvent.CLICK, flipme);
 		}
 		
