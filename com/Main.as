@@ -128,32 +128,61 @@ package com {
 				addEventListener(Event.ENTER_FRAME, renderCard);
 				
 				//videos
-				mv_nevelson.addEventListener(MouseEvent.MOUSE_UP, vid_click);
-				mv_nevelson.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_henri.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_henri.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_sorolla.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_sorolla.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
 				mv_bougeureau.addEventListener(MouseEvent.MOUSE_UP, vid_click);
 				mv_bougeureau.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
-				mv_goya.addEventListener(MouseEvent.MOUSE_UP, vid_click);
-				mv_goya.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
 				mv_greco.addEventListener(MouseEvent.MOUSE_UP, vid_click);
 				mv_greco.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
-				mv_giorgione.addEventListener(MouseEvent.MOUSE_UP, vid_click);
-				mv_giorgione.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
-				mv_cotan.addEventListener(MouseEvent.MOUSE_UP, vid_click);
-				mv_cotan.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
 				mv_guanyin.addEventListener(MouseEvent.MOUSE_UP, vid_click);
 				mv_guanyin.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
-				mv_stella.addEventListener(MouseEvent.MOUSE_UP, vid_click);
-				mv_stella.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
-				mv_rivera.addEventListener(MouseEvent.MOUSE_UP, vid_click);
-				mv_rivera.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_tamayo.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_tamayo.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_skullrack.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_skullrack.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_giorgione.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_giorgione.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_matisse.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_matisse.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
 				mv_shiva.addEventListener(MouseEvent.MOUSE_UP, vid_click);
 				mv_shiva.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_eakins.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_eakins.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_rivera.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_rivera.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_nevelson.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_nevelson.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_stella.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_stella.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_mitchell.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_mitchell.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_okeefe.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_okeefe.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
 				mv_johnson.addEventListener(MouseEvent.MOUSE_UP, vid_click);
 				mv_johnson.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
 				mv_durand.addEventListener(MouseEvent.MOUSE_UP, vid_click);
 				mv_durand.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
-				mv_nevelson.video.autoRewind = mv_bougeureau.video.autoRewind = mv_goya.video.autoRewind = mv_greco.video.autoRewind = mv_giorgione.video.autoRewind = mv_cotan.video.autoRewind = mv_guanyin.video.autoRewind = mv_stella.video.autoRewind = mv_rivera.video.autoRewind = mv_shiva.video.autoRewind = mv_johnson.video.autoRewind = mv_durand.video.autoRewind = true;
-		    	mv_nevelson.video.fullScreenTakeOver = mv_bougeureau.video.fullScreenTakeOver = mv_goya.video.fullScreenTakeOver = mv_greco.video.fullScreenTakeOver = mv_giorgione.video.fullScreenTakeOver = mv_cotan.video.fullScreenTakeOver = mv_guanyin.video.fullScreenTakeOver = mv_stella.video.fullScreenTakeOver = mv_rivera.video.fullScreenTakeOver = mv_shiva.video.fullScreenTakeOver = mv_johnson.video.fullScreenTakeOver = mv_durand.video.fullScreenTakeOver = false;
+				mv_goya.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_goya.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_ruknuddin.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_ruknuddin.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_cotan.addEventListener(MouseEvent.MOUSE_UP, vid_click);
+				mv_cotan.video.addEventListener(fl.video.VideoEvent.COMPLETE, vid_complete);
+				mv_henri.video.autoRewind = mv_sorolla.video.autoRewind = mv_bougeureau.video.autoRewind = mv_greco.video.autoRewind = 
+				mv_guanyin.video.autoRewind = mv_tamayo.video.autoRewind = mv_skullrack.video.autoRewind = mv_giorgione.video.autoRewind = 
+				mv_matisse.video.autoRewind = mv_shiva.video.autoRewind = mv_eakins.video.autoRewind = mv_rivera.video.autoRewind = 
+				mv_nevelson.video.autoRewind = mv_stella.video.autoRewind = mv_mitchell.video.autoRewind = mv_okeefe.video.autoRewind = 
+				mv_johnson.video.autoRewind = mv_durand.video.autoRewind =  mv_goya.video.autoRewind =  mv_ruknuddin.video.autoRewind = 
+				mv_cotan.video.autoRewind = true;
+		    	mv_henri.video.fullScreenTakeOver = mv_sorolla.video.fullScreenTakeOver = mv_bougeureau.video.fullScreenTakeOver = 
+		    	mv_greco.video.fullScreenTakeOver = mv_guanyin.video.fullScreenTakeOver = mv_tamayo.video.fullScreenTakeOver = 
+		    	mv_skullrack.video.fullScreenTakeOver = mv_giorgione.video.fullScreenTakeOver = mv_matisse.video.fullScreenTakeOver = 
+		    	mv_shiva.video.fullScreenTakeOver = mv_eakins.video.fullScreenTakeOver = mv_rivera.video.fullScreenTakeOver = 
+		    	mv_nevelson.video.fullScreenTakeOver = mv_stella.video.fullScreenTakeOver = mv_mitchell.video.fullScreenTakeOver = 
+		    	mv_okeefe.video.fullScreenTakeOver = mv_johnson.video.fullScreenTakeOver = mv_durand.video.fullScreenTakeOver = 
+		    	mv_goya.video.fullScreenTakeOver = mv_ruknuddin.video.fullScreenTakeOver = mv_cotan.video.fullScreenTakeOver = false;
 		    	removeChild(vid_time);
 				video_list = new Array();
 
