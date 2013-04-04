@@ -13,11 +13,13 @@ package com {
 	import flash.ui.MultitouchInputMode;
 	import flash.geom.Point;
 	import flash.geom.Matrix;
+	import id.core.*;
+	import gl.events.*
 
-	import org.papervision3d.scenes.*;
+	/*import org.papervision3d.scenes.*;
 	import org.papervision3d.cameras.*;
 	import org.papervision3d.objects.*;
-	import org.papervision3d.materials.*;
+	import org.papervision3d.materials.*;*/
 
 	import org.papervision3d2.cameras.Camera3D;
 	import org.papervision3d2.render.BasicRenderEngine;
@@ -33,7 +35,7 @@ package com {
 
 	import caurina.transitions.*;
 
-	public class Main extends MovieClip {
+	public class Main extends Application {
 			private var puzzlePicker:Number;
 		    private var frameStr:String;
 			
@@ -42,14 +44,16 @@ package com {
 		    private var loadingScreen:String;
 			private var videoRatio:Number;	    
 		    private var container:Sprite;
-		    private var scene:org.papervision3d.scenes.MovieScene3D;
-		    private var cam:org.papervision3d.cameras.Camera3D;
+		    //private var scene:org.papervision3d.scenes.MovieScene3D;
+		    //private var cam:org.papervision3d.cameras.Camera3D;
 			private var timer:Timer;
 			private var idleTimer:Timer;
 			private var countDown:Timer;
 		    private var p_dict:Dictionary;		    
 		    private var pa:Array;
 		    private var video_list:Array;
+		    private var thumblist:Array;
+		    private var puzList:Array;
 		    private var selectedPic:int; //current image
 		    private var i:int; 
 		    private var numTiles:int;
@@ -85,6 +89,26 @@ package com {
 			private var camera:org.papervision3d2.cameras.Camera3D = new org.papervision3d2.cameras.Camera3D();
 			private var renderer:org.papervision3d2.render.BasicRenderEngine = new org.papervision3d2.render.BasicRenderEngine();
 
+			var cont_henri:TouchSprite, cont_zuijin:TouchSprite, cont_sorolla:TouchSprite, cont_bougeureau:TouchSprite, cont_greco:TouchSprite, 
+			cont_guanyin:TouchSprite, cont_tamayo:TouchSprite, cont_skullrack:TouchSprite, cont_giorgione:TouchSprite, cont_matisse:TouchSprite, 
+			cont_shiva:TouchSprite, cont_zhang:TouchSprite, cont_eakins:TouchSprite, cont_rivera:TouchSprite, cont_meiping:TouchSprite, 
+			cont_nevelson:TouchSprite, cont_stella:TouchSprite, cont_dix:TouchSprite, cont_mitchell:TouchSprite, cont_okeefe:TouchSprite, 
+			cont_johnson:TouchSprite, cont_durand:TouchSprite, cont_goya:TouchSprite, cont_ruknuddin:TouchSprite, cont_cotan:TouchSprite; 
+			
+			var cont_henri_vid:TouchSprite, cont_zuijin_vid:TouchSprite, cont_sorolla_vid:TouchSprite, cont_bougeureau_vid:TouchSprite, 
+			cont_greco_vid:TouchSprite, cont_guanyin_vid:TouchSprite, cont_tamayo_vid:TouchSprite, cont_skullrack_vid:TouchSprite, 
+			cont_giorgione_vid:TouchSprite, cont_matisse_vid:TouchSprite, cont_shiva_vid:TouchSprite, cont_zhang_vid:TouchSprite, 
+			cont_eakins_vid:TouchSprite, cont_rivera_vid:TouchSprite, cont_meiping_vid:TouchSprite, cont_nevelson_vid:TouchSprite, 
+			cont_stella_vid:TouchSprite, cont_dix_vid:TouchSprite, cont_mitchell_vid:TouchSprite, cont_okeefe_vid:TouchSprite, 
+			cont_johnson_vid:TouchSprite, cont_durand_vid:TouchSprite, cont_goya_vid:TouchSprite, cont_ruknuddin_vid:TouchSprite, 
+			cont_cotan_vid:TouchSprite; 
+			
+			var cont_info:TouchSprite;
+			var cont_home:TouchSprite;
+			var cont_blocker:TouchSprite;
+			var cont_puz1:TouchSprite, cont_puz2:TouchSprite, cont_puz3:TouchSprite, cont_puz4:TouchSprite, cont_puz5:TouchSprite, 
+			cont_puz6:TouchSprite, cont_puz7:TouchSprite, cont_puz8:TouchSprite, cont_puz9:TouchSprite;
+
 			public function Main() {
 				gotoAndStop(2);
 				//stage.scaleMode = StageScaleMode.EXACT_FIT;
@@ -106,14 +130,165 @@ package com {
 				bg_woodtexture.visible = false;
 
 				//Set up thumbnail environment
-				container = new Sprite();
+				/*container = new Sprite();
 				container.x = container_x;
 		    	container.y = container_y;
 		    	addChild(container);
 				scene = new org.papervision3d.scenes.MovieScene3D(container);
 				cam = new org.papervision3d.cameras.Camera3D();
 		    	cam.zoom = 10;
-			    addEventListener(Event.ENTER_FRAME, render);
+			    addEventListener(Event.ENTER_FRAME, render);*/
+
+			    //Build thumb array
+			    cont_henri = new TouchSprite();
+			    cont_henri.addChild(mc_henri);
+			    cont_henri.name = "0";
+			    addChild(cont_henri);
+			    cont_zuijin = new TouchSprite();
+			    cont_zuijin.addChild(mc_zuijin);
+			    cont_zuijin.name = "1";
+			    addChild(cont_zuijin);
+			    cont_sorolla = new TouchSprite();
+			    cont_sorolla.addChild(mc_sorolla);
+			    cont_sorolla.name = "2";
+			    addChild(cont_sorolla);
+			    cont_bougeureau = new TouchSprite();
+			    cont_bougeureau.addChild(mc_bougeureau);
+			    cont_bougeureau.name = "3";
+			    addChild(cont_bougeureau);
+			    cont_greco = new TouchSprite();
+			    cont_greco.addChild(mc_greco);
+			    cont_greco.name = "4";
+			    addChild(cont_greco);
+			    cont_guanyin = new TouchSprite();
+			    cont_guanyin.addChild(mc_guanyin);
+			    cont_guanyin.name = "5";
+			    addChild(cont_guanyin);
+			    cont_tamayo = new TouchSprite();
+			    cont_tamayo.addChild(mc_tamayo);
+			    cont_tamayo.name = "6";
+			    addChild(cont_tamayo);
+			    cont_skullrack = new TouchSprite();
+			    cont_skullrack.addChild(mc_skullrack);
+			    cont_skullrack.name = "7";
+			    addChild(cont_skullrack);
+			    cont_giorgione = new TouchSprite();
+			    cont_giorgione.addChild(mc_giorgione);
+			    cont_giorgione.name = "8";
+			    addChild(cont_giorgione);
+			    cont_matisse = new TouchSprite();
+			    cont_matisse.addChild(mc_matisse);
+			    cont_matisse.name = "9";
+			    addChild(cont_matisse);
+			    cont_shiva = new TouchSprite();
+			    cont_shiva.addChild(mc_shiva);
+			    cont_shiva.name = "10";
+			    addChild(cont_shiva);
+			    cont_zhang = new TouchSprite();
+			    cont_zhang.addChild(mc_zhang);
+			    cont_zhang.name = "11";
+			    addChild(cont_zhang);
+			    cont_eakins = new TouchSprite();
+			    cont_eakins.addChild(mc_eakins);
+			    cont_eakins.name = "12";
+			    addChild(cont_eakins);
+			    cont_rivera = new TouchSprite();
+			    cont_rivera.addChild(mc_rivera);
+			    cont_rivera.name = "13";
+			    addChild(cont_rivera);
+			    cont_meiping = new TouchSprite();
+			    cont_meiping.addChild(mc_meiping);
+			    cont_meiping.name = "14";
+			    addChild(cont_meiping);
+			    cont_nevelson = new TouchSprite();
+			    cont_nevelson.addChild(mc_nevelson);
+			    cont_nevelson.name = "15";
+			    addChild(cont_nevelson);
+			    cont_stella = new TouchSprite();
+			    cont_stella.addChild(mc_stella);
+			    cont_stella.name = "16";
+			    addChild(cont_stella);
+			    cont_dix = new TouchSprite();
+			    cont_dix.addChild(mc_dix);
+			    cont_dix.name = "17";
+			    addChild(cont_dix);
+			    cont_mitchell = new TouchSprite();
+			    cont_mitchell.addChild(mc_mitchell);
+			    cont_mitchell.name = "18";
+			    addChild(cont_mitchell);
+			    cont_okeefe = new TouchSprite();
+			    cont_okeefe.addChild(mc_okeefe);
+			    cont_okeefe.name = "19";
+			    addChild(cont_okeefe);
+			    cont_johnson = new TouchSprite();
+			    cont_johnson.addChild(mc_johnson);
+			    cont_johnson.name = "20";
+			    addChild(cont_johnson);
+			    cont_durand = new TouchSprite();
+			    cont_durand.addChild(mc_durand);
+			    cont_durand.name = "21";
+			    addChild(cont_durand);
+			    cont_goya = new TouchSprite();
+			    cont_goya.addChild(mc_goya);
+			    cont_goya.name = "22";
+			    addChild(cont_goya);
+			    cont_ruknuddin = new TouchSprite();
+			    cont_ruknuddin.addChild(mc_ruknuddin);
+			    cont_ruknuddin.name = "23";
+			    addChild(cont_ruknuddin);
+			    cont_cotan = new TouchSprite();
+			    cont_cotan.addChild(mc_cotan);
+			    cont_cotan.name = "24";
+			    addChild(cont_cotan);
+
+			    //Build array of thumbnails
+			    thumblist = new Array();
+			    thumblist.push(cont_henri);
+			    thumblist.push(cont_zuijin);
+			    thumblist.push(cont_sorolla);
+			    thumblist.push(cont_bougeureau);
+			    thumblist.push(cont_greco);
+			    thumblist.push(cont_guanyin);
+			    thumblist.push(cont_tamayo);
+			    thumblist.push(cont_skullrack);
+			    thumblist.push(cont_giorgione);
+			    thumblist.push(cont_matisse);
+			    thumblist.push(cont_shiva);
+			    thumblist.push(cont_zhang);
+			    thumblist.push(cont_eakins);
+			    thumblist.push(cont_rivera);
+			    thumblist.push(cont_meiping);
+			    thumblist.push(cont_nevelson);
+			    thumblist.push(cont_stella);
+			    thumblist.push(cont_dix);
+			    thumblist.push(cont_mitchell);
+			    thumblist.push(cont_okeefe);
+			    thumblist.push(cont_johnson);
+			    thumblist.push(cont_durand);
+			    thumblist.push(cont_goya);
+			    thumblist.push(cont_ruknuddin);
+			    thumblist.push(cont_cotan);
+			    //Make them tapable
+			    for(var i = 0; i < thumblist.length; i++) {
+			    	thumblist[i].addEventListener(gl.events.TouchEvent.TOUCH_UP, thumbUp, false, 0, true);
+			    	thumblist[i].addEventListener(gl.events.TouchEvent.TOUCH_DOWN, thumbDwn, false, 0, true);
+			    	//thumblist[i].addEventListener(GestureEvent.GESTURE_DRAG, dragEvent);
+			    }
+
+			    //Build array of puzzle pieces
+			    puzList = new Array();
+			    cont_puz1 = new TouchSprite(); cont_puz2 = new TouchSprite(); cont_puz3 = new TouchSprite(); cont_puz4 = new TouchSprite();
+			    cont_puz5 = new TouchSprite(); cont_puz6 = new TouchSprite(); cont_puz7 = new TouchSprite(); cont_puz8 = new TouchSprite();
+			    cont_puz9 = new TouchSprite();
+			    puzList.push(cont_puz1);
+			    puzList.push(cont_puz2);
+			    puzList.push(cont_puz3);
+			    puzList.push(cont_puz4);
+			    puzList.push(cont_puz5);
+			    puzList.push(cont_puz6);
+			    puzList.push(cont_puz7);
+			    puzList.push(cont_puz8);
+			    puzList.push(cont_puz9);
 
 				//Image loader
 				imgLoader = new Loader();
@@ -194,21 +369,32 @@ package com {
 			    pic_loader = new Loader();
 			    xml_loader = new URLLoader();
 			    xml_loader.load( new URLRequest("25works_metadata.xml") );
-		    	xml_loader.addEventListener(Event.COMPLETE, initialize);
+		    	xml_loader.addEventListener(Event.COMPLETE, xmlLoaded);
 
 		    	//button prep
 		    	removeChild(backBtn);
-		    	removeChild(blocker);
 		    	removeChild(window_credits);
 		    	removeChild(effect_glow);
 		    	graphic_flipme.alpha = 0;
+
+		    	//blocker
+		    	cont_blocker = new TouchSprite();
+		    	cont_blocker.addChild(blocker);
+		    	
 		    	button_info.visible = false;
-		    	//button_info.gotoAndStop("white");
-		    	button_info.addEventListener(MouseEvent.CLICK, info_click);
+		    	cont_info = new TouchSprite();
+		    	cont_info.addChild(button_info);
+		    	cont_info.addEventListener(gl.events.TouchEvent.TOUCH_DOWN, info_dwn);
+		    	cont_info.addEventListener(gl.events.TouchEvent.TOUCH_UP, info_up);
+
+		    	backBtn.visible = false;
+		    	cont_home = new TouchSprite();
+		    	cont_home.addChild(backBtn);
+
 		    	graphic_flipme.addEventListener(MouseEvent.CLICK, flipme);
 		}
 		
-		function render(e:Event):void
+		/*function render(e:Event):void
 		{
 			for(var i:uint; i < pa.length; i++)
 			{
@@ -221,7 +407,7 @@ package com {
 			cam.y = ( 480 - stage.mouseY ) * 0.1;
 
 			scene.renderCamera(cam);
-		}
+		}*/
 
 		public function renderCard(e:Event) {			
 			renderer.renderScene(sceneCard, camera, viewport);
@@ -309,13 +495,15 @@ package com {
 				//trace("flip to back");
 				cardFacingFront = false;
 				imgCard.rotationY = 0;
-				backBtn.removeEventListener(MouseEvent.CLICK, returnMainBtnHandler);
+				cont_home.removeEventListener(gl.events.TouchEvent.TOUCH_DOWN, home_dwn );
+				cont_home.removeEventListener(gl.events.TouchEvent.TOUCH_UP, home_up );
 				Tweener.addTween(imgCard, {rotationY: 180, time: 1, onComplete: function() {
 					//get video if has video
 					if(video_list[selectedPic] != null) {
 						getVideo();
 					}
-					backBtn.addEventListener(MouseEvent.CLICK, returnMainBtnHandler);
+					cont_home.addEventListener(gl.events.TouchEvent.TOUCH_DOWN, home_dwn );
+					cont_home.addEventListener(gl.events.TouchEvent.TOUCH_UP, home_up );
 				}});
 
 				//turn off guidance
@@ -326,8 +514,12 @@ package com {
 				//trace("flip to front");
 				cardFacingFront = true;
 				imgCard.rotationY = 180;
-				backBtn.removeEventListener(MouseEvent.CLICK, returnMainBtnHandler);
-				Tweener.addTween(imgCard, {rotationY: 360, time: 1, onComplete: function() {backBtn.addEventListener(MouseEvent.CLICK, returnMainBtnHandler);} });
+				cont_home.removeEventListener(gl.events.TouchEvent.TOUCH_DOWN, home_dwn );
+				cont_home.removeEventListener(gl.events.TouchEvent.TOUCH_UP, home_up );
+				Tweener.addTween(imgCard, {rotationY: 360, time: 1, onComplete: function() {
+					cont_home.addEventListener(gl.events.TouchEvent.TOUCH_DOWN, home_dwn );
+					cont_home.addEventListener(gl.events.TouchEvent.TOUCH_UP, home_up );} 
+				});
 
 				if(video_list[selectedPic] != null) {
 					hideVideo();
@@ -347,14 +539,17 @@ package com {
 			//trace("flip to back");
 			cardFacingFront = false;
 			imgCard.rotationY = 0;
-			backBtn.removeEventListener(MouseEvent.CLICK, returnMainBtnHandler);
+			cont_home.removeEventListener(gl.events.TouchEvent.TOUCH_DOWN, home_dwn );
+			cont_home.removeEventListener(gl.events.TouchEvent.TOUCH_UP, home_up );
 			Tweener.addTween(imgCard, {rotationY: 180, time: 1, onComplete: function() {
 				//get video if has video
 				if(video_list[selectedPic] != null) {
 					getVideo();
 				}
-				backBtn.addEventListener(MouseEvent.CLICK, returnMainBtnHandler);
-			}});
+				
+				cont_home.addEventListener(gl.events.TouchEvent.TOUCH_DOWN, home_dwn );
+				cont_home.addEventListener(gl.events.TouchEvent.TOUCH_UP, home_up );} 
+			});
 
 			//turn off guidance
 			if(graphic_flipme.alpha == 1) {
@@ -460,7 +655,11 @@ package com {
 		    return String($num);
 		}
 
-		public function info_click(e:MouseEvent):void {
+		public function info_dwn(e:gl.events.TouchEvent):void {
+
+		}
+
+		public function info_up(e:gl.events.TouchEvent):void {
 			window_credits.alpha = 0;
 			window_credits.scaleX = window_credits.scaleY = 0.8;
 			addChild(window_credits);
@@ -468,34 +667,34 @@ package com {
 			Tweener.addTween(window_credits, {scaleX: 1, scaleY: 1, time: 1, transition: "easeOutElastic"});
 			Tweener.addTween(window_credits, {alpha: 1, time: 1});
 
-			addChild(blocker);
-			blocker.addEventListener(MouseEvent.CLICK, exit_info);
+			addChild(cont_blocker);
+			cont_blocker.addEventListener(gl.events.TouchEvent.TOUCH_UP, exit_info);
 		}
 
-		private function exit_info(e:MouseEvent):void {
-			blocker.removeEventListener(MouseEvent.CLICK, exit_info);
+		private function exit_info(e:gl.events.TouchEvent):void {
+			cont_blocker.removeEventListener(gl.events.TouchEvent.TOUCH_UP, exit_info);
 			Tweener.addTween(window_credits, {alpha: 0, scaleX: 0.8, scaleY: 0.8, time: 1, onComplete: function() {
 				removeChild(window_credits);
 			}});
 
 			Tweener.addTween(this, {delay: 1, onComplete: function(){ 
-				removeChild(blocker); 
+				removeChild(cont_blocker); 
 			}});
 		}
 
-		function initialize(e:Event):void
+		function xmlLoaded(e:Event):void
 		{
-			var thumbSize: int = 200;
-			var thumbGap: int = 20;
+			/*var thumbSize: int = 200;
+			var thumbGap: int = 20;*/
 
 			metadata_xml = XML(e.target.data);
 
 		    //read settings from xml
 		    mouseOrTouch = metadata_xml.input;
 			
-			numTiles = metadata_xml.Content.Work.length();
+			//numTiles = metadata_xml.Content.Work.length();
 			
-			for( i = 0; i < numTiles; i++ )
+			/*for( i = 0; i < numTiles; i++ )
 			{
 		        var index;
 		        if( i+1 > numImg )
@@ -532,9 +731,45 @@ package com {
 				p.x = i % 5 * ( thumbSize + thumbGap + 60 );
 				p.y = Math.floor(i / 5) * ( thumbSize + thumbGap );
 				p.z = pa[i].z;
-			}//for
+			}*///for
 
 		}//create thumbnail
+
+		private function thumbDwn(e:gl.events.TouchEvent):void {
+			//e.target.startTouchDrag(0);
+			trace("down");
+			//TODO: block other thumbs
+		}
+
+		private function thumbUp(e:gl.events.TouchEvent):void {
+			//e.target.stopTouchDrag(0);
+			trace("up");
+			//TODO: if only clicked and NOT dragged
+
+			playSound("audio/select.mp3");
+			Tweener.addTween(e.target.getChildAt(0), {scaleX: 2, scaleY: 2, time: 1, onComplete: function() { e.target.getChildAt(0).scaleX = 1; e.target.getChildAt(0).scaleY = 1; }} );
+
+			//Fade out thumbnails
+			for (var i:int = 0; i < thumblist.length; i++) {
+				Tweener.addTween(thumblist[i], {alpha: 0, time: 1, onComplete: function() { /*removeChild(thumblist[i]);*/ }});
+			}
+			Tweener.addTween(button_info, {delay: 1, onComplete: function(){ button_info.gotoAndStop("wooden"); button_info.visible = true; }})
+
+			var s_no:Number = parseInt(e.target.name); //this is the ID of the work (based on order of 1-25 on website)
+			fileRequest = new URLRequest(metadata_xml.Content.Work[s_no].url);
+			selectedPic = s_no;
+
+			if(video_list[selectedPic] != null) {
+				video_list[selectedPic].video.stop();
+			}
+
+			Tweener.addTween(this, {delay: 1, onComplete: function() {
+				createPuzzle();
+			}});
+
+			blockerOn();
+			Tweener.addTween(this, {delay: 6, onComplete: blockerOff});
+		}
 
 		function p_rollover(me:MouseEvent) 
 		{
@@ -586,7 +821,7 @@ package com {
 		/**
 		 * check if the mouse is close to the image, if so, show the img
 		 */
-		function check_distance(p:org.papervision3d.objects.Plane):Boolean
+		/*function check_distance(p:org.papervision3d.objects.Plane):Boolean
 		{
 			var p1:Point = new Point(p.x, p.y);
 			var p2:Point = new Point(container.mouseX + 150, -container.mouseY + 80);
@@ -596,20 +831,23 @@ package com {
 				return true;
 			}
 			else return false;
-		}
+		}*/
 
 		function showBackBtn(): void
 		{
-		    addChildAt( backBtn, getChildIndex(bg_woodtexture) + 1 );
+		    addChildAt(cont_home, getChildIndex(bg_woodtexture) + 1);
 		    backBtn.alpha = 0;
+		    backBtn.visible = true;
 			Tweener.addTween( backBtn, { alpha: 1, delay: 1, time: 1 } );
-			backBtn.addEventListener(MouseEvent.CLICK, returnMainBtnHandler );
+			cont_home.addEventListener(gl.events.TouchEvent.TOUCH_DOWN, home_dwn);
+		    cont_home.addEventListener(gl.events.TouchEvent.TOUCH_UP, home_up);
 		}
 
 		function hideBackBtn():void
 		{
 			Tweener.addTween( backBtn, { y: stage.stageHeight, time: 1 } );
-			backBtn.removeEventListener(MouseEvent.CLICK, returnMainBtnHandler );
+			cont_home.removeEventListener(gl.events.TouchEvent.TOUCH_DOWN, home_dwn );
+			cont_home.removeEventListener(gl.events.TouchEvent.TOUCH_UP, home_up );
 		}
 
 		/////////////////////////////////////////////////////////////////////
@@ -719,7 +957,7 @@ package com {
 
 		        //mask each piece with new image loader
 		        //trace("calling loadPuzzlePieces()");
-		        loadPuzzlePieces( this[puzzleStr + pieceNum] );
+		        loadPuzzlePieces( this[puzzleStr + pieceNum], pieceNum );
 		    }
 
 		    //wood texture
@@ -727,8 +965,8 @@ package com {
 			bg_woodtexture.scaleX = bg_woodtexture.scaleY = 0.7;
 			bg_woodtexture.alpha = 0;
 			addChild(bg_woodtexture);
-			addChild(blocker);
-			Tweener.addTween(bg_woodtexture, {scaleX: 1, scaleY: 1, alpha: 1, delay: 0.8, time: 3});
+			addChild(cont_blocker);
+			Tweener.addTween(bg_woodtexture, {scaleX: 1, scaleY: 1, alpha: 1, delay: 0.4, time: 3});
 
 			//frame ADD THIS TO bg_woodtexture
 		    bg_woodtexture.addChild(this[frameStr]);
@@ -745,7 +983,7 @@ package com {
 		 * load individual piece
 		 * call scramble() when last piece is loaded
 		 */
-		function loadPuzzlePieces( msk:MovieClip ):void
+		function loadPuzzlePieces(msk:MovieClip, pieceNum:int):void
 		{
 			//trace("loadPuzzlePieces() called. fileRequest: " + fileRequest);
 			var imgLoader:Loader = new Loader();
@@ -777,9 +1015,14 @@ package com {
 				} 
 				else if( mouseOrTouch == "1" ) 
 				{
-					img.addEventListener( TouchEvent.TOUCH_BEGIN, onTouch );
-					img.addEventListener( TouchEvent.TOUCH_END,   onTouch );
+					//img.addEventListener( TouchEvent.TOUCH_BEGIN, onTouch );
+					//img.addEventListener( TouchEvent.TOUCH_END,   onTouch );
 				}
+
+				//Make container draggable
+				/*puzList[pieceNum].addChild(img);
+				addChild(puzList[pieceNum]);*/
+				//TODO: finish placing in container
 
 				img.cacheAsBitmap = true;
 				img.mouseChildren = false;
@@ -798,7 +1041,7 @@ package com {
 				dropShdw.blurX = dropShdw.blurY = 10;
 				imgLoader.filters = [dropShdw];
 				addChild( img );
-				addChild(blocker);
+				addChild(cont_blocker);
 
 				numLoaded++;
 				//trace("numLoaded: " + numLoaded);
@@ -809,9 +1052,10 @@ package com {
 					// loading images cause lags, so delay for smoother animation
 					var delayTimer:Timer = new Timer( 1500, 1 );
 					delayTimer.addEventListener( TimerEvent.TIMER_COMPLETE, function() {
+					    addChildAt(cont_home, getChildIndex(bg_woodtexture) + 1);
 					    showBackBtn();
 		                scramble();
-					    addChildAt(button_info, getChildIndex(bg_woodtexture) + 1);
+					    addChildAt(cont_info, getChildIndex(bg_woodtexture) + 1);
 					    Tweener.addTween(button_info, {alpha: 1, time: 1, delay: 1});
 					});
 					delayTimer.start();
@@ -858,7 +1102,7 @@ package com {
 		/***************
 		 * TOUCH EVENT *
 		 ***************/
-		function onTouch( e:TouchEvent ):void
+		function onTouch( e:flash.events.TouchEvent ):void
 		{
 			if( e.target.alpha < 1 )
 			{
@@ -941,8 +1185,8 @@ package com {
 		        Tweener.addTween(imgArr[piece], {x: xpos, y: ypos, alpha: 1, delay: 0.3, time: 0.5});
 		        imgArr[piece].removeEventListener(MouseEvent.MOUSE_DOWN, onMouse);
 				imgArr[piece].removeEventListener( MouseEvent.MOUSE_UP,   onMouse );
-				imgArr[piece].removeEventListener( TouchEvent.TOUCH_BEGIN, onTouch );
-				imgArr[piece].removeEventListener( TouchEvent.TOUCH_END,   onTouch );
+				//imgArr[piece].removeEventListener( TouchEvent.TOUCH_BEGIN, onTouch );
+				//imgArr[piece].removeEventListener( TouchEvent.TOUCH_END,   onTouch );
 
 		        //imgArr[piece].imgLoader.filters = [];
 		        imgArr[piece].getChildAt(0).filters = [];
@@ -995,7 +1239,12 @@ package com {
 		}
 
 		/* RETURN TO MAIN TILE INTERFACE */
-		function returnMainBtnHandler(e:MouseEvent):void
+		function home_dwn(e:gl.events.TouchEvent):void
+		{
+
+		}
+
+		function home_up(e:gl.events.TouchEvent):void
 		{
 			returnMain();
 		}
@@ -1037,7 +1286,10 @@ package com {
 							randoY = Math.floor(Math.random() * (1 + -1080 - -2500)) + -2500;
 						}
 
-						Tweener.addTween( imgArr[k], { x: randoX, y: randoY, time: 1, delay: k*0.1, onComplete: function(){ /*(imgArr[k].dispose(); imgArr[k] = null;*/ }} );
+						trace(imgArr[k]);
+						Tweener.addTween( imgArr[k], { x: randoX, y: randoY, time: 1, delay: k*0.1, onComplete: function(){ /*imgArr[k].dispose(); imgArr[k] = null;*/ }} );
+
+						//TODO: Figure out how to free up memory properly
 					}
 				}
 			}
@@ -1046,16 +1298,22 @@ package com {
 
 			//remove bg and back
 			Tweener.addTween(bg_woodtexture, {scaleX: 0.7, scaleY: 0.7, alpha: 0, time: 2, delay: 1.1, onComplete: function(){ removeChild(bg_woodtexture); }});
-			Tweener.addTween(backBtn, {alpha: 0, time: 1, onComplete: function() { removeChild(backBtn); }})
+			Tweener.addTween(backBtn, {alpha: 0, time: 1, onComplete: function() { removeChild(cont_home); }})
 			Tweener.addTween(button_info, {alpha: 0, time: 1, onComplete: function() { /*button_info.gotoAndStop("white");*/ button_info.visible = false; } });
 			//Tweener.addTween(button_info, {alpha: 1, time: 1, delay: 3.5});
 			Tweener.addTween(graphic_flipme, {alpha: 0, time: 1, onComplete: function() { graphic_flipme.visible = false; }});
 			
 			//scale back thumbs
-			container.scaleX = container.scaleY = 3;
+			/*container.scaleX = container.scaleY = 3;
 			container.alpha = 0;
 			addChild(container);
-			Tweener.addTween(container, {scaleX: 1, scaleY: 1, alpha: 1, time: 1, delay: 2 });
+			Tweener.addTween(container, {scaleX: 1, scaleY: 1, alpha: 1, time: 1, delay: 2 });*/
+
+			//Show thumbs
+			for (var i:int = 0; i < thumblist.length; i++) {
+				addChild(thumblist[i]);
+				Tweener.addTween(thumblist[i], {alpha: 1, time: 1, delay: 2});
+			}
 
 			//reset
 			if(video_list[selectedPic] == null) {
@@ -1073,6 +1331,8 @@ package com {
 				imgCard = new org.papervision3d2.objects.DisplayObject3D();
 			}});
 
+			//TODO: reset TouchSprite puzzle piece containers
+
 			fullImg = new MovieClip();
 			fullImgLoader = null;
 			fullImgLoader = new Loader();
@@ -1084,12 +1344,12 @@ package com {
 
 		public function blockerOn():void {
 			//trace("blocker ON");
-			addChild(blocker);
-			setChildIndex(blocker, numChildren - 1);
+			addChild(cont_blocker);
+			setChildIndex(cont_blocker, numChildren - 1);
 		}
 
 		public function blockerOff():void {
-			removeChild(blocker);
+			removeChild(cont_blocker);
 		}
 	}
 }
