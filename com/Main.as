@@ -53,6 +53,8 @@ package com {
 		    private var pa:Array;
 		    private var video_list:Array;
 		    private var thumblist:Array;
+		    private var thumbXpos:Array;
+		    private var thumbYpos:Array;
 		    private var puzList:Array;
 		    private var selectedPic:int; //current image
 		    private var i:int;
@@ -63,6 +65,8 @@ package com {
 		    private var pic_loader:Loader;
 		    private var imgThumb:Loader = new Loader(); //thumb to appear on back of card
 		    private var xml_loader:URLLoader;
+		    private var checkX:int = 0;
+		    private var checkY:int = 0;
 
 		    private var numImg: int = 25;
 		    private var awayStageR: int = stage.stageWidth*2;
@@ -115,7 +119,7 @@ package com {
 			public function Main() {
 				gotoAndStop(2);
 				//stage.scaleMode = StageScaleMode.EXACT_FIT;
-				stage.displayState = StageDisplayState.FULL_SCREEN;
+				//stage.displayState = StageDisplayState.FULL_SCREEN;
 				stage.scaleMode = StageScaleMode.SHOW_ALL;
 				stage.align = StageAlign.TOP_LEFT;
 				Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
@@ -245,6 +249,8 @@ package com {
 			    addChild(cont_cotan);
 
 			    //Build array of thumbnails
+			    thumbXpos = new Array();
+			    thumbYpos = new Array();
 			    thumblist = new Array();
 			    thumblist.push(cont_henri);
 			    thumblist.push(cont_zuijin);
@@ -273,10 +279,21 @@ package com {
 			    thumblist.push(cont_cotan);
 			    //Make them tapable
 			    for(var i = 0; i < thumblist.length; i++) {
+			    	thumblist[i].blobContainerEnabled = true;
 			    	thumblist[i].addEventListener(gl.events.TouchEvent.TOUCH_UP, thumbUp, false, 0, true);
 			    	thumblist[i].addEventListener(gl.events.TouchEvent.TOUCH_DOWN, thumbDwn, false, 0, true);
-			    	//thumblist[i].addEventListener(GestureEvent.GESTURE_DRAG, dragEvent);
+			    	thumblist[i].addEventListener(gl.events.GestureEvent.GESTURE_ROTATE, rotate);
+			    	thumbXpos.push(0);
+			    	thumbYpos.push(0);
 			    }
+
+			    //Build array of puzzle actual images
+			    /*imgArr = new Array();
+
+			    for(var q:int = 0; q < 9; q++) {
+
+			    	imgArr
+			    }*/
 
 			    //Build array of puzzle pieces
 			    puzList = new Array();
@@ -891,47 +908,80 @@ package com {
 
 		}//create thumbnail
 
+		/*private function dragEvent(e:gl.events.GestureEvent):void {
+			x += e.dx;
+        	y += e.dy
+		}*/
+
+		private function rotate(e:gl.events.GestureEvent):void {
+			//addChild(e.target);
+			e.target.rotation += e.value;
+		}
+
 		private function thumbDwn(e:gl.events.TouchEvent):void {
-			//e.target.startTouchDrag(0);
+			e.target.startTouchDrag(0);
+			setChildIndex(e.target as DisplayObject, numChildren - 1);
+
+			//get thumb number
+			var thumbnum:int = 0;
+			while(thumblist[thumbnum] != e.target) {
+				thumbnum++;
+			}
+			thumbXpos[thumbnum] = e.target.x;
+			thumbYpos[thumbnum] = e.target.y;
 
 			//TODO: block other thumbs
+			/*for (var i:int = 0; i < thumblist.length; i++) {
+				if(thumblist[i] != e.target) {
+					thumblist[i].removeEventListener(gl.events.TouchEvent.TOUCH_UP, thumbUp);
+			   		thumblist[i].removeEventListener(gl.events.TouchEvent.TOUCH_DOWN, thumbDwn);
+			   }
+			}*/
 		}
 
 		private function thumbUp(e:gl.events.TouchEvent):void {
-			//e.target.stopTouchDrag(0);
+			e.target.stopTouchDrag(0);
 
 			//TODO: if only clicked and NOT dragged
+			//get thumb number
+			var thumbnum:int = 0;
+			while(thumblist[thumbnum] != e.target) {
+				thumbnum++;
+			}
 
-			playSound("audio/select.mp3");
-			Tweener.addTween(e.target.getChildAt(0), {scaleX: 2, scaleY: 2, time: 1, onComplete: function() { e.target.getChildAt(0).scaleX = 1; e.target.getChildAt(0).scaleY = 1; }} );
+			if(thumbXpos[thumbnum] == e.target.x && thumbYpos[thumbnum] == e.target.y) {
+			//if(false) {
+				playSound("audio/select.mp3");
+				Tweener.addTween(e.target.getChildAt(0), {scaleX: 2, scaleY: 2, time: 1, onComplete: function() { e.target.getChildAt(0).scaleX = 1; e.target.getChildAt(0).scaleY = 1; }} );
 
-			//Fade out thumbnails
-			for (var i:int = 0; i < thumblist.length; i++) {
-				Tweener.addTween(thumblist[i], {alpha: 0, time: 1, onComplete: function() { 
-					//thumblist[i].removeEventListener(gl.events.TouchEvent.TOUCH_UP, thumbUp, false, 0, true);
-			    	//thumblist[i].removeEventListener(gl.events.TouchEvent.TOUCH_DOWN, thumbDwn, false, 0, true);
-			    	//trace(thumblist[i]);
+				//Fade out thumbnails
+				for (var i:int = 0; i < thumblist.length; i++) {
+					Tweener.addTween(thumblist[i], {alpha: 0, time: 1, onComplete: function() { 
+						//thumblist[i].removeEventListener(gl.events.TouchEvent.TOUCH_UP, thumbUp, false, 0, true);
+				    	//thumblist[i].removeEventListener(gl.events.TouchEvent.TOUCH_DOWN, thumbDwn, false, 0, true);
+				    	//trace(thumblist[i]);
+					}});
+
+					thumblist[i].removeEventListener(gl.events.TouchEvent.TOUCH_UP, thumbUp);
+				   	thumblist[i].removeEventListener(gl.events.TouchEvent.TOUCH_DOWN, thumbDwn);
+				}
+				Tweener.addTween(button_info, {delay: 1, onComplete: function(){ button_info.gotoAndStop("wooden"); button_info.visible = true; }})
+
+				var s_no:Number = parseInt(e.target.name); //this is the ID of the work (based on order of 1-25 on website)
+				fileRequest = new URLRequest(metadata_xml.Content.Work[s_no].url);
+				selectedPic = s_no;
+
+				if(video_list[selectedPic] != null) {
+					video_list[selectedPic].getChildAt(0).video.stop();
+				}
+
+				Tweener.addTween(this, {delay: 1, onComplete: function() {
+					createPuzzle();
 				}});
 
-				thumblist[i].removeEventListener(gl.events.TouchEvent.TOUCH_UP, thumbUp);
-			   	thumblist[i].removeEventListener(gl.events.TouchEvent.TOUCH_DOWN, thumbDwn);
+				blockerOn();
+				Tweener.addTween(this, {delay: 6, onComplete: blockerOff});
 			}
-			Tweener.addTween(button_info, {delay: 1, onComplete: function(){ button_info.gotoAndStop("wooden"); button_info.visible = true; }})
-
-			var s_no:Number = parseInt(e.target.name); //this is the ID of the work (based on order of 1-25 on website)
-			fileRequest = new URLRequest(metadata_xml.Content.Work[s_no].url);
-			selectedPic = s_no;
-
-			if(video_list[selectedPic] != null) {
-				video_list[selectedPic].getChildAt(0).video.stop();
-			}
-
-			Tweener.addTween(this, {delay: 1, onComplete: function() {
-				createPuzzle();
-			}});
-
-			blockerOn();
-			Tweener.addTween(this, {delay: 6, onComplete: blockerOff});
 		}
 
 		function p_rollover(me:MouseEvent) 
@@ -1131,6 +1181,9 @@ package com {
 
 			//frame ADD THIS TO bg_woodtexture
 		    bg_woodtexture.addChild(this[frameStr]);
+		    bg_woodtexture.addChild(txt_putinframe);
+		    txt_putinframe.x = 0;
+		    txt_putinframe.y = 0;
 		    this[frameStr].width = effect_glow.width = fullImg.width*1.02;
 		    this[frameStr].height = effect_glow.height = fullImg.height*1.02;
 		    this[frameStr].x = xpos - stage.stageWidth/2;
@@ -1455,7 +1508,7 @@ package com {
 			{
 				for( var k=0; k<numPieces; k++ ) {
 					if( imgArr[k].alpha == 1 ) { //fade out puzzles in place
-						Tweener.addTween( imgArr[k], { alpha: 0, time: 1 , onComplete: function(){ /*imgArr[k].dispose(); imgArr[k] = null;*/ }} );
+						Tweener.addTween( imgArr[k], { alpha: 0, time: 1 , onComplete: function(){ /*imgArr[k].dispose(); imgArr[k] = null; imgArr.pop();*/ }} );
 					} else {
 						//Tweener.addTween( imgArr[k], { scaleX: 3, scaleY: 3, alpha: 0, time: 2 } );
 						//drop it in a random place off screen
@@ -1475,7 +1528,7 @@ package com {
 							randoY = Math.floor(Math.random() * (1 + -1080 - -2500)) + -2500;
 						}
 
-						Tweener.addTween( imgArr[k], { x: randoX, y: randoY, time: 1, delay: k*0.1, onComplete: function(){ /*imgArr[k].dispose(); imgArr[k] = null;*/ }} );
+						Tweener.addTween( imgArr[k], { x: randoX, y: randoY, time: 1, delay: k*0.1, onComplete: function(){ /*imgArr[k].dispose(); imgArr[k] = null; imgArr.pop();*/ }} );
 
 						//TODO: Figure out how to free up memory properly
 					}
